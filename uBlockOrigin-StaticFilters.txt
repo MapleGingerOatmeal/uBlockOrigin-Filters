@@ -1,0 +1,790 @@
+! ==== COSMETIC FILTERS ====
+
+! ---- Amazon ----
+
+! Item pages
+! - Item description section
+! -- Bundle options
+amazon.*##[data-feature-name="bundles"]
+! -- Small Amazon brands promo banner just under item description
+amazon.*###heroQuickPromoContainer
+! -- Ask Rufus inline feature that appears under item images
+amazon.*###nile-inline_feature_div h5:has-text(Ask Rufus):upward(div#dpx-nice-widget-container)
+! - "Top Brand" widget
+amazon.*##[data-feature-name="brandInsights"]
+! - "Videos for this Product" widget
+amazon.*###va-related-videos-widget_feature_div
+! - "Customers also bought" widget - IMPORTANT NOTE: The first filter only hides sponsored items within the widget; the second hides the whole widget. Choose your prefered method.
+!amazon.com##[class*="detail-faceout-box"]:has(.dynamicSponsoredLabelClass)
+amazon.*##[id="similarities_feature_div"]
+! - "Explore this related brand"
+amazon.*###sims-discoveryAndInspiration_feature_div_01
+
+! Order placed page
+! - "Livestreams related to this product"
+amazon.*##[data-cel-widget="typ-prominentUpsellSlot"]
+
+! Your Orders page
+! - "Buy it Again" right rail
+amazon.*##.right-rail.js-yo-right-rail:has(h3:has-text(Buy it again))
+
+! Navbar 
+! - Hide categories
+! -- IMPORTANT NOTE: Links/categories in the top navbar will automatically be replaced with new ones unless you block a very large number of them. 
+! -- You may find that hiding one just reveals something you dislike even more. 
+! -- Use your browser's devtools to see exactly what you may need to filter behind the scenes. These should be in the order they appear in within the navigation bar (i.e. nonsensical)
+! --- Rufus button
+! --- Medical Care (submenu)
+! --- Amazon Basics
+! --- Amazon Home
+! --- Pharmacy
+! --- Handmade
+! --- Beauty & Personal Care
+! --- Computers
+! --- Automotive
+! --- Household, Health & Baby Care
+! --- Livestreams
+! --- Luxury Stores
+! --- Home Improvement
+! --- Fashion
+! --- Gift Cards (submenu)
+! --- Pet Supplies
+! --- Books
+! --- Video Games
+! --- TV & Video
+! --- Toys & Games
+! --- Audible
+! --- Kindle Books
+! --- Sports & Outdoors
+! --- Smart Home
+! --- Baby
+amazon.*##button[aria-label*="Rufus"]
+amazon.*###nav_link_allhealthingress
+amazon.*##a[class="nav-a  "][href*="Amazon_Basics"]
+amazon.*##a[class="nav-a  "][href*="home-garden-kitchen-furniture"]
+amazon.*##a[class="nav-a  "][href*="pharmacy.amazon.com"]
+amazon.*##a[class="nav-a  "][href*="/gp/browse.html?node=120955898011"]
+amazon.*##a[class="nav-a  "][href*="Beauty-Makeup-Skin-Hair-Products"]
+amazon.*##a[class="nav-a  "][href*="computer-pc-hardware-accessories-add-ons"]
+amazon.*##a[class="nav-a  "][href*="automotive-auto-truck-replacements-parts"]
+amazon.*##a[class="nav-a  "][href*="health-personal-care-nutrition-fitness"]
+amazon.*##a[class="nav-a  "][href*="amazonlive"]
+amazon.*##a[class="nav-a  "][href*="luxurystores"]
+amazon.*##a[class="nav-a  "][href*="Tools-and-Home-Improvement"]
+amazon.*##a[class="nav-a  "][href*="amazon-fashion"]
+amazon.*###nav_link_gift_cards:has(span:has-text(Gift Cards))
+amazon.*##a[class="nav-a  "][href*="pet-shops-dogs-cats"]
+amazon.*##a[class="nav-a  "][href*="books-used-books-textbooks"]
+amazon.*##a[class="nav-a  "][href*="computer-video-games-hardware-accessories"]
+amazon.*##a[class="nav-a  "][href*="tv-video/b/"]
+amazon.*##a[class="nav-a  "][href*="/toys/b/"]:has-text(Toys & Games)
+amazon.*##a[class="nav-a  "][href*="Audible-Books-and-Originals"]
+amazon.*##a[class="nav-a  "][href*="Kindle-eBooks"]
+amazon.*##a[class="nav-a  "][href*="sports-outdoors"]
+amazon.*##a[class="nav-a  "][href*="Smart-Home"]
+amazon.*##a[class="nav-a  "][href*="baby-car-seats-strollers"]
+! - Hide the white hover border
+amazon.*##[class*="nav"]:hover:style(border-color: transparent !important;)
+amazon.*##[class*="nav"]:focus:style(border-color: transparent !important;)
+amazon.*##[id*="nav"]:hover:style(border-color: transparent !important;)
+amazon.*##[id*="nav"]:focus:style(border-color: transparent !important;)
+amazon.*##[class*="menu"]:hover:style(border-color: transparent !important;)
+amazon.*##[class*="menu"]:focus:style(border-color: transparent !important;)
+amazon.*##[id*="menu"]:hover:style(border-color: transparent !important;)
+amazon.*##[id*="menu"]:focus:style(border-color: transparent !important;)
+
+! Search results
+! - Ads
+amazon.com##.a-section.a-spacing-none.s-result-item.s-flex-full-width.s-widget.s-widget-spacing-large:has(span:has-text(Sponsored))
+
+! Best Sellers
+! - Play ("watch") button
+amazon.*##.watch-button-placeholder
+
+! Old filters that I'm not sure are still working
+amazon.*##.s-sponsored-label-text:upward([data-asin])
+
+! ---- Arstechnica ----
+
+! Navbar
+! - 'Subscribe' link plus adjacent divider
+arstechnica.com##.hidden.text-orange-400.lg\:block.xl\:text-sm:has-text(Subscribe)
+arstechnica.com##.hidden.text-orange-400.lg\:block.xl\:text-sm:has-text(Subscribe) + div.h-5.w-\[1px\].bg-gray-400
+! Comments
+! - Pro badges
+arstechnica.com##.arsProBanner
+! - 'Report' button because it overlaps with other UI elements
+arstechnica.com##.actionBar-action.actionBar-action--report
+! Footer
+! - Various elements
+arstechnica.com##.mt-4
+arstechnica.com###copyright-terms
+
+! ---- Bing ----
+
+! Header
+! - Notification dot on rewards medal icon
+bing.com##[data-rewards-widget="medallion"] div.medal div.red-dot
+! - Microsoft Cashback
+bing.com##[aria-label="Microsoft Cashback"]
+! - Settings menu
+! -- Consumer Health Privacy
+bing.com##a.hb_section[href*="https://www.bing.com/ck/a?"]:has(div:has-text(Consumer Health Privacy))
+! -- Your Privacy Choices
+bing.com##a.hb_section[href*="https://www.bing.com/ck/a?"]:has(div:has-text(Your Privacy Choices))
+
+! Search results
+! - Related searches section
+bing.com##li.b_ans:has(span:has-text(People also search for))
+! - People also ask section
+bing.com##li.b_ans.b_mop:has(div:has-text(People also ask))
+
+! Image search
+! - Ad overlay
+bing.com##[class*="img"] span:has-text("Ad")
+! - "More inspiration from around the web" section
+bing.com##.ins_exp:has(.ins_exp_title:has-text("More inspiration from the web"))
+
+! ---- ChatGPT ----
+
+! "ChatGPT can make mistakes" disclaimer
+chatgpt.com##.min-h-4 > div:has-text(ChatGPT can make mistakes)
+! Left sidebar
+! - "View plans" footer
+chatgpt.com##div[class="flex flex-col py-2 empty:hidden dark:border-white/20"]:has(span:has-text(View plans))
+
+! ---- CVS ----
+
+! Footer - Social media buttons
+cvs.com##nav[class="sc-cvs-global-footer-social-links"]
+
+! ---- DuckDuckGo ----
+
+! Feedback buttons
+duckduckgo.com##.js-feedback-start.feedback-btn__send
+duckduckgo.com##.feedback-btn.btn
+duckduckgo.com##.js-header-aside.header--aside
+duckduckgo.com##.js-feedback-btn-wrap
+duckduckgo.com##.feedback-prompt
+! Promo section
+duckduckgo.com##.header--aside__item--hidden-lg.header--aside__item
+! Shopping tab
+duckduckgo.com##[data-zci-link="products"]
+||links.duckduckgo.com^$removeparam=ad_domain
+
+! Twitter link
+||assets/icons/thirdparty/twitter.svg$image,domain=duckduckgo.com
+duckduckgo.com##li.about-profiles__item:has(img[src*="/assets/icons/thirdparty/twitter.svg"])
+
+! ---- Facebook ----
+
+! - Marketplace 
+! -- Sponsored ads within main Marketplace
+facebook.com##:matches-path(marketplace) a[href^="/ads/"]:upward(1)
+facebook.com##:matches-path(marketplace) a[href^="/ads/"]:upward(4) + div > div:first-child
+! -- Ads in categories and search results
+facebook.com##:matches-path(marketplace) object > a[href^="/ads/"] > span:not(:empty):upward(11)
+
+! ---- FlatIcon ----
+
+! Persistent ads
+flaticon.com###unicorn
+flaticon.com##.shutterStock404-banner__container
+! Premium banners and upsell notifications
+flaticon.com##.autopromo-coupon-container.notifications__bottom-right
+flaticon.com###notification-center-menu-side-promo
+flaticon.com##.link-pricing
+! iOS download button for UI icons
+flaticon.com##.btn-ios
+! Disable hover effect that changes the background color of icons in search results
+flaticon.com##.icons .icon--item .overlay:style(background-color: transparent !important)
+! Tooltips for action buttons on icons in search results which end up blocking search results from view
+flaticon.com##.tooltip__content:style(display: none !important)
+! Navigation bar
+! - Flag icon
+flaticon.com##.track.bj-button--sm.bj-button--ghost.bj-button.popover-button
+! - Notifications
+flaticon.com##div[class="badge badge-success badge--xs"]
+! Excessive footers
+flaticon.com##.footer__projects
+flaticon.com##.copyright
+flaticon.com##.active.modal-attribution-detail.modal
+flaticon.com##.footer__social.footer__column
+flaticon.com##.footer__buttons.push-right > .mg-none.row
+! "How likely are you to recommend FlatIcon" slide-out panel
+flaticon.com###form_valuation
+! Banner for ordering products with your customized icons on them
+flaticon.com###banner-craft
+! Pinterest related
+flaticon.com##[data-type="pinterest"]
+flaticon.com##button[class*="pinterest"]
+
+! ---- Freepik ----
+
+! Navbar
+! - Pricing link
+freepik.com##li:has(a[href*="pricing"])
+! Ads
+! - Stock photo ads
+freepik.com##[data-testid*="sponsor"]
+! - Premium images
+freepik.com##li:has(a[href*="premium-vector"])
+freepik.com##li:has(a[href*="premium-psd"])
+freepik.com##ul:has(li:has(a[href*="premium-vector"])):style(display: flex !important; flex-wrap: wrap !important; align-items: start !important;)
+! - Premium editing tools
+freepik.com##button:has(div[class*="$border-yellowPremium"]):upward(2)
+! AI tools that appear when you hover over image
+freepik.com##button[data-cy="generate-video-preview-button"]
+freepik.com##button[data-cy="ai-variations-preview-button"]
+! Footer
+! - Excessive footers
+freepik.com##[class="_1wc8gem0 $w-full $mx-auto $px-[20px] $max-w-[1400px] $py-40 $flex $items-center md:$items-end $flex-col md:$flex-row-reverse $justify-center md:$justify-between $text-center md:$text-left"]
+freepik.com##[class="_i9t5fb _1wc8gem0 $w-full $mx-auto $px-[20px] $max-w-[1400px] $flex $justify-center md:$justify-between $flex-col md:$flex-row $py-15 md:$py-10 $items-center $text-center md:$text-left"]
+! - Social media buttons
+freepik.com##footer div[class="$text-center md:$text-left"]
+
+! ---- Github ----
+
+! Top navigation
+! - Copilot button and submenu
+github.com##div.AppHeader-CopilotChat
+! Left overlay menu
+! - Marketplace
+github.com##li[class="ActionListItem"]:has(a[href="/marketplace"])
+! Right sidebar
+! - Your enterprises
+github.com##li[class^="Item__LiBox"]:has(a[href="/settings/enterprises"])
+! - Your sponsors
+github.com##li[class^="Item__LiBox"]:has(a[href="/sponsors/accounts"])
+! - Try Enterprise
+github.com##li[class^="Item__LiBox"]:has(a[href^="/organizations/enterprise_plan"])
+
+! Sponsors buttons
+github.com##a[href*="/sponsors/"][class*="Button"]
+! Explore page navigation bar - "GitHub Sponsors"
+github.com##nav[aria-label="Explore navigation"] a[href="/sponsors/explore"]
+
+
+! ---- Google ----
+
+! Google Search
+
+! Products
+! - Various product info (prices, review, delivery times, return windows, etc) which appears under select search results
+google.*##.QU4hqb
+! - Product pricing and delivery information under search results
+google.*##div[class="kb0PBd ieodic"][style="grid-area:mCCBcf"]
+
+! Search bar - Microphone icon
+google.*##[aria-label="Search by voice"]
+! Results stats, e.g. 'About x results (0.NN seconds)'
+google.*##div#result-stats
+
+! Search Results page sections 
+! - AI summary above main results
+google.*##.hdzaWe
+! - Youtube videos section
+google.*##.ULSxyf:not(:only-child):has(div[data-surl*="https://www.youtube.com/watch?"])
+! - Youtube videos (alternate method)
+google.*##.sATSHe:has(span:has-text(Videos))
+! - "People also search for" section (2 versions)
+google.*##[id^="eob_"]
+google.*##[id*="bres"]
+! - "People also ask" section
+google.*##div[class="yhQgZb"]:has(div[aria-level="2"][role="heading"] span span:has-text(People also ask))
+google.*##div[class="MjjYud"]:has(div[aria-level="2"][role="heading"] span span:has-text(People also ask))
+! - Featured snippets
+google.*##h2:has-text(Featured snippet):upward(.ULSxyf)
+! - "What people are saying" section (just YouTube videos by another name)
+google.*##div[class="ULSxyf yhQgZb"]:has(g-section-with-header span.sOq4Gc:has-text(What people are saying))
+! - "What people are saying" section (standard version)
+google.*##div[class="ULSxyf"]:has(div[aria-level="2"][role="heading"] span.sOq4Gc:has-text(What people are saying))
+! - "Explore brands" section
+google.*##div[class="ULSxyf yhQgZb"]:has(div[aria-level="2"][role="heading"] span.OTMJR:has-text(Explore brands))
+! - "People also buy from" section
+google.*##div[class="ULSxyf yhQgZb"]:has(div[aria-level="2"][role="heading"] span.OTMJR.IFnjPb.SlP8xc.RES9jf:has-text(People also buy from))
+
+! Petty shit
+! - Any mentions of Google Chrome
+google.*##div[class="MjjYud"]:has(span:has-text(Google Chrome))
+google.*##div[class="MjjYud"]:has(span:has-text(Chrome extension))
+google.*##div[class="MjjYud"]:has(span:has-text(Chrome-extension))
+
+! Footer
+! - "Results are not Personalized" disclaimer
+google.*##.gMZyfc:has-text(Results are not personalized)
+! - Help, Send Feedback, Privacy, and Terms links
+google.*##span#fsl:has(a[href^="https://support.google.com/websearch"])
+! - Zip, City, State, From your device, update location links (matches known AND unknown locations)
+google.*##div[class="fbar b2hzT"]:has(span[class*="known_loc"])
+
+! Google Image Search
+
+! Youtube thumbnails within the Images section of regular web searches
+google.*##div.Lv2Cle:has(div.T6zPgb:has-text(Images)) div.vCUuC.m3LIae:has(a[href*="youtube.com"])
+! Related searches suggestions
+google.*##.BA0zte
+! Image panel footer (Feedback, Get help, and Saved links)
+google.*##.UafVBb
+! Warning that images may be subject to copyright
+google.*##a[aria-label="Learn more about copyright"]:upward(div.Dpn58d)
+
+! Mobile
+! - Navbar - Short videos
+google.*##div.T3FoJb:has(div.YmvwI:has-text(Short videos))
+! - Search results sections
+! -- People also ask section
+google.*##.MjjYud:has(span[class="mgAbYb OSrXXb RES9jf IFnjPb"] span:has-text(People also ask))
+
+! ---- IMDb ----
+
+! IMDb Pro
+! - Right sidebar - Add a demo reel widget
+imdb.com##div[data-testid="imdb-pro-sidebar-widget"]:upward(1)
+
+! FAQs - Powered by Alexa 
+imdb.com##.sc-132e65ef-0.hLryWF
+
+! Footer
+! - Social media links
+imdb.com##.imdb-footer__links section.ipc-page-section
+! - Amazon logo
+imdb.com##.imdb-footer div.imdb-footer__logo
+
+! ---- LinkedIn ----
+
+! Navbar
+! - "Retry premium" upsell button
+linkedin.com##.premium-upsell-link
+linkedin.com##[data-view-name="premium-nav-upsell-text"]
+! - New feed updates notification (the red dot)
+linkedin.com##span[class*="notification-badge"]:style(background-color: transparent !important;)
+! - "For Business" dropdown
+linkedin.com##.global-nav__primary-item--divider.pl3.global-nav__app-launcher-menu.artdeco-dropdown.artdeco-dropdown--placement-bottom.artdeco-dropdown--justification-left.ember-view
+
+! Icons
+! - Hide Premium (gold) and Influencer (blue quote bubbles) next to user's names site-wide
+linkedin.com##li-icon[aria-label="Premium member"]
+linkedin.com##[class="ivm-image-view-model  mr1 "]
+
+! Notifications
+! - Anything that mentions Premium
+linkedin.com##article.nt-card:has([class*="premium"])
+
+! Main page
+! - Left Sidebar
+! -- Retry Premium or Unlock Premium
+linkedin.com##[class="artdeco-card overflow-hidden ph1 mb2"]:has(a[href*="premium"])
+! - Right Sidebar
+! -- Ads including Windows app
+linkedin.com##[class*="upsell-banner"]
+! -- Today's puzzles
+linkedin.com##[aria-labelledby="news-module__title-today-puzzles"]
+linkedin.com###news-module__title-today-puzzles
+
+! Footer
+linkedin.com##[class*="global-footer-compact"]
+
+! ---- Mozilla ----
+
+! Footer
+! - Social media buttons
+mozilla.org##.moz24-footer-refresh-social-wrapper
+! - Donate button and language switcher
+mozilla.org##.moz24-footer-actions
+! - Creative Commmon license notice plus unimportant legal disclaimers (cookie notices, privacy policy, community participation guidelines, legal, about this site)
+mozilla.org##.moz24-footer-secondary
+! - Shrink the crazy-big footer logo to a more reasonable size
+mozilla.org##img.moz24-footer-logo-image-bottom:style(height:100px !important;)
+
+! ---- Obsidian ----
+
+! Forums
+! - User titles
+forum.obsidian.md##span.user-title--insider
+forum.obsidian.md##span.user-title--supporter
+! - "Powered by Discourse"
+forum.obsidian.md##a.powered-by-discourse:has(span:has-text(Powered by Discourse))
+
+! ---- Perplexity ----
+
+! Hide box that blocks the entire main page if not logged in
+perplexity.ai###__next > div:not([class]):has(div.fixed svg[data-icon="google"])
+
+! Hide entire "related questions" container
+perplexity.ai##.group:has(.light:has-text(/^SPONSORED$/))
+
+! ---- Reddit ----
+
+! General or sitewide
+! - Login requirements
+reddit.com##.morelink > .access-required.login-required
+reddit.com##.create.sidebox > .spacer
+reddit.com##.account-activity-box > p
+
+! User menu
+! - Premium features and ad upsell content
+reddit.com##li:has(a[href="/contributor-program/profile"])
+reddit.com##li:has(a[href*="accounts.reddit.com/adsregister"])
+! - Extra divider before Settings
+reddit.com##hr:has(+ ul:has(a[href="/settings/"]))
+reddit.com##li:has(a[href="/premium"])
+! -- Reddit boosted content icon in top navigation bar
+reddit.com###advertise-button > .justify-center.items-center.flex > .flex > svg
+
+! Settings page
+! - "Account authorization" heading
+reddit.com##h2.font-bold.text-18:nth-of-type(2):has-text(Account authorization)
+! - Connect Google account
+reddit.com##label[data-testid="google"]
+! - Connect Apple account
+reddit.com##label[data-testid="apple"]
+! - "Subscription" heading
+reddit.com##h2.font-bold.text-18:nth-of-type(3):has-text(Subscription)
+! - "Get Premium" link
+reddit.com##a[data-testid="get-premium"]
+
+! Left sidebar
+! - Answers (including icon and Beta label)
+reddit.com##a[href="/answers/"]
+! - Resources menu
+reddit.com##nav[aria-label="Reddit resources"]
+! - Reddit copyright
+reddit.com##div[class="visible py-md grow flex flex-col justify-end"]:has(a[href*="redditinc"])
+
+! Right sidebar
+! - Recent posts
+reddit.com##recent-posts
+
+! Posts and main feed
+! - Blur effect on the sides of images when full screen
+reddit.com##.post-background-image-filter
+! - Hover menus for both subreddits and users (updated December 2024)
+reddit.com##div#faceplate-tooltip
+
+! Awards
+reddit.com###thing_t1_jpql34w > .unvoted.entry > .buttons.flat-list > .give-gold-button
+reddit.com##.give-gold-button
+||redditstatic.com/gold/awards/icon/*
+reddit.com##award-button
+reddit.com###comment-tree > shreddit-comment > .block > award-button.s\:block.hidden
+reddit.com###comment-tree > shreddit-comment > shreddit-comment > .block > award-button.s\:block.hidden
+! - Remove yellow highlight effect from comments that receieve awards (make the color transparent)
+reddit.com##shreddit-comment[award-count]:not([award-count="0"]):remove-attr(with-awarded-treatment)
+reddit.com##.bg-yellow-200:style(background-color: rgba(255,255,255,0) !important)
+reddit.com##.h-full:style(border-color: rgba(255,255,255,0) !important)
+! - Award button on posts in main feed
+reddit.com##button[data-testid="award"]
+
+! Testing what the below filters do, if still necessary
+!www.reddit.com##.min-w-0.block
+reddit.com###advertise-button > .justify-center.items-center.flex > .flex > svg > path
+reddit.com##._24UNt1hkbrZxLzs5vkvuDh
+
+! ---- Remix Icons ----
+
+! Gross solicitation to use new app
+remixicon.com##.go-somno
+
+! ---- SVGFind/SVGRepo ----
+
+! Overlay/Popup ad
+svgfind.com,svgrepo.com##div[class^="style_flexbarHolder"]:has(a[href*="ads/click"])
+! Banner requesting to share on Twitter
+svgfind.com,svgrepo.com##.style_request__oYgyy:upward(1)
+! Footer 
+! - Sponsor box
+svgfind.com,svgrepo.com##div[class^="style_sponsor"]
+! - Social media buttons
+svgfind.com,svgrepo.com##div[class^="style_socialLinks"]
+
+! ---- Swappa ----
+
+! Junk I don't/won't use 
+! - Apple garbage
+! -- Navbar items
+swappa.com##li[class="nav-item dropdown"][data-menu-slug="apple"]
+swappa.com##li[class="nav-item dropdown"][data-menu-slug="iphones"]
+! -- Navigation items
+swappa.com##.justify-content-center.nav > li.nav-item > a.nav-link[href="/buy/iphones"]
+! -- Secondary navigation
+swappa.com##li:has(a[class="dropdown-item"][href="/sell/iphone"])
+swappa.com##ul.dropdown-menu > li:has(a[class="dropdown-item"][href*="/buy/"]:has-text(/(?:MacBook|iPhones|iPads|iPad|iMacs|Mac|Apple|iOS|Airpods)/i))
+swappa.com##ul.dropdown-menu > li:has(a[class="dropdown-item"][href="/guide/macbook"])
+! -- Main page: If the h2 contains a keyword relating to Apple products, hide the entire row of products that follows
+swappa.com##.mt-4:has(h2:has-text(/(?:MacBook|iPhones|iPads|iMacs|Mac|Apple|iOS|Airpods)/i))
+! -- Main page: If any individual product card contains a keyword relating to Apple products, hide it and remove the empty gap
+swappa.com##.col:has(.card.card_product:has(h6:has-text(/(?:MacBook|iPhones|iPads|iMacs|Mac|Apple|iOS|Airpods)/i)))
+! -- Left slide-out menu
+swappa.com##a.slide_menu_item:has-text(/(?:MacBook|iPhones|iPads|iPad|iMacs|Mac|Apple|iOS|Airpods)/i)
+
+! Footer 
+! - More Apple garbage
+swappa.com##footer li:has-text(/(?:MacBook|iPhones|iPads|iMacs|Mac|Apple|iOS|Airpods)/i)
+! - Social media links
+swappa.com##footer .social_links
+
+! ---- Twitter ----
+
+! Left sidebar
+! - Hide Grok, Premium, Monetization, Verified Orgs, Ads, Jobs, and Create Your Space
+twitter.com,x.com##a[role="link"][href*="premium_sign_up"]
+twitter.com,x.com##a[role="link"][href*="monetization"]
+twitter.com,x.com##a[role="link"][href*="verified-orgs-signup"]
+twitter.com,x.com##a[role="link"][href*="ads.x.com"]
+twitter.com,x.com##a[role="link"][href*="jobs"]
+twitter.com,x.com##a[role="link"][href*="spaces/start"]
+
+! Right sidebar 
+! - Any "Live" or "Starts tomorrow" events in the "What's happening" box
+twitter.com,x.com##div.r-kritb0[role="link"]:not([data-testid]):has(span:has-text(/LIVE|starts tomorrow/i))
+! - "Trending with so-and-so" in the "What's Happening" box
+twitter.com,x.com##div:has-text(/Trending with/):has(> a[href*="src=trend_click"])
+! - Entire right sidebar footer (terms of service, privacy policy, cookie policy, accessibility, etc)
+twitter.com,x.com##div.css-175oi2r.r-18bvks7.r-1867qdf.r-1phboty.r-ku1wi2.r-1udh08x.r-1niwhzg.r-1yadl64:has(nav[aria-label="Footer"])
+!! - Alternatively just hide the footer link to "Ads info"
+!twitter.com,x.com##a[href*="how-twitter-ads-work"]
+
+! Profiles and users
+! - Badges, images, emoji in usernames
+! - Verified account badges
+twitter.com,x.com##button:has(svg[data-testid="icon-verified"])
+twitter.com,x.com##svg[aria-label="Verified account"]
+! - Any other type of image or badge in a username in profiles and in feed/timeline
+twitter.com,x.com##[data-testid="UserName"] img
+twitter.com,x.com##[data-testid="User-Name"] img
+twitter.com,x.com##[data-testid="UserName"] div[style*="background-image"]:upward(div[role="link"])
+twitter.com,x.com##[data-testid="User-Name"] div[style*="background-image"]:upward(div[role="link"])
+! - Any other type of image or badge in a username in the right sidebar
+twitter.com,x.com##[data-testid="UserCell"] div[style*="background-image"]:upward(div[role="link"])
+twitter.com,x.com##[data-testid^="UserAvatar-Container"] img
+! - Any other type of image or badge in a username in the heading of profile pages
+twitter.com,x.com##h2[class="css-146c3p1 r-dnmrzs r-1udh08x r-1udbk01 r-3s2u2q r-bcqeeo r-1ttztb7 r-qvutc0 r-37j5jr r-1b6yd1w r-7ptqe7 r-b88u0q r-1559e4e"] img
+twitter.com,x.com##h2[class="css-146c3p1 r-dnmrzs r-1udh08x r-1udbk01 r-3s2u2q r-bcqeeo r-1ttztb7 r-qvutc0 r-37j5jr r-1b6yd1w r-7ptqe7 r-b88u0q r-1559e4e"] div[style*="background-image"]:upward(div[role="link"])
+! - Any other type of image or badge in a username in reposts/retweets
+twitter.com,x.com##[data-testid="socialContext"] img
+!! - So far the below filter is unnecessary but implement if something changes and you start seeing some images/badges appear in reposts/retweets
+!twitter.com,x.com##[data-testid="socialContext"] div[style*="background-image"]:upward(div[role="link"])
+
+! Timeline
+! - Topic suggestions
+twitter.com,x.com##article [aria-label^="Recommended Topic" i]:upward(article)
+! - "Who to follow"
+twitter.com,x.com##[data-testid="cellInnerDiv"] h2:has-text(Who to follow)
+twitter.com,x.com##[data-testid="cellInnerDiv"] [aria-label^="Follow"]:upward([data-testid="cellInnerDiv"])
+twitter.com,x.com##[data-testid="cellInnerDiv"] [href^="/i/connect_people"]
+! - Posts containing links to Spaces
+twitter.com,x.com##article:has(a[href*="/i/spaces"])
+
+! Everything related to Grok
+twitter.com,x.com##[data-testid*="Grok"]
+twitter.com,x.com##[aria-label*="Grok"]
+twitter.com,x.com##[aria-label*="grok"]
+twitter.com,x.com##[data-testid^="followups_"]+nav
+twitter.com,x.com##button.r-1ny4l3l.r-6416eg.r-o7ynqc.r-1loqt21.r-25kp3t.r-1ii58gl.r-1wron08.r-1a8r3js.r-lrvibr.r-rs99b7.r-1phboty.r-sdzlij.css-175oi2r:nth-of-type(2)
+
+! Settings page
+! - "Monetization"
+! - "Premium"
+! - "Creator Subscriptions"
+twitter.com,x.com##a[href*="/settings/monetization"]
+twitter.com,x.com##a[href*="premium_sign_up?referring_page=settings"]
+twitter.com,x.com##a[href*="/settings/manage_subscriptions"]
+
+! ---- Unsplash ----
+
+! "Unsplash+" and "Get Unsplash+" links in top navigation
+unsplash.com##a[href="/plus"]
+unsplash.com##a[href="/plus/new"]
+! Hide Unsplash+ Collections from front page, shrink container and trending searches container next to it to fit missing content
+unsplash.com##a.fRRNu:has(img[src*="plus.unsplash.com"])
+unsplash.com##.hVtO9.VqHXt.oO0Qr, .vDmFU.VqHXt.oO0Qr:style(height: auto !important; min-height: 0 !important)
+unsplash.com##.u_wu0.xtWna.u0cmn.Hrdtv.KWauk.nxjMA:style(height: auto !important; min-height: 0 !important)
+unsplash.com##.il09g:style(height: auto !important; min-height: 0 !important)
+
+! ---- WallpaperCave ----
+
+! Reaction buttons
+!wallpapercave.com##.wallpaper > stickers
+wallpapercave.com##div:matches-attr(id=/^wp\d+stickers$/)
+! Footer - Social media buttons
+wallpapercave.com###fsocial
+
+! ---- YouTube ----
+
+! "$Thanks$" monetization button
+youtube.com##button[aria-label="Thanks"][title="Show support with Super Thanks"]
+! Tag that a commenter made a payment to a YouTube content creator
+youtube.com###paid-comment-chip
+
+! ==== Miscellaneous less organized filters below ====
+
+! Adobe Stock
+stock.adobe.com##.spectrum-CoachMarkPopover
+stock.adobe.com##div[class^="js-hover-menu-v2"]
+
+! IPTorrents - Hide Halloween animation with bugs crawling all over screen
+iptorrents.com##div.bug
+
+! AFL Footy Shop
+aflfootyshop.com.au###recent_sales_content_img
+aflfootyshop.com.au###recent_sales_content_description
+
+! Design Wizard
+designwizard.com##.fixed.blog-footer
+
+! Graphic Design Junction
+graphicdesignjunction.com##.ss-animated.ss-rounded-icons.ss-with-spacing.ss-regular-icons.ss-left-sidebar.ss-hover-animation-fade.ss-animate-entrance.ss-entrance-animation-fade
+
+! Logitech Support
+support.logi.com###callOut
+
+! Britannica
+britannica.com##.ad-banner--hide-mobile.ad-banner--header.ad-banner > .adswrapper.ad-container
+britannica.com##.ad-banner--post-game.ad-banner--no-flex.ad-banner--footer.ad-banner
+britannica.com##.ad-banner--no-flex.ad-banner--header.ad-banner > .adswrapper.ad-container
+britannica.com###gtm-promo-link-blossom
+
+! NYTimes - Games sale banner
+nytimes.com##.light_yellow.games-sale-banner.top-sale-banner
+
+! StitchFix
+stitchfix.com##.Pointer___pointer-module__pointer___yNzXH_kfi.Box___box-module__dark___BcHFU_kfi
+
+! GeekForGeeks
+geeksforgeeks.org###darkMode-wrap-red-dot
+
+! Sporcle
+sporcle.com###remove-ads > .orange-promo-link
+sporcle.com##.orange.vertical.sporcle-promo
+sporcle.com##.go-orange.pageFooter-link--listItem.pageFooter-link
+sporcle.com###orange > .navWrapper > div
+sporcle.com##.adhesion.orange.horizontal.sporcle-promo
+sporcle.com###advancedFiltersToggle
+
+! StackExchange
+softwareengineering.stackexchange.com##.is-visible.js-question-follow-feature-popover.ws2.s-popover
+softwareengineering.stackexchange.com##.overflow-hidden.blr-sm.fc-black-600.pb6.p12.bc-black-075.bb.bl.bt
+softwareengineering.stackexchange.com##.fc-light.mb8.mt16.ml8.tt-uppercase.fs-fine
+
+! LazyApply - notification
+lazyapply.com##.is-size-7.custom-notification-container
+
+! Hunker
+www.hunker.com##.jw-reset.jw-media
+www.hunker.com##.jw-reset.jw-wrapper
+www.hunker.com##.jwplayer__close
+
+! Ashley Furniture
+ashleyfurniture.com###sslp-newicon-bottom
+ashleyfurniture.com###sslp-global-sidebutton-close
+
+! Repair Clinic
+repairclinic.com##.promoDrawerInner
+
+! Pontiac Forum - pulsing red register button
+pontiacforum.com##.p-navgroup-link--register.p-navgroup-link--textual.p-navgroup-link
+
+! CNET
+cnet.com##.uvpjs__controlbar
+cnet.com##.entered.dock.inviewElement
+
+! TechRadar - media player
+techradar.com##.sticky-player-background
+techradar.com##.jw-reset.jw-video
+techradar.com##.jw-reset.jw-media
+techradar.com##.jw-reset.jw-wrapper
+techradar.com##.jwplayer__unmute
+techradar.com###botr_KgQ4BrDw_APjl6osP_div
+
+! ThisWeekNews
+www.thisweeknews.com##.gnt_cw_w > .gnt_cw > .gnt_pr > .gnt_em__el.gnt_em_vp__tavp.gnt_em
+www.thisweeknews.com##.gnt_cw_w > .gnt_cw > .gnt_xbr > .gnt_ar_xb
+
+! Coolors - upsell content
+coolors.co##.floating-cad
+coolors.co###pro-float
+
+! Etsy - block sponsored search results
+etsy.com##.v2-listing-card__info > div > div:first-of-type > p:first-child > span:first-child:upward(.listing-link)
+
+! Etsy - block sponsored search results UPDATED October 2024
+etsy.com##.v2-listing-card:has([id^="ad-listing-title"])
+etsy.com##li:has(h2[id^="ad-listing"])
+
+! APKPure
+apkpure.com##.share-mob.share-btn > ul
+||static.apkpure.com/mobile/static/imgs/icon-bell-float.svg$image
+
+! TheFreeDictionary
+||img.tfd.com/sprite.png$image
+thefreedictionary.com##.icon-notif.i
+
+! Winaero
+winaero.com##.gad-gads-title
+winaero.com##.widget_custom_html.textwidget.widget
+
+! VinstarTheme - disable custom cursor
+vinstartheme.com##.AdB_container
+vinstartheme.com##.main.ShOw.AdBlocker
+vinstartheme.com##*:style(cursor:auto !important)
+
+! SERanking - Sign up nag
+seranking.com##.sign-up__wrapper
+
+! BigFooty - annoying notices
+bigfooty.com##.topbanner.chaching
+bigfooty.com##.js-notices.notices--isMulti.notices--floating.notices
+
+! Partition Wizard - Promo banner
+partitionwizard.com##.promotions-banner-wrap
+
+! Sewing Hive - Hide Pinterest logo popping up on every image
+sewinghive.com##.PIN_1729808926283_save.PIN_1729808926283_pin_it_button_floating.PIN_1729808926283_button_pin
+
+! DeviantArt - paid membership features
+deviantart.com##._2D30j._37cCW._16RrG._1jkTN.reset-link
+
+! Vecteezy - No Pinterest button when hovering over images on search results page or image details page
+vecteezy.com##.is-tipped.resource-action-button--pinterest.resource-action-button--small.resource-action-button--square.resource-action-button.ez-btn--light.ez-btn
+vecteezy.com##.resource-action-button--pinterest.resource-action-button--small.resource-action-button--square.resource-action-button.ez-btn--light.ez-btn
+
+! Lenovo AI chatbot
+||forums.lenovo.com/images/lena_new_39.png$image
+forums.lenovo.com##.smart-avatar-trigger
+! Black Friday version
+||pcsupport.lenovo.com/esv4/plugins/contactus/lena-bot/inline-lena-black-friday.png$image
+
+! Convertio - "Rate us" pop up dialog in corner
+convertio.co##.rate-us
+
+! JustWatch desktop website - Hide 'promoted' text and empty 'Bundled Offers' header
+justwatch.com##.promoted-buybox__label
+justwatch.com##.middle-buybox-container
+
+! Tom's Hardware forums - "notifications" that are really just ads
+forums.tomshardware.com##.js-notices.notices--isMulti.notices--block.notices
+
+! PerfectCorp apps - gift box in bottom right corner
+yce.perfectcorp.com##.gift-box_giftBoxContainer__NiavV
+
+! The Kitchn - unnecessary nagging tooltips
+thekitchn.com##.Tooltip--centerIndicator.Tooltip--right.Tooltip.jsx-4142367655.jsx-3085591717
+
+! TinEye - Remove sponsored content like Adobe Stock and Shutterstock (main search results and right sidebar)
+tineye.com##.flex.items-start:has(span:has-text(/SPONSORED/i))
+tineye.com##aside:has(span:has-text(/SPONSORED/i))
+
+! Symbl.cc - Obtrusive black circle that just blocked view of actual content
+symbl.cc##.cookie__wrapper
+
+! OneCrazyHouse.com 
+! - Save this Article box
+onecrazyhouse.com##.slick-on-page
+! - Social media widget
+onecrazyhouse.com###iconsPanel
+
+! SmartPCUtilities.com
+||www.smartpcutilities.com/images/promotions/servicesoptimizer/win-services-promo.png$image
+
+!End
