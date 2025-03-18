@@ -25,13 +25,13 @@ amazon.*###sims-discoveryAndInspiration_feature_div_01
 amazon.*##[data-cel-widget="typ-prominentUpsellSlot"]
 
 ! Your Orders page
-! - "Buy it Again" right rail
-amazon.*##.right-rail.js-yo-right-rail:has(h3:has-text(Buy it again))
+! - "Buy it Again" right rail (disabled for now because this is not a wise way to filter for this)
+!amazon.*##.right-rail.js-yo-right-rail:has(h3:has-text(Buy it again))
 
-! Navbar 
+! Navbar
 ! - Hide categories
-! -- IMPORTANT NOTE: Links/categories in the top navbar will automatically be replaced with new ones unless you block a very large number of them. 
-! -- You may find that hiding one just reveals something you dislike even more. 
+! -- IMPORTANT NOTE: Links/categories in the top navbar will automatically be replaced with new ones unless you block a very large number of them.
+! -- You may find that hiding one just reveals something you dislike even more.
 ! -- Use your browser's devtools to see exactly what you may need to filter behind the scenes. These should be in the order they appear in within the navigation bar (i.e. nonsensical)
 ! --- Rufus button
 ! --- Medical Care (submenu)
@@ -47,7 +47,6 @@ amazon.*##.right-rail.js-yo-right-rail:has(h3:has-text(Buy it again))
 ! --- Luxury Stores
 ! --- Home Improvement
 ! --- Fashion
-! --- Gift Cards (submenu)
 ! --- Pet Supplies
 ! --- Books
 ! --- Video Games
@@ -72,7 +71,6 @@ amazon.*##a[class="nav-a  "][href*="amazonlive"]
 amazon.*##a[class="nav-a  "][href*="luxurystores"]
 amazon.*##a[class="nav-a  "][href*="Tools-and-Home-Improvement"]
 amazon.*##a[class="nav-a  "][href*="amazon-fashion"]
-amazon.*###nav_link_gift_cards:has(span:has-text(Gift Cards))
 amazon.*##a[class="nav-a  "][href*="pet-shops-dogs-cats"]
 amazon.*##a[class="nav-a  "][href*="books-used-books-textbooks"]
 amazon.*##a[class="nav-a  "][href*="computer-video-games-hardware-accessories"]
@@ -94,8 +92,8 @@ amazon.*##[id*="menu"]:hover:style(border-color: transparent !important;)
 amazon.*##[id*="menu"]:focus:style(border-color: transparent !important;)
 
 ! Search results
-! - Ads
-amazon.com##.a-section.a-spacing-none.s-result-item.s-flex-full-width.s-widget.s-widget-spacing-large:has(span:has-text(Sponsored))
+! - Ads (disabled for now because this is not a very wise way to filter for this)
+!amazon.com##.a-section.a-spacing-none.s-result-item.s-flex-full-width.s-widget.s-widget-spacing-large:has(span:has-text(Sponsored))
 
 ! Best Sellers
 ! - Play ("watch") button
@@ -122,16 +120,13 @@ arstechnica.com###copyright-terms
 
 ! ---- Bing ----
 
+! - Important note: These particular filters are not at all optimized and may slow down your browser. They all need to be reworked, I just have not had the time to get back to them. Use at your own discretion.
+
 ! Header
 ! - Notification dot on rewards medal icon
 bing.com##[data-rewards-widget="medallion"] div.medal div.red-dot
 ! - Microsoft Cashback
 bing.com##[aria-label="Microsoft Cashback"]
-! - Settings menu
-! -- Consumer Health Privacy
-bing.com##a.hb_section[href*="https://www.bing.com/ck/a?"]:has(div:has-text(Consumer Health Privacy))
-! -- Your Privacy Choices
-bing.com##a.hb_section[href*="https://www.bing.com/ck/a?"]:has(div:has-text(Your Privacy Choices))
 
 ! Search results
 ! - Related searches section
@@ -149,9 +144,6 @@ bing.com##.ins_exp:has(.ins_exp_title:has-text("More inspiration from the web"))
 
 ! "ChatGPT can make mistakes" disclaimer
 chatgpt.com##.min-h-4 > div:has-text(ChatGPT can make mistakes)
-! Left sidebar
-! - "View plans" footer
-chatgpt.com##div[class="flex flex-col py-2 empty:hidden dark:border-white/20"]:has(span:has-text(View plans))
 
 ! ---- CVS ----
 
@@ -178,7 +170,7 @@ duckduckgo.com##li.about-profiles__item:has(img[src*="/assets/icons/thirdparty/t
 
 ! ---- Facebook ----
 
-! - Marketplace 
+! - Marketplace
 ! -- Sponsored ads within main Marketplace
 facebook.com##:matches-path(marketplace) a[href^="/ads/"]:upward(1)
 facebook.com##:matches-path(marketplace) a[href^="/ads/"]:upward(4) + div > div:first-child
@@ -264,8 +256,9 @@ github.com##a[href*="/sponsors/"][class*="Button"]
 ! Explore page navigation bar - "GitHub Sponsors"
 github.com##nav[aria-label="Explore navigation"] a[href="/sponsors/explore"]
 
-
 ! ---- Google ----
+
+! - IMPORTANT NOTE: These particular filters are not at all optimized and WILL slow down your browser. Many of them need to be reworked (the ones that use has-text), I just have not had the time to get back to them. Use at your own discretion.
 
 ! Google Search
 
@@ -280,29 +273,29 @@ google.*##[aria-label="Search by voice"]
 ! Results stats, e.g. 'About x results (0.NN seconds)'
 google.*##div#result-stats
 
-! Search Results page sections 
+! Search Results page sections
 ! - AI summary above main results
 google.*##.hdzaWe
 ! - Youtube videos section
 google.*##.ULSxyf:not(:only-child):has(div[data-surl*="https://www.youtube.com/watch?"])
-! - Youtube videos (alternate method)
-google.*##.sATSHe:has(span:has-text(Videos))
+! - Youtube videos (alternate method) - (temporarily disabled as this is not a wise way of filtering for this)
+!google.*##.sATSHe:has(span:has-text(Videos))
 ! - "People also search for" section (2 versions)
 google.*##[id^="eob_"]
 google.*##[id*="bres"]
-! - "People also ask" section
-google.*##div[class="yhQgZb"]:has(div[aria-level="2"][role="heading"] span span:has-text(People also ask))
-google.*##div[class="MjjYud"]:has(div[aria-level="2"][role="heading"] span span:has-text(People also ask))
+! - "People also ask" section (temporarily disabled as this is not a wise way of filtering for this)
+!google.*##div[class="yhQgZb"]:has(div[aria-level="2"][role="heading"] span span:has-text(People also ask))
+!google.*##div[class="MjjYud"]:has(div[aria-level="2"][role="heading"] span span:has-text(People also ask))
 ! - Featured snippets
 google.*##h2:has-text(Featured snippet):upward(.ULSxyf)
-! - "What people are saying" section (just YouTube videos by another name)
-google.*##div[class="ULSxyf yhQgZb"]:has(g-section-with-header span.sOq4Gc:has-text(What people are saying))
-! - "What people are saying" section (standard version)
-google.*##div[class="ULSxyf"]:has(div[aria-level="2"][role="heading"] span.sOq4Gc:has-text(What people are saying))
-! - "Explore brands" section
-google.*##div[class="ULSxyf yhQgZb"]:has(div[aria-level="2"][role="heading"] span.OTMJR:has-text(Explore brands))
-! - "People also buy from" section
-google.*##div[class="ULSxyf yhQgZb"]:has(div[aria-level="2"][role="heading"] span.OTMJR.IFnjPb.SlP8xc.RES9jf:has-text(People also buy from))
+! - "What people are saying" section (just YouTube videos by another name) (temporarily disabled as this is not a wise way of filtering for this)
+!google.*##div[class="ULSxyf yhQgZb"]:has(g-section-with-header span.sOq4Gc:has-text(What people are saying))
+! - "What people are saying" section (standard version) (temporarily disabled as this is not a wise way of filtering for this)
+!google.*##div[class="ULSxyf"]:has(div[aria-level="2"][role="heading"] span.sOq4Gc:has-text(What people are saying))
+! - "Explore brands" section (temporarily disabled as this is not a wise way of filtering for this)
+!google.*##div[class="ULSxyf yhQgZb"]:has(div[aria-level="2"][role="heading"] span.OTMJR:has-text(Explore brands))
+! - "People also buy from" section (temporarily disabled as this is not a wise way of filtering for this)
+!google.*##div[class="ULSxyf yhQgZb"]:has(div[aria-level="2"][role="heading"] span.OTMJR.IFnjPb.SlP8xc.RES9jf:has-text(People also buy from))
 
 ! Petty shit
 ! - Any mentions of Google Chrome
@@ -320,8 +313,6 @@ google.*##div[class="fbar b2hzT"]:has(span[class*="known_loc"])
 
 ! Google Image Search
 
-! Youtube thumbnails within the Images section of regular web searches
-google.*##div.Lv2Cle:has(div.T6zPgb:has-text(Images)) div.vCUuC.m3LIae:has(a[href*="youtube.com"])
 ! Related searches suggestions
 google.*##.BA0zte
 ! Image panel footer (Feedback, Get help, and Saved links)
@@ -329,20 +320,13 @@ google.*##.UafVBb
 ! Warning that images may be subject to copyright
 google.*##a[aria-label="Learn more about copyright"]:upward(div.Dpn58d)
 
-! Mobile
-! - Navbar - Short videos
-google.*##div.T3FoJb:has(div.YmvwI:has-text(Short videos))
-! - Search results sections
-! -- People also ask section
-google.*##.MjjYud:has(span[class="mgAbYb OSrXXb RES9jf IFnjPb"] span:has-text(People also ask))
-
 ! ---- IMDb ----
 
 ! IMDb Pro
 ! - Right sidebar - Add a demo reel widget
 imdb.com##div[data-testid="imdb-pro-sidebar-widget"]:upward(1)
 
-! FAQs - Powered by Alexa 
+! FAQs - Powered by Alexa
 imdb.com##.sc-132e65ef-0.hLryWF
 
 ! Footer
@@ -403,15 +387,15 @@ mozilla.org##img.moz24-footer-logo-image-bottom:style(height:100px !important;)
 ! - User titles
 forum.obsidian.md##span.user-title--insider
 forum.obsidian.md##span.user-title--supporter
-! - "Powered by Discourse"
-forum.obsidian.md##a.powered-by-discourse:has(span:has-text(Powered by Discourse))
+! - "Powered by Discourse" (temporarily disabled as this is not a wise way of filtering for this)
+!forum.obsidian.md##a.powered-by-discourse:has(span:has-text(Powered by Discourse))
 
 ! ---- Perplexity ----
 
 ! Hide box that blocks the entire main page if not logged in
 perplexity.ai###__next > div:not([class]):has(div.fixed svg[data-icon="google"])
 
-! Hide entire "related questions" container
+! Hide entire "related questions" container (temporarily disabled as this is not a wise way of filtering for this)
 perplexity.ai##.group:has(.light:has-text(/^SPONSORED$/))
 
 ! ---- Reddit ----
@@ -492,7 +476,7 @@ remixicon.com##.go-somno
 svgfind.com,svgrepo.com##div[class^="style_flexbarHolder"]:has(a[href*="ads/click"])
 ! Banner requesting to share on Twitter
 svgfind.com,svgrepo.com##.style_request__oYgyy:upward(1)
-! Footer 
+! Footer
 ! - Sponsor box
 svgfind.com,svgrepo.com##div[class^="style_sponsor"]
 ! - Social media buttons
@@ -500,25 +484,25 @@ svgfind.com,svgrepo.com##div[class^="style_socialLinks"]
 
 ! ---- Swappa ----
 
-! Junk I don't/won't use 
+! Junk I don't/won't use
 ! - Apple garbage
 ! -- Navbar items
 swappa.com##li[class="nav-item dropdown"][data-menu-slug="apple"]
 swappa.com##li[class="nav-item dropdown"][data-menu-slug="iphones"]
 ! -- Navigation items
 swappa.com##.justify-content-center.nav > li.nav-item > a.nav-link[href="/buy/iphones"]
-! -- Secondary navigation
-swappa.com##li:has(a[class="dropdown-item"][href="/sell/iphone"])
-swappa.com##ul.dropdown-menu > li:has(a[class="dropdown-item"][href*="/buy/"]:has-text(/(?:MacBook|iPhones|iPads|iPad|iMacs|Mac|Apple|iOS|Airpods)/i))
-swappa.com##ul.dropdown-menu > li:has(a[class="dropdown-item"][href="/guide/macbook"])
-! -- Main page: If the h2 contains a keyword relating to Apple products, hide the entire row of products that follows
-swappa.com##.mt-4:has(h2:has-text(/(?:MacBook|iPhones|iPads|iMacs|Mac|Apple|iOS|Airpods)/i))
-! -- Main page: If any individual product card contains a keyword relating to Apple products, hide it and remove the empty gap
-swappa.com##.col:has(.card.card_product:has(h6:has-text(/(?:MacBook|iPhones|iPads|iMacs|Mac|Apple|iOS|Airpods)/i)))
+! -- Secondary navigation (temporarily disabled as this is not a wise way of filtering for this)
+!swappa.com##li:has(a[class="dropdown-item"][href="/sell/iphone"])
+!swappa.com##ul.dropdown-menu > li:has(a[class="dropdown-item"][href*="/buy/"]:has-text(/(?:MacBook|iPhones|iPads|iPad|iMacs|Mac|Apple|iOS|Airpods)/i))
+!swappa.com##ul.dropdown-menu > li:has(a[class="dropdown-item"][href="/guide/macbook"])
+! -- Main page: If the h2 contains a keyword relating to Apple products, hide the entire row of products that follows (temporarily disabled as this is not a wise way of filtering for this)
+!swappa.com##.mt-4:has(h2:has-text(/(?:MacBook|iPhones|iPads|iMacs|Mac|Apple|iOS|Airpods)/i))
+! -- Main page: If any individual product card contains a keyword relating to Apple products, hide it and remove the empty gap(temporarily disabled as this is not a wise way of filtering for this)
+!swappa.com##.col:has(.card.card_product:has(h6:has-text(/(?:MacBook|iPhones|iPads|iMacs|Mac|Apple|iOS|Airpods)/i)))
 ! -- Left slide-out menu
 swappa.com##a.slide_menu_item:has-text(/(?:MacBook|iPhones|iPads|iPad|iMacs|Mac|Apple|iOS|Airpods)/i)
 
-! Footer 
+! Footer
 ! - More Apple garbage
 swappa.com##footer li:has-text(/(?:MacBook|iPhones|iPads|iMacs|Mac|Apple|iOS|Airpods)/i)
 ! - Social media links
@@ -535,7 +519,7 @@ twitter.com,x.com##a[role="link"][href*="ads.x.com"]
 twitter.com,x.com##a[role="link"][href*="jobs"]
 twitter.com,x.com##a[role="link"][href*="spaces/start"]
 
-! Right sidebar 
+! Right sidebar
 ! - Any "Live" or "Starts tomorrow" events in the "What's happening" box
 twitter.com,x.com##div.r-kritb0[role="link"]:not([data-testid]):has(span:has-text(/LIVE|starts tomorrow/i))
 ! - "Trending with so-and-so" in the "What's Happening" box
@@ -778,7 +762,7 @@ tineye.com##aside:has(span:has-text(/SPONSORED/i))
 ! Symbl.cc - Obtrusive black circle that just blocked view of actual content
 symbl.cc##.cookie__wrapper
 
-! OneCrazyHouse.com 
+! OneCrazyHouse.com
 ! - Save this Article box
 onecrazyhouse.com##.slick-on-page
 ! - Social media widget
