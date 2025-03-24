@@ -143,7 +143,9 @@ bing.com##.ins_exp:has(.ins_exp_title:has-text("More inspiration from the web"))
 ! ---- ChatGPT ----
 
 ! "ChatGPT can make mistakes" disclaimer
-chatgpt.com##.min-h-4 > div:has-text(ChatGPT can make mistakes)
+!chatgpt.com##.min-h-4 > div:has-text(ChatGPT can make mistakes)
+! - NOTE - Temporarily unblocking all requests sent by ChatGPT as a test.
+@@||chatgpt.com^$
 
 ! ---- CVS ----
 
@@ -228,6 +230,8 @@ freepik.com##button:has(div[class*="$border-yellowPremium"]):upward(2)
 ! AI tools that appear when you hover over image
 freepik.com##button[data-cy="generate-video-preview-button"]
 freepik.com##button[data-cy="ai-variations-preview-button"]
+! Generate AI video button - there's surely a better way to filter for this but I was feeling lazy.
+freepik.com##button.lg\:\$inline-flex.\$hidden.\$gap-5.dark\:hover\:\$bg-black\/80.dark\:\$bg-grayEbony.hover\:\$bg-grayGaysir.\$bg-grayMystic.\$sprinkles-text-base.\$px-\[25px\].\$py-\[10px\].dark\:hover\:\$bg-grayOxford\/20.dark\:\$text-grayGaysir.dark\:\$bg-transparent.dark\:\$border-grayOxford.hover\:\$bg-grayHeather\/10.\$text-grayOxford.\$bg-transparent.\$border-grayGaysir.\$border-solid.\$border.\$whitespace-nowrap.\$rounded-\[6px\].\$font-semibold.\$no-underline.\$duration-\[300ms\].\$transition-colors.\$items-center.\$inline-flex:nth-of-type(3)
 ! Footer
 ! - Excessive footers
 freepik.com##[class="_1wc8gem0 $w-full $mx-auto $px-[20px] $max-w-[1400px] $py-40 $flex $items-center md:$items-end $flex-col md:$flex-row-reverse $justify-center md:$justify-between $text-center md:$text-left"]
@@ -253,8 +257,12 @@ github.com##li[class^="Item__LiBox"]:has(a[href^="/organizations/enterprise_plan
 
 ! Sponsors buttons
 github.com##a[href*="/sponsors/"][class*="Button"]
-! Explore page navigation bar - "GitHub Sponsors"
+! - Explore page navigation bar - "GitHub Sponsors"
 github.com##nav[aria-label="Explore navigation"] a[href="/sponsors/explore"]
+! - Sponsor button next to stars within search results 
+github.com##.llZEgI.Box-sc-g0xbh4-0
+! - Sponsor pitch/plea box below search results 
+github.com##.jRFAHs.Box-sc-g0xbh4-0 > .bjtFqb.Box-sc-g0xbh4-0 > .gvDFpV.Box-sc-g0xbh4-0
 
 ! ---- Google ----
 
@@ -460,10 +468,14 @@ reddit.com##.h-full:style(border-color: rgba(255,255,255,0) !important)
 ! - Award button on posts in main feed
 reddit.com##button[data-testid="award"]
 
-! Testing what the below filters do, if still necessary
-!www.reddit.com##.min-w-0.block
+! Footer - Legal Links
+reddit.com##.mx-md.flex.mb-md.\!mx-0.legal-links
+
+! Neglected to document what these actually do.
+!reddit.com##.min-w-0.block
 reddit.com###advertise-button > .justify-center.items-center.flex > .flex > svg > path
 reddit.com##._24UNt1hkbrZxLzs5vkvuDh
+reddit.com##guides-entrypoint-tooltip > svg
 
 ! ---- Remix Icons ----
 
@@ -770,5 +782,16 @@ onecrazyhouse.com###iconsPanel
 
 ! SmartPCUtilities.com
 ||www.smartpcutilities.com/images/promotions/servicesoptimizer/win-services-promo.png$image
+
+! Imgur
+imgur.com##.BottomRecirc
+imgur.com##.emerald-button
+imgur.com##.meme.upload.Button.MakeMeme
+
+! Figma - Disable custom cursors
+figma.com##body:style(cursor: auto !important)
+
+! Pixabay
+pixabay.com##div.container--t3k85
 
 !End
