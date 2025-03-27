@@ -218,8 +218,8 @@ flaticon.com##button[class*="pinterest"]
 ! Navbar
 ! - Pricing link
 freepik.com##li:has(a[href*="pricing"])
-! Ads
-! - Stock photo ads
+! Persistent ads
+! - Stock photos
 freepik.com##[data-testid*="sponsor"]
 ! - Premium images
 freepik.com##li:has(a[href*="premium-vector"])
@@ -230,7 +230,7 @@ freepik.com##button:has(div[class*="$border-yellowPremium"]):upward(2)
 ! AI tools that appear when you hover over image
 freepik.com##button[data-cy="generate-video-preview-button"]
 freepik.com##button[data-cy="ai-variations-preview-button"]
-! Generate AI video button - there's surely a better way to filter for this but I was feeling lazy.
+! Generate AI video button (there's surely a better way to filter for this but I was feeling lazy)
 freepik.com##button.lg\:\$inline-flex.\$hidden.\$gap-5.dark\:hover\:\$bg-black\/80.dark\:\$bg-grayEbony.hover\:\$bg-grayGaysir.\$bg-grayMystic.\$sprinkles-text-base.\$px-\[25px\].\$py-\[10px\].dark\:hover\:\$bg-grayOxford\/20.dark\:\$text-grayGaysir.dark\:\$bg-transparent.dark\:\$border-grayOxford.hover\:\$bg-grayHeather\/10.\$text-grayOxford.\$bg-transparent.\$border-grayGaysir.\$border-solid.\$border.\$whitespace-nowrap.\$rounded-\[6px\].\$font-semibold.\$no-underline.\$duration-\[300ms\].\$transition-colors.\$items-center.\$inline-flex:nth-of-type(3)
 ! Footer
 ! - Excessive footers
@@ -239,7 +239,7 @@ freepik.com##[class="_i9t5fb _1wc8gem0 $w-full $mx-auto $px-[20px] $max-w-[1400p
 ! - Social media buttons
 freepik.com##footer div[class="$text-center md:$text-left"]
 
-! ---- Github ----
+! ---- GitHub ----
 
 ! Top navigation
 ! - Copilot button and submenu
@@ -266,7 +266,7 @@ github.com##.jRFAHs.Box-sc-g0xbh4-0 > .bjtFqb.Box-sc-g0xbh4-0 > .gvDFpV.Box-sc-g
 
 ! ---- Google ----
 
-! - IMPORTANT NOTE: These particular filters are not at all optimized and WILL slow down your browser. Many of them need to be reworked (the ones that use has-text), I just have not had the time to get back to them. Use at your own discretion.
+! - IMPORTANT NOTE: These particular filters are not at all optimized and WILL slow down your browser. Many of them need to be reworked (the ones that use has-text), I just have not had the time to get back to them. The worst offenders have been temporarily disabled. Use at your own discretion.
 
 ! Google Search
 
@@ -286,23 +286,26 @@ google.*##div#result-stats
 google.*##.hdzaWe
 ! - Youtube videos section
 google.*##.ULSxyf:not(:only-child):has(div[data-surl*="https://www.youtube.com/watch?"])
-! - Youtube videos (alternate method) - (temporarily disabled as this is not a wise way of filtering for this)
+! - YouTube videos within search results
+www.google.com###ow18
+! - Youtube videos (alternate method) - (temporarily disabled)
 !google.*##.sATSHe:has(span:has-text(Videos))
 ! - "People also search for" section (2 versions)
 google.*##[id^="eob_"]
 google.*##[id*="bres"]
-! - "People also ask" section (temporarily disabled as this is not a wise way of filtering for this)
+! - "People also ask" section (temporarily disabled)
 !google.*##div[class="yhQgZb"]:has(div[aria-level="2"][role="heading"] span span:has-text(People also ask))
 !google.*##div[class="MjjYud"]:has(div[aria-level="2"][role="heading"] span span:has-text(People also ask))
 ! - Featured snippets
 google.*##h2:has-text(Featured snippet):upward(.ULSxyf)
-! - "What people are saying" section (just YouTube videos by another name) (temporarily disabled as this is not a wise way of filtering for this)
+
+! - "What people are saying" section (just YouTube videos by another name) (temporarily disabled)
 !google.*##div[class="ULSxyf yhQgZb"]:has(g-section-with-header span.sOq4Gc:has-text(What people are saying))
-! - "What people are saying" section (standard version) (temporarily disabled as this is not a wise way of filtering for this)
+! - "What people are saying" section (standard version) (temporarily disabled)
 !google.*##div[class="ULSxyf"]:has(div[aria-level="2"][role="heading"] span.sOq4Gc:has-text(What people are saying))
-! - "Explore brands" section (temporarily disabled as this is not a wise way of filtering for this)
+! - "Explore brands" section (temporarily disabled)
 !google.*##div[class="ULSxyf yhQgZb"]:has(div[aria-level="2"][role="heading"] span.OTMJR:has-text(Explore brands))
-! - "People also buy from" section (temporarily disabled as this is not a wise way of filtering for this)
+! - "People also buy from" section (temporarily disabled)
 !google.*##div[class="ULSxyf yhQgZb"]:has(div[aria-level="2"][role="heading"] span.OTMJR.IFnjPb.SlP8xc.RES9jf:has-text(People also buy from))
 
 ! Petty shit
@@ -395,7 +398,7 @@ mozilla.org##img.moz24-footer-logo-image-bottom:style(height:100px !important;)
 ! - User titles
 forum.obsidian.md##span.user-title--insider
 forum.obsidian.md##span.user-title--supporter
-! - "Powered by Discourse" (temporarily disabled as this is not a wise way of filtering for this)
+! - "Powered by Discourse" (temporarily disabled)
 !forum.obsidian.md##a.powered-by-discourse:has(span:has-text(Powered by Discourse))
 
 ! ---- Perplexity ----
@@ -403,7 +406,7 @@ forum.obsidian.md##span.user-title--supporter
 ! Hide box that blocks the entire main page if not logged in
 perplexity.ai###__next > div:not([class]):has(div.fixed svg[data-icon="google"])
 
-! Hide entire "related questions" container (temporarily disabled as this is not a wise way of filtering for this)
+! Hide entire "related questions" container (temporarily disabled)
 perplexity.ai##.group:has(.light:has-text(/^SPONSORED$/))
 
 ! ---- Reddit ----
@@ -469,7 +472,8 @@ reddit.com##.h-full:style(border-color: rgba(255,255,255,0) !important)
 reddit.com##button[data-testid="award"]
 
 ! Footer - Legal Links
-reddit.com##.mx-md.flex.mb-md.\!mx-0.legal-links
+!reddit.com##.mx-md.flex.mb-md.\!mx-0.legal-links
+!reddit.com##.mb-md.mx-md.flex.justify-self-end.legal-links
 
 ! Neglected to document what these actually do.
 !reddit.com##.min-w-0.block
@@ -503,13 +507,13 @@ swappa.com##li[class="nav-item dropdown"][data-menu-slug="apple"]
 swappa.com##li[class="nav-item dropdown"][data-menu-slug="iphones"]
 ! -- Navigation items
 swappa.com##.justify-content-center.nav > li.nav-item > a.nav-link[href="/buy/iphones"]
-! -- Secondary navigation (temporarily disabled as this is not a wise way of filtering for this)
+! -- Secondary navigation (temporarily disabled)
 !swappa.com##li:has(a[class="dropdown-item"][href="/sell/iphone"])
 !swappa.com##ul.dropdown-menu > li:has(a[class="dropdown-item"][href*="/buy/"]:has-text(/(?:MacBook|iPhones|iPads|iPad|iMacs|Mac|Apple|iOS|Airpods)/i))
 !swappa.com##ul.dropdown-menu > li:has(a[class="dropdown-item"][href="/guide/macbook"])
-! -- Main page: If the h2 contains a keyword relating to Apple products, hide the entire row of products that follows (temporarily disabled as this is not a wise way of filtering for this)
+! -- Main page: If the h2 contains a keyword relating to Apple products, hide the entire row of products that follows (temporarily disabled)
 !swappa.com##.mt-4:has(h2:has-text(/(?:MacBook|iPhones|iPads|iMacs|Mac|Apple|iOS|Airpods)/i))
-! -- Main page: If any individual product card contains a keyword relating to Apple products, hide it and remove the empty gap(temporarily disabled as this is not a wise way of filtering for this)
+! -- Main page: If any individual product card contains a keyword relating to Apple products, hide it and remove the empty gap (temporarily disabled)
 !swappa.com##.col:has(.card.card_product:has(h6:has-text(/(?:MacBook|iPhones|iPads|iMacs|Mac|Apple|iOS|Airpods)/i)))
 ! -- Left slide-out menu
 swappa.com##a.slide_menu_item:has-text(/(?:MacBook|iPhones|iPads|iPad|iMacs|Mac|Apple|iOS|Airpods)/i)
