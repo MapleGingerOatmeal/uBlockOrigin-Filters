@@ -142,10 +142,11 @@ bing.com##.ins_exp:has(.ins_exp_title:has-text("More inspiration from the web"))
 
 ! ---- ChatGPT ----
 
-! "ChatGPT can make mistakes" disclaimer
-!chatgpt.com##.min-h-4 > div:has-text(ChatGPT can make mistakes)
-! - NOTE - Temporarily unblocking all requests sent by ChatGPT as a test.
-@@||chatgpt.com^$
+@||chatgpt.com^
+! "ChatGPT can make mistakes" disclaimer text underneath main text input box
+chatgpt.com##.md\:px-\[60px\].text-token-text-secondary.text-xs.text-center.p-2.justify-center.items-center.w-full.min-h-8.flex.mt-auto.relative > div
+! "Plus" pill and text over user avatar
+chatgpt.com##button[data-testid="profile-button"] span
 
 ! ---- CVS ----
 
@@ -238,6 +239,11 @@ freepik.com##[class="_1wc8gem0 $w-full $mx-auto $px-[20px] $max-w-[1400px] $py-4
 freepik.com##[class="_i9t5fb _1wc8gem0 $w-full $mx-auto $px-[20px] $max-w-[1400px] $flex $justify-center md:$justify-between $flex-col md:$flex-row $py-15 md:$py-10 $items-center $text-center md:$text-left"]
 ! - Social media buttons
 freepik.com##footer div[class="$text-center md:$text-left"]
+
+! ---- FreeVectors.net ---
+
+! Left hand column (Sponsored vectors)
+freevectors.net##.p2.col-4.col.bg-alt.vectors--sponsored.vectors
 
 ! ---- GitHub ----
 
@@ -416,6 +422,32 @@ perplexity.ai##.group:has(.light:has-text(/^SPONSORED$/))
 reddit.com##.morelink > .access-required.login-required
 reddit.com##.create.sidebox > .spacer
 reddit.com##.account-activity-box > p
+! - Awards
+||redditstatic.com/gold/awards/icon/*
+reddit.com##.give-gold-button
+reddit.com##award-button
+reddit.com###comment-tree > shreddit-comment > shreddit-comment > .block > award-button.s\:block.hidden
+! - Remove yellow highlight effect from comments that receieve awards (make the color transparent)
+reddit.com##shreddit-comment[award-count]:not([award-count="0"]):remove-attr(with-awarded-treatment)
+reddit.com##.bg-yellow-200:style(background-color: rgba(255,255,255,0) !important)
+reddit.com##.h-full:style(border-color: rgba(255,255,255,0) !important)
+! - Award button on posts in main feed
+reddit.com##button[data-testid="award"]
+
+! Left sidebar
+! - Answers (including icon and Beta label)
+reddit.com##a[href="/answers/"]
+! - Resources menu
+reddit.com##nav[aria-label="Reddit resources"]
+! - Reddit copyright
+reddit.com##div[class="visible py-md grow flex flex-col justify-end"]:has(a[href*="redditinc"])
+
+! Right sidebar
+! - Recent posts
+reddit.com##recent-posts
+! - Legal links
+!reddit.com##.mx-md.flex.mb-md.\!mx-0.legal-links
+reddit.com##.legal-links
 
 ! User menu
 ! - Premium features and ad upsell content
@@ -439,47 +471,11 @@ reddit.com##h2.font-bold.text-18:nth-of-type(3):has-text(Subscription)
 ! - "Get Premium" link
 reddit.com##a[data-testid="get-premium"]
 
-! Left sidebar
-! - Answers (including icon and Beta label)
-reddit.com##a[href="/answers/"]
-! - Resources menu
-reddit.com##nav[aria-label="Reddit resources"]
-! - Reddit copyright
-reddit.com##div[class="visible py-md grow flex flex-col justify-end"]:has(a[href*="redditinc"])
-
-! Right sidebar
-! - Recent posts
-reddit.com##recent-posts
-
 ! Posts and main feed
 ! - Blur effect on the sides of images when full screen
 reddit.com##.post-background-image-filter
 ! - Hover menus for both subreddits and users (updated December 2024)
 reddit.com##div#faceplate-tooltip
-
-! Awards
-reddit.com###thing_t1_jpql34w > .unvoted.entry > .buttons.flat-list > .give-gold-button
-reddit.com##.give-gold-button
-||redditstatic.com/gold/awards/icon/*
-reddit.com##award-button
-reddit.com###comment-tree > shreddit-comment > .block > award-button.s\:block.hidden
-reddit.com###comment-tree > shreddit-comment > shreddit-comment > .block > award-button.s\:block.hidden
-! - Remove yellow highlight effect from comments that receieve awards (make the color transparent)
-reddit.com##shreddit-comment[award-count]:not([award-count="0"]):remove-attr(with-awarded-treatment)
-reddit.com##.bg-yellow-200:style(background-color: rgba(255,255,255,0) !important)
-reddit.com##.h-full:style(border-color: rgba(255,255,255,0) !important)
-! - Award button on posts in main feed
-reddit.com##button[data-testid="award"]
-
-! Footer - Legal Links
-!reddit.com##.mx-md.flex.mb-md.\!mx-0.legal-links
-!reddit.com##.mb-md.mx-md.flex.justify-self-end.legal-links
-
-! Neglected to document what these actually do.
-!reddit.com##.min-w-0.block
-reddit.com###advertise-button > .justify-center.items-center.flex > .flex > svg > path
-reddit.com##._24UNt1hkbrZxLzs5vkvuDh
-reddit.com##guides-entrypoint-tooltip > svg
 
 ! ---- Remix Icons ----
 
@@ -545,34 +541,34 @@ twitter.com,x.com##div.css-175oi2r.r-18bvks7.r-1867qdf.r-1phboty.r-ku1wi2.r-1udh
 !! - Alternatively just hide the footer link to "Ads info"
 !twitter.com,x.com##a[href*="how-twitter-ads-work"]
 
-! Profiles and users
+! Profiles and users - NOTE: While these filters DO work, many of them are very resource intensive and will probably make your browser very unhappy. I do not recommend using them in their current state. The ones that have been commented out/disabled have been disabled for a reason.
 ! - Badges, images, emoji in usernames
 ! - Verified account badges
-twitter.com,x.com##button:has(svg[data-testid="icon-verified"])
-twitter.com,x.com##svg[aria-label="Verified account"]
+!twitter.com,x.com##button:has(svg[data-testid="icon-verified"])
+!twitter.com,x.com##svg[aria-label="Verified account"]
 ! - Any other type of image or badge in a username in profiles and in feed/timeline
-twitter.com,x.com##[data-testid="UserName"] img
-twitter.com,x.com##[data-testid="User-Name"] img
-twitter.com,x.com##[data-testid="UserName"] div[style*="background-image"]:upward(div[role="link"])
-twitter.com,x.com##[data-testid="User-Name"] div[style*="background-image"]:upward(div[role="link"])
+!twitter.com,x.com##[data-testid="UserName"] img
+!twitter.com,x.com##[data-testid="User-Name"] img
+!twitter.com,x.com##[data-testid="UserName"] div[style*="background-image"]:upward(div[role="link"])
+!twitter.com,x.com##[data-testid="User-Name"] div[style*="background-image"]:upward(div[role="link"])
 ! - Any other type of image or badge in a username in the right sidebar
-twitter.com,x.com##[data-testid="UserCell"] div[style*="background-image"]:upward(div[role="link"])
-twitter.com,x.com##[data-testid^="UserAvatar-Container"] img
+!twitter.com,x.com##[data-testid="UserCell"] div[style*="background-image"]:upward(div[role="link"])
+!twitter.com,x.com##[data-testid^="UserAvatar-Container"] img
 ! - Any other type of image or badge in a username in the heading of profile pages
-twitter.com,x.com##h2[class="css-146c3p1 r-dnmrzs r-1udh08x r-1udbk01 r-3s2u2q r-bcqeeo r-1ttztb7 r-qvutc0 r-37j5jr r-1b6yd1w r-7ptqe7 r-b88u0q r-1559e4e"] img
-twitter.com,x.com##h2[class="css-146c3p1 r-dnmrzs r-1udh08x r-1udbk01 r-3s2u2q r-bcqeeo r-1ttztb7 r-qvutc0 r-37j5jr r-1b6yd1w r-7ptqe7 r-b88u0q r-1559e4e"] div[style*="background-image"]:upward(div[role="link"])
+!twitter.com,x.com##h2[class="css-146c3p1 r-dnmrzs r-1udh08x r-1udbk01 r-3s2u2q r-bcqeeo r-1ttztb7 r-qvutc0 r-37j5jr r-1b6yd1w r-7ptqe7 r-b88u0q r-1559e4e"] img
+!twitter.com,x.com##h2[class="css-146c3p1 r-dnmrzs r-1udh08x r-1udbk01 r-3s2u2q r-bcqeeo r-1ttztb7 r-qvutc0 r-37j5jr r-1b6yd1w r-7ptqe7 r-b88u0q r-1559e4e"] div[style*="background-image"]:upward(div[role="link"])
 ! - Any other type of image or badge in a username in reposts/retweets
-twitter.com,x.com##[data-testid="socialContext"] img
+!twitter.com,x.com##[data-testid="socialContext"] img
 !! - So far the below filter is unnecessary but implement if something changes and you start seeing some images/badges appear in reposts/retweets
 !twitter.com,x.com##[data-testid="socialContext"] div[style*="background-image"]:upward(div[role="link"])
 
 ! Timeline
 ! - Topic suggestions
-twitter.com,x.com##article [aria-label^="Recommended Topic" i]:upward(article)
+!twitter.com,x.com##article [aria-label^="Recommended Topic" i]:upward(article)
 ! - "Who to follow"
-twitter.com,x.com##[data-testid="cellInnerDiv"] h2:has-text(Who to follow)
-twitter.com,x.com##[data-testid="cellInnerDiv"] [aria-label^="Follow"]:upward([data-testid="cellInnerDiv"])
-twitter.com,x.com##[data-testid="cellInnerDiv"] [href^="/i/connect_people"]
+!twitter.com,x.com##[data-testid="cellInnerDiv"] h2:has-text(Who to follow)
+!twitter.com,x.com##[data-testid="cellInnerDiv"] [aria-label^="Follow"]:upward([data-testid="cellInnerDiv"])
+!twitter.com,x.com##[data-testid="cellInnerDiv"] [href^="/i/connect_people"]
 ! - Posts containing links to Spaces
 twitter.com,x.com##article:has(a[href*="/i/spaces"])
 
@@ -580,7 +576,7 @@ twitter.com,x.com##article:has(a[href*="/i/spaces"])
 twitter.com,x.com##[data-testid*="Grok"]
 twitter.com,x.com##[aria-label*="Grok"]
 twitter.com,x.com##[aria-label*="grok"]
-twitter.com,x.com##[data-testid^="followups_"]+nav
+!twitter.com,x.com##[data-testid^="followups_"]+nav
 twitter.com,x.com##button.r-1ny4l3l.r-6416eg.r-o7ynqc.r-1loqt21.r-25kp3t.r-1ii58gl.r-1wron08.r-1a8r3js.r-lrvibr.r-rs99b7.r-1phboty.r-sdzlij.css-175oi2r:nth-of-type(2)
 
 ! Settings page
@@ -635,6 +631,11 @@ designwizard.com##.fixed.blog-footer
 
 ! Graphic Design Junction
 graphicdesignjunction.com##.ss-animated.ss-rounded-icons.ss-with-spacing.ss-regular-icons.ss-left-sidebar.ss-hover-animation-fade.ss-animate-entrance.ss-entrance-animation-fade
+
+! Imgur
+imgur.com##.BottomRecirc
+imgur.com##.emerald-button
+imgur.com##.meme.upload.Button.MakeMeme
 
 ! Logitech Support
 support.logi.com###callOut
@@ -786,11 +787,6 @@ onecrazyhouse.com###iconsPanel
 
 ! SmartPCUtilities.com
 ||www.smartpcutilities.com/images/promotions/servicesoptimizer/win-services-promo.png$image
-
-! Imgur
-imgur.com##.BottomRecirc
-imgur.com##.emerald-button
-imgur.com##.meme.upload.Button.MakeMeme
 
 ! Figma - Disable custom cursors
 figma.com##body:style(cursor: auto !important)
