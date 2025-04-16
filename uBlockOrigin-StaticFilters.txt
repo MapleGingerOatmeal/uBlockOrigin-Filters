@@ -1,5 +1,11 @@
 ! ==== COSMETIC FILTERS ====
 
+! ---- 614now.com ----
+
+! "Brought to you by" section under articles
+614now.com##.single-post .custom-614-sponsored-by
+614now.com##.home-above-trending.hentry.has-post-thumbnail.format-standard.status-publish.type-post.post.gridlove-box.gridlove-post-d.gridlove-post.custom-614 > .entry-image > [href]
+
 ! ---- Amazon ----
 
 ! Item pages
@@ -213,6 +219,7 @@ flaticon.com###banner-craft
 ! Pinterest related
 flaticon.com##[data-type="pinterest"]
 flaticon.com##button[class*="pinterest"]
+flaticon.com##.pinterest--button
 
 ! ---- Freepik ----
 
@@ -272,7 +279,7 @@ github.com##.jRFAHs.Box-sc-g0xbh4-0 > .bjtFqb.Box-sc-g0xbh4-0 > .gvDFpV.Box-sc-g
 
 ! ---- Google ----
 
-! - IMPORTANT NOTE: These particular filters are not at all optimized and WILL slow down your browser. Many of them need to be reworked (the ones that use has-text), I just have not had the time to get back to them. The worst offenders have been temporarily disabled. Use at your own discretion.
+! - IMPORTANT NOTE: Any filters which are commented out or disabled have been done so for a reason. Those filters are not at all optimized and WILL slow down your browser. Many of them need to be reworked (especially the ones that use has-text), I just have not had the time to get back to them. Use at your own discretion.
 
 ! Google Search
 
@@ -299,11 +306,12 @@ www.google.com###ow18
 ! - "People also search for" section (2 versions)
 google.*##[id^="eob_"]
 google.*##[id*="bres"]
-! - "People also ask" section (temporarily disabled)
-!google.*##div[class="yhQgZb"]:has(div[aria-level="2"][role="heading"] span span:has-text(People also ask))
-!google.*##div[class="MjjYud"]:has(div[aria-level="2"][role="heading"] span span:has-text(People also ask))
+! - "People also ask" section
+google.*##div.ouy7Mc
+google.*##.Wt5Tfe
 ! - Featured snippets
 google.*##h2:has-text(Featured snippet):upward(.ULSxyf)
+
 
 ! - "What people are saying" section (just YouTube videos by another name) (temporarily disabled)
 !google.*##div[class="ULSxyf yhQgZb"]:has(g-section-with-header span.sOq4Gc:has-text(What people are saying))
@@ -338,6 +346,13 @@ google.*##.UafVBb
 google.*##a[aria-label="Learn more about copyright"]:upward(div.Dpn58d)
 
 ! ---- IMDb ----
+
+! TV series pages
+! - Metadata
+! -- Rent/Buy on Amazon (full width)
+imdb.com##.iZTMuu.sc-13283201-0
+! -- Rent/Buy on Amazon (half width)
+imdb.com##.ipc-shoveler__grid.ipc-sub-grid--omit-both.ipc-sub-grid--nowrap.ipc-sub-grid--page-span-3.ipc-sub-grid
 
 ! IMDb Pro
 ! - Right sidebar - Add a demo reel widget
@@ -414,6 +429,11 @@ perplexity.ai###__next > div:not([class]):has(div.fixed svg[data-icon="google"])
 
 ! Hide entire "related questions" container (temporarily disabled)
 perplexity.ai##.group:has(.light:has-text(/^SPONSORED$/))
+
+! ---- Pexels ----
+
+! Canva Ad in main search results
+pexels.com##a[class^="CanvaAd"]:upward(1)
 
 ! ---- Reddit ----
 
@@ -743,12 +763,15 @@ partitionwizard.com##.promotions-banner-wrap
 ! Sewing Hive - Hide Pinterest logo popping up on every image
 sewinghive.com##.PIN_1729808926283_save.PIN_1729808926283_pin_it_button_floating.PIN_1729808926283_button_pin
 
-! DeviantArt - paid membership features
+! DeviantArt - Paid membership features
 deviantart.com##._2D30j._37cCW._16RrG._1jkTN.reset-link
 
 ! Vecteezy - No Pinterest button when hovering over images on search results page or image details page
 vecteezy.com##.is-tipped.resource-action-button--pinterest.resource-action-button--small.resource-action-button--square.resource-action-button.ez-btn--light.ez-btn
 vecteezy.com##.resource-action-button--pinterest.resource-action-button--small.resource-action-button--square.resource-action-button.ez-btn--light.ez-btn
+! - Sponsored search results
+vecteezy.com##.ez-sponsored-results
+vecteezy.com##li.ez-resource-thumb--sponsored
 
 ! Lenovo AI chatbot
 ||forums.lenovo.com/images/lena_new_39.png$image
@@ -795,3 +818,9 @@ figma.com##body:style(cursor: auto !important)
 pixabay.com##div.container--t3k85
 
 !End
+
+! https://www.imdb.com
+www.imdb.com##.bAvPcp.sc-87712cc1-0.ipc-reaction-summary--baseAlt.ipc-reaction-summary
+
+! https://github.com
+github.com##.jgMxtc.Box-sc-g0xbh4-0
