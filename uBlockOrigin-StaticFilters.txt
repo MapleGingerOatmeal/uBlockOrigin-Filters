@@ -20,7 +20,8 @@ amazon.*###nile-inline_feature_div h5:has-text(Ask Rufus):upward(div#dpx-nice-wi
 amazon.*##[data-feature-name="brandInsights"]
 ! - "Videos for this Product" widget
 amazon.*###va-related-videos-widget_feature_div
-! - "Customers also bought" widget - IMPORTANT NOTE: The first filter only hides sponsored items within the widget; the second hides the whole widget. Choose your prefered method.
+! - "Customers also bought" widget 
+! -- **IMPORTANT**: The first filter only hides sponsored items within the widget; the second hides the whole widget. Choose your prefered method.
 !amazon.com##[class*="detail-faceout-box"]:has(.dynamicSponsoredLabelClass)
 amazon.*##[id="similarities_feature_div"]
 ! - "Explore this related brand"
@@ -36,7 +37,7 @@ amazon.*##[data-cel-widget="typ-prominentUpsellSlot"]
 
 ! Navbar
 ! - Hide categories
-! -- IMPORTANT NOTE: Links/categories in the top navbar will automatically be replaced with new ones unless you block a very large number of them.
+! -- **IMPORTANT**: Links/categories in the top navbar will automatically be replaced with new ones unless you block a very large number of them.
 ! -- You may find that hiding one just reveals something you dislike even more.
 ! -- Use your browser's devtools to see exactly what you may need to filter behind the scenes. These should be in the order they appear in within the navigation bar (i.e. nonsensical)
 ! --- Rufus button
@@ -126,8 +127,6 @@ arstechnica.com###copyright-terms
 
 ! ---- Bing ----
 
-! - Important note: These particular filters are not at all optimized and may slow down your browser. They all need to be reworked, I just have not had the time to get back to them. Use at your own discretion.
-
 ! Header
 ! - Notification dot on rewards medal icon
 bing.com##[data-rewards-widget="medallion"] div.medal div.red-dot
@@ -177,6 +176,15 @@ duckduckgo.com##[data-zci-link="products"]
 ||assets/icons/thirdparty/twitter.svg$image,domain=duckduckgo.com
 duckduckgo.com##li.about-profiles__item:has(img[src*="/assets/icons/thirdparty/twitter.svg"])
 
+! ---- Etsy ----
+
+! Sponsored search results
+! - NOTE: Updated October 2024
+etsy.com##.v2-listing-card:has([id^="ad-listing-title"])
+etsy.com##li:has(h2[id^="ad-listing"])
+! - Older version
+!etsy.com##.v2-listing-card__info > div > div:first-of-type > p:first-child > span:first-child:upward(.listing-link)
+
 ! ---- Facebook ----
 
 ! - Marketplace
@@ -185,6 +193,11 @@ facebook.com##:matches-path(marketplace) a[href^="/ads/"]:upward(1)
 facebook.com##:matches-path(marketplace) a[href^="/ads/"]:upward(4) + div > div:first-child
 ! -- Ads in categories and search results
 facebook.com##:matches-path(marketplace) object > a[href^="/ads/"] > span:not(:empty):upward(11)
+
+! ---- Figma ----
+
+! Disable custom cursors
+figma.com##body:style(cursor: auto !important)
 
 ! ---- FlatIcon ----
 
@@ -247,7 +260,7 @@ freepik.com##[class="_i9t5fb _1wc8gem0 $w-full $mx-auto $px-[20px] $max-w-[1400p
 ! - Social media buttons
 freepik.com##footer div[class="$text-center md:$text-left"]
 
-! ---- FreeVectors.net ---
+! ---- FreeVectors.net ----
 
 ! Left hand column (Sponsored vectors)
 freevectors.net##.p2.col-4.col.bg-alt.vectors--sponsored.vectors
@@ -257,6 +270,7 @@ freevectors.net##.p2.col-4.col.bg-alt.vectors--sponsored.vectors
 ! Top navigation
 ! - Copilot button and submenu
 github.com##div.AppHeader-CopilotChat
+github.com##.jgMxtc.Box-sc-g0xbh4-0
 ! Left overlay menu
 ! - Marketplace
 github.com##li[class="ActionListItem"]:has(a[href="/marketplace"])
@@ -279,48 +293,35 @@ github.com##.jRFAHs.Box-sc-g0xbh4-0 > .bjtFqb.Box-sc-g0xbh4-0 > .gvDFpV.Box-sc-g
 
 ! ---- Google ----
 
-! - IMPORTANT NOTE: Any filters which are commented out or disabled have been done so for a reason. Those filters are not at all optimized and WILL slow down your browser. Many of them need to be reworked (especially the ones that use has-text), I just have not had the time to get back to them. Use at your own discretion.
-
 ! Google Search
-
-! Products
-! - Various product info (prices, review, delivery times, return windows, etc) which appears under select search results
-google.*##.QU4hqb
-! - Product pricing and delivery information under search results
-google.*##div[class="kb0PBd ieodic"][style="grid-area:mCCBcf"]
 
 ! Search bar - Microphone icon
 google.*##[aria-label="Search by voice"]
 ! Results stats, e.g. 'About x results (0.NN seconds)'
 google.*##div#result-stats
 
-! Search Results page sections
-! - AI summary above main results
+! AI summary above search results
 google.*##.hdzaWe
+
+! Sections within search results
+! - Featured snippets
+google.*##.OJXvsb.XzTjhb.dG2XIf
 ! - Youtube videos section
 google.*##.ULSxyf:not(:only-child):has(div[data-surl*="https://www.youtube.com/watch?"])
 ! - YouTube videos within search results
-www.google.com###ow18
-! - Youtube videos (alternate method) - (temporarily disabled)
-!google.*##.sATSHe:has(span:has-text(Videos))
-! - "People also search for" section (2 versions)
+google.*###ow18
+! - "People also search for"
 google.*##[id^="eob_"]
 google.*##[id*="bres"]
-! - "People also ask" section
+! - "People also ask"
 google.*##div.ouy7Mc
 google.*##.Wt5Tfe
-! - Featured snippets
-google.*##h2:has-text(Featured snippet):upward(.ULSxyf)
-
-
-! - "What people are saying" section (just YouTube videos by another name) (temporarily disabled)
-!google.*##div[class="ULSxyf yhQgZb"]:has(g-section-with-header span.sOq4Gc:has-text(What people are saying))
-! - "What people are saying" section (standard version) (temporarily disabled)
-!google.*##div[class="ULSxyf"]:has(div[aria-level="2"][role="heading"] span.sOq4Gc:has-text(What people are saying))
-! - "Explore brands" section (temporarily disabled)
-!google.*##div[class="ULSxyf yhQgZb"]:has(div[aria-level="2"][role="heading"] span.OTMJR:has-text(Explore brands))
-! - "People also buy from" section (temporarily disabled)
-!google.*##div[class="ULSxyf yhQgZb"]:has(div[aria-level="2"][role="heading"] span.OTMJR.IFnjPb.SlP8xc.RES9jf:has-text(People also buy from))
+! - Short videos
+google.*##div.ULSxyf > .MjjYud > .vt6azd.Ww4FFb
+! - Top Answers carousel
+google.*##.RyIFgf
+! - 'What people are saying' heading text
+google.*##.adDDi.Kcn6oc
 
 ! Petty shit
 ! - Any mentions of Google Chrome
@@ -329,15 +330,12 @@ google.*##div[class="MjjYud"]:has(span:has-text(Chrome extension))
 google.*##div[class="MjjYud"]:has(span:has-text(Chrome-extension))
 
 ! Footer
-! - "Results are not Personalized" disclaimer
-google.*##.gMZyfc:has-text(Results are not personalized)
 ! - Help, Send Feedback, Privacy, and Terms links
 google.*##span#fsl:has(a[href^="https://support.google.com/websearch"])
 ! - Zip, City, State, From your device, update location links (matches known AND unknown locations)
 google.*##div[class="fbar b2hzT"]:has(span[class*="known_loc"])
 
 ! Google Image Search
-
 ! Related searches suggestions
 google.*##.BA0zte
 ! Image panel footer (Feedback, Get help, and Saved links)
@@ -345,27 +343,43 @@ google.*##.UafVBb
 ! Warning that images may be subject to copyright
 google.*##a[aria-label="Learn more about copyright"]:upward(div.Dpn58d)
 
+! Products
+! - Various product info (prices, review, delivery times, return windows, etc) which appears under select search results
+google.*##.QU4hqb
+! - Product pricing and delivery information under search results
+google.*##div[class="kb0PBd ieodic"][style="grid-area:mCCBcf"]
+
 ! ---- IMDb ----
 
-! TV series pages
+! Movie/Series pages
 ! - Metadata
 ! -- Rent/Buy on Amazon (full width)
 imdb.com##.iZTMuu.sc-13283201-0
 ! -- Rent/Buy on Amazon (half width)
 imdb.com##.ipc-shoveler__grid.ipc-sub-grid--omit-both.ipc-sub-grid--nowrap.ipc-sub-grid--page-span-3.ipc-sub-grid
+! - Likes and reactions to images and videos
+imdb.com##.ipc-reaction-summary--base.ipc-reaction-summary
 
 ! IMDb Pro
 ! - Right sidebar - Add a demo reel widget
 imdb.com##div[data-testid="imdb-pro-sidebar-widget"]:upward(1)
 
 ! FAQs - Powered by Alexa
-imdb.com##.sc-132e65ef-0.hLryWF
+! - TODO: Double check that this is not too broad. 
+!imdb.com##.hLryWF
 
 ! Footer
 ! - Social media links
 imdb.com##.imdb-footer__links section.ipc-page-section
 ! - Amazon logo
 imdb.com##.imdb-footer div.imdb-footer__logo
+
+! ---- IPTorrents ----
+
+! Halloween animation with bugs crawling all over screen
+iptorrents.com##div.bug
+! Pet gallery button
+iptorrents.com###petGalleryBtn
 
 ! ---- LinkedIn ----
 
@@ -419,15 +433,13 @@ mozilla.org##img.moz24-footer-logo-image-bottom:style(height:100px !important;)
 ! - User titles
 forum.obsidian.md##span.user-title--insider
 forum.obsidian.md##span.user-title--supporter
-! - "Powered by Discourse" (temporarily disabled)
-!forum.obsidian.md##a.powered-by-discourse:has(span:has-text(Powered by Discourse))
 
 ! ---- Perplexity ----
 
 ! Hide box that blocks the entire main page if not logged in
 perplexity.ai###__next > div:not([class]):has(div.fixed svg[data-icon="google"])
-
-! Hide entire "related questions" container (temporarily disabled)
+! Hide entire "related questions" container
+! - **IMPORTANT**: This filter is not optimized and may slow down your browser; use at your own discretion.
 perplexity.ai##.group:has(.light:has-text(/^SPONSORED$/))
 
 ! ---- Pexels ----
@@ -453,19 +465,17 @@ reddit.com##.bg-yellow-200:style(background-color: rgba(255,255,255,0) !importan
 reddit.com##.h-full:style(border-color: rgba(255,255,255,0) !important)
 ! - Award button on posts in main feed
 reddit.com##button[data-testid="award"]
-
-! Left sidebar
-! - Answers (including icon and Beta label)
+! - Left sidebar
+! -- Answers (including icon and Beta label)
 reddit.com##a[href="/answers/"]
-! - Resources menu
+! -- Resources menu
 reddit.com##nav[aria-label="Reddit resources"]
-! - Reddit copyright
+! -- Reddit copyright
 reddit.com##div[class="visible py-md grow flex flex-col justify-end"]:has(a[href*="redditinc"])
-
-! Right sidebar
-! - Recent posts
+! - Right sidebar
+! -- Recent posts
 reddit.com##recent-posts
-! - Legal links
+! -- Legal links
 !reddit.com##.mx-md.flex.mb-md.\!mx-0.legal-links
 reddit.com##.legal-links
 
@@ -480,8 +490,6 @@ reddit.com##li:has(a[href="/premium"])
 reddit.com###advertise-button > .justify-center.items-center.flex > .flex > svg
 
 ! Settings page
-! - "Account authorization" heading
-reddit.com##h2.font-bold.text-18:nth-of-type(2):has-text(Account authorization)
 ! - Connect Google account
 reddit.com##label[data-testid="google"]
 ! - Connect Apple account
@@ -496,6 +504,9 @@ reddit.com##a[data-testid="get-premium"]
 reddit.com##.post-background-image-filter
 ! - Hover menus for both subreddits and users (updated December 2024)
 reddit.com##div#faceplate-tooltip
+! - Chat channel recommendations below comments
+reddit.com##chat-channel-recommendations-wrapper
+reddit.com##.pb-sm.justify-between.items-center.flex
 
 ! ---- Remix Icons ----
 
@@ -514,90 +525,37 @@ svgfind.com,svgrepo.com##div[class^="style_sponsor"]
 ! - Social media buttons
 svgfind.com,svgrepo.com##div[class^="style_socialLinks"]
 
-! ---- Swappa ----
-
-! Junk I don't/won't use
-! - Apple garbage
-! -- Navbar items
-swappa.com##li[class="nav-item dropdown"][data-menu-slug="apple"]
-swappa.com##li[class="nav-item dropdown"][data-menu-slug="iphones"]
-! -- Navigation items
-swappa.com##.justify-content-center.nav > li.nav-item > a.nav-link[href="/buy/iphones"]
-! -- Secondary navigation (temporarily disabled)
-!swappa.com##li:has(a[class="dropdown-item"][href="/sell/iphone"])
-!swappa.com##ul.dropdown-menu > li:has(a[class="dropdown-item"][href*="/buy/"]:has-text(/(?:MacBook|iPhones|iPads|iPad|iMacs|Mac|Apple|iOS|Airpods)/i))
-!swappa.com##ul.dropdown-menu > li:has(a[class="dropdown-item"][href="/guide/macbook"])
-! -- Main page: If the h2 contains a keyword relating to Apple products, hide the entire row of products that follows (temporarily disabled)
-!swappa.com##.mt-4:has(h2:has-text(/(?:MacBook|iPhones|iPads|iMacs|Mac|Apple|iOS|Airpods)/i))
-! -- Main page: If any individual product card contains a keyword relating to Apple products, hide it and remove the empty gap (temporarily disabled)
-!swappa.com##.col:has(.card.card_product:has(h6:has-text(/(?:MacBook|iPhones|iPads|iMacs|Mac|Apple|iOS|Airpods)/i)))
-! -- Left slide-out menu
-swappa.com##a.slide_menu_item:has-text(/(?:MacBook|iPhones|iPads|iPad|iMacs|Mac|Apple|iOS|Airpods)/i)
-
-! Footer
-! - More Apple garbage
-swappa.com##footer li:has-text(/(?:MacBook|iPhones|iPads|iMacs|Mac|Apple|iOS|Airpods)/i)
-! - Social media links
-swappa.com##footer .social_links
-
 ! ---- Twitter ----
 
-! Left sidebar
-! - Hide Grok, Premium, Monetization, Verified Orgs, Ads, Jobs, and Create Your Space
+! General or sitewide
+! - Left sidebar
+! -- Grok, Premium, Monetization, Verified Orgs, Ads, Jobs, and Create Your Space
 twitter.com,x.com##a[role="link"][href*="premium_sign_up"]
 twitter.com,x.com##a[role="link"][href*="monetization"]
 twitter.com,x.com##a[role="link"][href*="verified-orgs-signup"]
 twitter.com,x.com##a[role="link"][href*="ads.x.com"]
 twitter.com,x.com##a[role="link"][href*="jobs"]
 twitter.com,x.com##a[role="link"][href*="spaces/start"]
-
-! Right sidebar
-! - Any "Live" or "Starts tomorrow" events in the "What's happening" box
+! - Right sidebar
+! -- Any "Live" or "Starts tomorrow" events in the "What's happening" box
 twitter.com,x.com##div.r-kritb0[role="link"]:not([data-testid]):has(span:has-text(/LIVE|starts tomorrow/i))
-! - "Trending with so-and-so" in the "What's Happening" box
-twitter.com,x.com##div:has-text(/Trending with/):has(> a[href*="src=trend_click"])
-! - Entire right sidebar footer (terms of service, privacy policy, cookie policy, accessibility, etc)
+! -- "Trending with so-and-so" in the "What's Happening" box
+twitter.com,x.com##div:has-text(/Trending with/):has(> a[href*="trend_click"])
+! -- Entire right sidebar footer (terms of service, privacy policy, cookie policy, accessibility, etc)
 twitter.com,x.com##div.css-175oi2r.r-18bvks7.r-1867qdf.r-1phboty.r-ku1wi2.r-1udh08x.r-1niwhzg.r-1yadl64:has(nav[aria-label="Footer"])
-!! - Alternatively just hide the footer link to "Ads info"
+! -- Alternative to above: just hide the footer link to "Ads info"
 !twitter.com,x.com##a[href*="how-twitter-ads-work"]
-
-! Profiles and users - NOTE: While these filters DO work, many of them are very resource intensive and will probably make your browser very unhappy. I do not recommend using them in their current state. The ones that have been commented out/disabled have been disabled for a reason.
-! - Badges, images, emoji in usernames
-! - Verified account badges
-!twitter.com,x.com##button:has(svg[data-testid="icon-verified"])
-!twitter.com,x.com##svg[aria-label="Verified account"]
-! - Any other type of image or badge in a username in profiles and in feed/timeline
-!twitter.com,x.com##[data-testid="UserName"] img
-!twitter.com,x.com##[data-testid="User-Name"] img
-!twitter.com,x.com##[data-testid="UserName"] div[style*="background-image"]:upward(div[role="link"])
-!twitter.com,x.com##[data-testid="User-Name"] div[style*="background-image"]:upward(div[role="link"])
-! - Any other type of image or badge in a username in the right sidebar
-!twitter.com,x.com##[data-testid="UserCell"] div[style*="background-image"]:upward(div[role="link"])
-!twitter.com,x.com##[data-testid^="UserAvatar-Container"] img
-! - Any other type of image or badge in a username in the heading of profile pages
-!twitter.com,x.com##h2[class="css-146c3p1 r-dnmrzs r-1udh08x r-1udbk01 r-3s2u2q r-bcqeeo r-1ttztb7 r-qvutc0 r-37j5jr r-1b6yd1w r-7ptqe7 r-b88u0q r-1559e4e"] img
-!twitter.com,x.com##h2[class="css-146c3p1 r-dnmrzs r-1udh08x r-1udbk01 r-3s2u2q r-bcqeeo r-1ttztb7 r-qvutc0 r-37j5jr r-1b6yd1w r-7ptqe7 r-b88u0q r-1559e4e"] div[style*="background-image"]:upward(div[role="link"])
-! - Any other type of image or badge in a username in reposts/retweets
-!twitter.com,x.com##[data-testid="socialContext"] img
-!! - So far the below filter is unnecessary but implement if something changes and you start seeing some images/badges appear in reposts/retweets
-!twitter.com,x.com##[data-testid="socialContext"] div[style*="background-image"]:upward(div[role="link"])
+! - Messages shade
+twitter.com,x.com##.r-5wli1b.r-1jte41z.r-hvns9x.r-1rtiivn.r-173mn98.css-175oi2r
+! - Everything related to Grok
+twitter.com,x.com##[data-testid*="Grok" i]
+twitter.com,x.com##[aria-label*="grok" i]
 
 ! Timeline
-! - Topic suggestions
-!twitter.com,x.com##article [aria-label^="Recommended Topic" i]:upward(article)
-! - "Who to follow"
-!twitter.com,x.com##[data-testid="cellInnerDiv"] h2:has-text(Who to follow)
-!twitter.com,x.com##[data-testid="cellInnerDiv"] [aria-label^="Follow"]:upward([data-testid="cellInnerDiv"])
-!twitter.com,x.com##[data-testid="cellInnerDiv"] [href^="/i/connect_people"]
 ! - Posts containing links to Spaces
 twitter.com,x.com##article:has(a[href*="/i/spaces"])
-
-! Everything related to Grok
-twitter.com,x.com##[data-testid*="Grok"]
-twitter.com,x.com##[aria-label*="Grok"]
-twitter.com,x.com##[aria-label*="grok"]
-!twitter.com,x.com##[data-testid^="followups_"]+nav
-twitter.com,x.com##button.r-1ny4l3l.r-6416eg.r-o7ynqc.r-1loqt21.r-25kp3t.r-1ii58gl.r-1wron08.r-1a8r3js.r-lrvibr.r-rs99b7.r-1phboty.r-sdzlij.css-175oi2r:nth-of-type(2)
+! - Topic suggestions (temporarily disabled)
+!twitter.com,x.com##article [aria-label^="Recommended Topic" i]:upward(article)
 
 ! Settings page
 ! - "Monetization"
@@ -606,6 +564,29 @@ twitter.com,x.com##button.r-1ny4l3l.r-6416eg.r-o7ynqc.r-1loqt21.r-25kp3t.r-1ii58
 twitter.com,x.com##a[href*="/settings/monetization"]
 twitter.com,x.com##a[href*="premium_sign_up?referring_page=settings"]
 twitter.com,x.com##a[href*="/settings/manage_subscriptions"]
+
+! Profiles and users 
+! - **IMPORTANT**: While these filters DO work, many of them are very resource intensive and will slow down your browser. I do not recommend using them in their current state. The ones that have been commented out/disabled have been disabled for a reason. They are included still as a matter of record and as a placeholder for future re-written versions.
+! - Badges, images, emoji in usernames
+! - Verified account badges
+!twitter.com,x.com##button:has(svg[data-testid="icon-verified"])
+!twitter.com,x.com##svg[aria-label="Verified account"]
+! - Any other type of image or badge (e.g. emojis, customized branding) within usernames...
+! -- In profiles and in feed/timeline
+!twitter.com,x.com##[data-testid="UserName"] img
+!twitter.com,x.com##[data-testid="User-Name"] img
+!twitter.com,x.com##[data-testid="UserName"] div[style*="background-image"]:upward(div[role="link"])
+!twitter.com,x.com##[data-testid="User-Name"] div[style*="background-image"]:upward(div[role="link"])
+! -- In the heading of profile pages
+!twitter.com,x.com##h2[class="css-146c3p1 r-dnmrzs r-1udh08x r-1udbk01 r-3s2u2q r-bcqeeo r-1ttztb7 r-qvutc0 r-37j5jr r-1b6yd1w r-7ptqe7 r-b88u0q r-1559e4e"] img
+!twitter.com,x.com##h2[class="css-146c3p1 r-dnmrzs r-1udh08x r-1udbk01 r-3s2u2q r-bcqeeo r-1ttztb7 r-qvutc0 r-37j5jr r-1b6yd1w r-7ptqe7 r-b88u0q r-1559e4e"] div[style*="background-image"]:upward(div[role="link"])
+! -- In the right sidebar
+!twitter.com,x.com##[data-testid="UserCell"] div[style*="background-image"]:upward(div[role="link"])
+!twitter.com,x.com##[data-testid^="UserAvatar-Container"] img
+! -- In reposts/retweets
+!twitter.com,x.com##[data-testid="socialContext"] img
+! -- So far the below filter is unnecessary but implement if something changes and you start seeing some images/badges appear in reposts/retweets
+!twitter.com,x.com##[data-testid="socialContext"] div[style*="background-image"]:upward(div[role="link"])
 
 ! ---- Unsplash ----
 
@@ -621,7 +602,6 @@ unsplash.com##.il09g:style(height: auto !important; min-height: 0 !important)
 ! ---- WallpaperCave ----
 
 ! Reaction buttons
-!wallpapercave.com##.wallpaper > stickers
 wallpapercave.com##div:matches-attr(id=/^wp\d+stickers$/)
 ! Footer - Social media buttons
 wallpapercave.com###fsocial
@@ -630,17 +610,14 @@ wallpapercave.com###fsocial
 
 ! "$Thanks$" monetization button
 youtube.com##button[aria-label="Thanks"][title="Show support with Super Thanks"]
-! Tag that a commenter made a payment to a YouTube content creator
+! Tag indicating that a user paid a content creator
 youtube.com###paid-comment-chip
 
-! ==== Miscellaneous less organized filters below ====
+! ==== Miscellaneous less organized or undocumented filters below ====
 
 ! Adobe Stock
 stock.adobe.com##.spectrum-CoachMarkPopover
 stock.adobe.com##div[class^="js-hover-menu-v2"]
-
-! IPTorrents - Hide Halloween animation with bugs crawling all over screen
-iptorrents.com##div.bug
 
 ! AFL Footy Shop
 aflfootyshop.com.au###recent_sales_content_img
@@ -726,13 +703,6 @@ www.thisweeknews.com##.gnt_cw_w > .gnt_cw > .gnt_xbr > .gnt_ar_xb
 coolors.co##.floating-cad
 coolors.co###pro-float
 
-! Etsy - block sponsored search results
-etsy.com##.v2-listing-card__info > div > div:first-of-type > p:first-child > span:first-child:upward(.listing-link)
-
-! Etsy - block sponsored search results UPDATED October 2024
-etsy.com##.v2-listing-card:has([id^="ad-listing-title"])
-etsy.com##li:has(h2[id^="ad-listing"])
-
 ! APKPure
 apkpure.com##.share-mob.share-btn > ul
 ||static.apkpure.com/mobile/static/imgs/icon-bell-float.svg$image
@@ -773,10 +743,11 @@ vecteezy.com##.resource-action-button--pinterest.resource-action-button--small.r
 vecteezy.com##.ez-sponsored-results
 vecteezy.com##li.ez-resource-thumb--sponsored
 
-! Lenovo AI chatbot
+! Lenovo 
+! - AI chatbot
 ||forums.lenovo.com/images/lena_new_39.png$image
 forums.lenovo.com##.smart-avatar-trigger
-! Black Friday version
+! - AI chatbot, Black Friday version
 ||pcsupport.lenovo.com/esv4/plugins/contactus/lena-bot/inline-lena-black-friday.png$image
 
 ! Convertio - "Rate us" pop up dialog in corner
@@ -811,16 +782,10 @@ onecrazyhouse.com###iconsPanel
 ! SmartPCUtilities.com
 ||www.smartpcutilities.com/images/promotions/servicesoptimizer/win-services-promo.png$image
 
-! Figma - Disable custom cursors
-figma.com##body:style(cursor: auto !important)
-
 ! Pixabay
 pixabay.com##div.container--t3k85
 
+! Vecteezy
+vecteezy.com##.popular-country-searches
+
 !End
-
-! https://www.imdb.com
-www.imdb.com##.bAvPcp.sc-87712cc1-0.ipc-reaction-summary--baseAlt.ipc-reaction-summary
-
-! https://github.com
-github.com##.jgMxtc.Box-sc-g0xbh4-0
