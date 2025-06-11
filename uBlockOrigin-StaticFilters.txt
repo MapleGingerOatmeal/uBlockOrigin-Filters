@@ -1,6 +1,6 @@
 ! ==== COSMETIC FILTERS ====
 
-! ---- 614now.com ----
+! ---- 614now ----
 
 ! "Brought to you by" section under articles
 614now.com##.single-post .custom-614-sponsored-by
@@ -98,10 +98,6 @@ amazon.*##[class*="menu"]:focus:style(border-color: transparent !important;)
 amazon.*##[id*="menu"]:hover:style(border-color: transparent !important;)
 amazon.*##[id*="menu"]:focus:style(border-color: transparent !important;)
 
-! Search results
-! - Ads (disabled for now because this is not a very wise way to filter for this)
-!amazon.com##.a-section.a-spacing-none.s-result-item.s-flex-full-width.s-widget.s-widget-spacing-large:has(span:has-text(Sponsored))
-
 ! Best Sellers
 ! - Play ("watch") button
 amazon.*##.watch-button-placeholder
@@ -157,6 +153,22 @@ chatgpt.com##button[data-testid="profile-button"] span
 
 ! Footer - Social media buttons
 cvs.com##nav[class="sc-cvs-global-footer-social-links"]
+
+! ---- DeviantArt ----
+
+! Top navigation bar 
+! - New seller tools flashing button
+||www.deviantart.com/_nsfgfb/$subdocument
+! - User Menu
+! -- Premium membership promotion
+deviantart.com##._2B9cc._2WuWj.VhKum:upward(div._1bF9v:has(a[href*="/core-membership"]))
+! -- Redundant menu separator (only when not logged in)
+deviantart.com###site-header-user-menu div._1bF9v:not(:has(a[href^="https://www.deviantart.com/account/"]))::before
+! -- Remove extra padding above remaining menu items (only when not logged in)
+deviantart.com###site-header-user-menu div._1bF9v:not(:has(a[href^="https://www.deviantart.com/account/"])):style(padding-top: 2px !important)
+
+! Deviations - Premium icon
+||st.deviantart.net/badges/fabricoffreedom_override.svg$image
 
 ! ---- DuckDuckGo ----
 
@@ -306,6 +318,7 @@ google.*##.hdzaWe
 ! Sections within search results
 ! - Featured snippets
 google.*##.OJXvsb.XzTjhb.dG2XIf
+google.*##.g-blk.JnwWd.wF4fFd.vt6azd.Ww4FFb.wHYlTd
 ! - Youtube videos section
 google.*##.ULSxyf:not(:only-child):has(div[data-surl*="https://www.youtube.com/watch?"])
 ! - YouTube videos within search results
@@ -441,6 +454,8 @@ perplexity.ai###__next > div:not([class]):has(div.fixed svg[data-icon="google"])
 ! Hide entire "related questions" container
 ! - **IMPORTANT**: This filter is not optimized and may slow down your browser; use at your own discretion.
 perplexity.ai##.group:has(.light:has-text(/^SPONSORED$/))
+perplexity.ai##body:style( overflow: auto !important; )
+
 
 ! ---- Pexels ----
 
@@ -537,6 +552,8 @@ twitter.com,x.com##a[role="link"][href*="ads.x.com"]
 twitter.com,x.com##a[role="link"][href*="jobs"]
 twitter.com,x.com##a[role="link"][href*="spaces/start"]
 ! - Right sidebar
+! -- Subscribe to Premium
+twitter.com,x.com##[data-testid*="upsell" i]
 ! -- Any "Live" or "Starts tomorrow" events in the "What's happening" box
 twitter.com,x.com##div.r-kritb0[role="link"]:not([data-testid]):has(span:has-text(/LIVE|starts tomorrow/i))
 ! -- "Trending with so-and-so" in the "What's Happening" box
@@ -554,6 +571,8 @@ twitter.com,x.com##[aria-label*="grok" i]
 ! Timeline
 ! - Posts containing links to Spaces
 twitter.com,x.com##article:has(a[href*="/i/spaces"])
+! - Subscribe to Premium
+twitter.com,x.com##[data-testid="inlinePrompt"]:upward(2)
 ! - Topic suggestions (temporarily disabled)
 !twitter.com,x.com##article [aria-label^="Recommended Topic" i]:upward(article)
 
