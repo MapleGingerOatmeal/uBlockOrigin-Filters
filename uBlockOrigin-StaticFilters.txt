@@ -64,7 +64,7 @@ amazon.*##[data-cel-widget="typ-prominentUpsellSlot"]
 ! --- Sports & Outdoors
 ! --- Smart Home
 ! --- Baby
-amazon.*##button[aria-label*="Rufus"]
+amazon.*##button[aria-label*="Rufus" i]
 amazon.*###nav_link_allhealthingress
 amazon.*##a[class="nav-a  "][href*="Amazon_Basics"]
 amazon.*##a[class="nav-a  "][href*="home-garden-kitchen-furniture"]
@@ -89,14 +89,14 @@ amazon.*##a[class="nav-a  "][href*="sports-outdoors"]
 amazon.*##a[class="nav-a  "][href*="Smart-Home"]
 amazon.*##a[class="nav-a  "][href*="baby-car-seats-strollers"]
 ! - Hide the white hover border
-amazon.*##[class*="nav"]:hover:style(border-color: transparent !important;)
-amazon.*##[class*="nav"]:focus:style(border-color: transparent !important;)
-amazon.*##[id*="nav"]:hover:style(border-color: transparent !important;)
-amazon.*##[id*="nav"]:focus:style(border-color: transparent !important;)
-amazon.*##[class*="menu"]:hover:style(border-color: transparent !important;)
-amazon.*##[class*="menu"]:focus:style(border-color: transparent !important;)
-amazon.*##[id*="menu"]:hover:style(border-color: transparent !important;)
-amazon.*##[id*="menu"]:focus:style(border-color: transparent !important;)
+amazon.*##[class*="nav" i]:hover:style(border-color: transparent !important;)
+amazon.*##[class*="nav" i]:focus:style(border-color: transparent !important;)
+amazon.*##[id*="nav" i]:hover:style(border-color: transparent !important;)
+amazon.*##[id*="nav" i]:focus:style(border-color: transparent !important;)
+amazon.*##[class*="menu" i]:hover:style(border-color: transparent !important;)
+amazon.*##[class*="menu" i]:focus:style(border-color: transparent !important;)
+amazon.*##[id*="menu" i]:hover:style(border-color: transparent !important;)
+amazon.*##[id*="menu" i]:focus:style(border-color: transparent !important;)
 
 ! Best Sellers
 ! - Play ("watch") button
@@ -243,7 +243,7 @@ flaticon.com###form_valuation
 flaticon.com###banner-craft
 ! Pinterest related
 flaticon.com##[data-type="pinterest"]
-flaticon.com##button[class*="pinterest"]
+flaticon.com##button[class*="pinterest" i]
 flaticon.com##.pinterest--button
 
 ! ---- Freepik ----
@@ -253,7 +253,7 @@ flaticon.com##.pinterest--button
 freepik.com##li:has(a[href*="pricing"])
 ! Persistent ads
 ! - Stock photos
-freepik.com##[data-testid*="sponsor"]
+freepik.com##[data-testid*="sponsor" i]
 ! - Premium images
 freepik.com##li:has(a[href*="premium-vector"])
 freepik.com##li:has(a[href*="premium-psd"])
@@ -285,19 +285,19 @@ github.com##div.AppHeader-CopilotChat
 github.com##.jgMxtc.Box-sc-g0xbh4-0
 ! Left overlay menu
 ! - Marketplace
-github.com##li[class="ActionListItem"]:has(a[href="/marketplace"])
+github.com##li[class="ActionListItem"]:has(a[href*="/marketplace"])
 ! Right sidebar
 ! - Your enterprises
-github.com##li[class^="Item__LiBox"]:has(a[href="/settings/enterprises"])
+github.com##li[class^="Item__LiBox"]:has(a[href*="/settings/enterprises"])
 ! - Your sponsors
-github.com##li[class^="Item__LiBox"]:has(a[href="/sponsors/accounts"])
+github.com##li[class^="Item__LiBox"]:has(a[href*="/sponsors/accounts"])
 ! - Try Enterprise
-github.com##li[class^="Item__LiBox"]:has(a[href^="/organizations/enterprise_plan"])
+github.com##li[class^="Item__LiBox"]:has(a[href*="/organizations/enterprise_plan"])
 
 ! Sponsors buttons
-github.com##a[href*="/sponsors/"][class*="Button"]
+github.com##a[href*="/sponsors/"][class*="Button" i]
 ! - Explore page navigation bar - "GitHub Sponsors"
-github.com##nav[aria-label="Explore navigation"] a[href="/sponsors/explore"]
+github.com##nav[aria-label="Explore navigation"] a[href=*"/sponsors/explore"]
 ! - Sponsor button next to stars within search results 
 github.com##.llZEgI.Box-sc-g0xbh4-0
 ! - Sponsor pitch/plea box below search results 
@@ -338,9 +338,9 @@ google.*##.adDDi.Kcn6oc
 
 ! Petty shit
 ! - Any mentions of Google Chrome
-google.*##div[class="MjjYud"]:has(span:has-text(Google Chrome))
-google.*##div[class="MjjYud"]:has(span:has-text(Chrome extension))
-google.*##div[class="MjjYud"]:has(span:has-text(Chrome-extension))
+google.*##div[class="MjjYud"]:has(span:has-text("Google Chrome"))
+google.*##div[class="MjjYud"]:has(span:has-text("Chrome extension"))
+google.*##div[class="MjjYud"]:has(span:has-text("Chrome-extension"))
 
 ! Footer
 ! - Help, Send Feedback, Privacy, and Terms links
@@ -412,7 +412,7 @@ linkedin.com##[class="ivm-image-view-model  mr1 "]
 
 ! Notifications
 ! - Anything that mentions Premium
-linkedin.com##article.nt-card:has([class*="premium"])
+linkedin.com##article.nt-card:has([class*="premium" i])
 
 ! Main page
 ! - Left Sidebar
@@ -546,18 +546,18 @@ svgfind.com,svgrepo.com##div[class^="style_socialLinks"]
 ! - Left sidebar
 ! -- Grok, Premium, Monetization, Verified Orgs, Ads, Jobs, and Create Your Space
 twitter.com,x.com##a[role="link"][href*="premium_sign_up"]
-twitter.com,x.com##a[role="link"][href*="monetization"]
+twitter.com,x.com##a[role="link"][href*="monetization" i]
 twitter.com,x.com##a[role="link"][href*="verified-orgs-signup"]
 twitter.com,x.com##a[role="link"][href*="ads.x.com"]
-twitter.com,x.com##a[role="link"][href*="jobs"]
+twitter.com,x.com##a[role="link"][href*="jobs" i]
 twitter.com,x.com##a[role="link"][href*="spaces/start"]
 ! - Right sidebar
 ! -- Subscribe to Premium
 twitter.com,x.com##[data-testid*="upsell" i]
 ! -- Any "Live" or "Starts tomorrow" events in the "What's happening" box
-twitter.com,x.com##div.r-kritb0[role="link"]:not([data-testid]):has(span:has-text(/LIVE|starts tomorrow/i))
+twitter.com,x.com##div.r-kritb0[role="link"]:not([data-testid]):has(span:has-text(/LIVE|starts tomorrow/))
 ! -- "Trending with so-and-so" in the "What's Happening" box
-twitter.com,x.com##div:has-text(/Trending with/):has(> a[href*="trend_click"])
+twitter.com,x.com##div:has-text(/Trending with/i):has(> a[href*="trend_click"])
 ! -- Entire right sidebar footer (terms of service, privacy policy, cookie policy, accessibility, etc)
 twitter.com,x.com##div.css-175oi2r.r-18bvks7.r-1867qdf.r-1phboty.r-ku1wi2.r-1udh08x.r-1niwhzg.r-1yadl64:has(nav[aria-label="Footer"])
 ! -- Alternative to above: just hide the footer link to "Ads info"
@@ -628,7 +628,7 @@ wallpapercave.com###fsocial
 ! ---- YouTube ----
 
 ! "$Thanks$" monetization button
-youtube.com##button[aria-label="Thanks"][title="Show support with Super Thanks"]
+youtube.com##button[aria-label="Thanks"][title="Show support with Super Thanks" i]
 ! Tag indicating that a user paid a content creator
 youtube.com###paid-comment-chip
 
@@ -786,8 +786,8 @@ yce.perfectcorp.com##.gift-box_giftBoxContainer__NiavV
 thekitchn.com##.Tooltip--centerIndicator.Tooltip--right.Tooltip.jsx-4142367655.jsx-3085591717
 
 ! TinEye - Remove sponsored content like Adobe Stock and Shutterstock (main search results and right sidebar)
-tineye.com##.flex.items-start:has(span:has-text(/SPONSORED/i))
-tineye.com##aside:has(span:has-text(/SPONSORED/i))
+tineye.com##.flex.items-start:has(span:has-text("SPONSORED"))
+tineye.com##aside:has(span:has-text("SPONSORED"))
 
 ! Symbl.cc - Obtrusive black circle that just blocked view of actual content
 symbl.cc##.cookie__wrapper
