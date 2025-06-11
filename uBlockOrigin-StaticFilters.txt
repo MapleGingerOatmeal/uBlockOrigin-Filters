@@ -250,7 +250,7 @@ flaticon.com##.pinterest--button
 
 ! Navbar
 ! - Pricing link
-freepik.com##li:has(a[href*="pricing"])
+freepik.com##li:has(a[href*="pricing" i])
 ! Persistent ads
 ! - Stock photos
 freepik.com##[data-testid*="sponsor" i]
@@ -297,7 +297,7 @@ github.com##li[class^="Item__LiBox"]:has(a[href*="/organizations/enterprise_plan
 ! Sponsors buttons
 github.com##a[href*="/sponsors/"][class*="Button" i]
 ! - Explore page navigation bar - "GitHub Sponsors"
-github.com##nav[aria-label="Explore navigation"] a[href=*"/sponsors/explore"]
+github.com##nav[aria-label="Explore navigation"] a[href*="/sponsors/explore"]
 ! - Sponsor button next to stars within search results 
 github.com##.llZEgI.Box-sc-g0xbh4-0
 ! - Sponsor pitch/plea box below search results 
