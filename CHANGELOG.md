@@ -1,5 +1,25 @@
 # CHANGELOG
 
+## 2025-07-26
+
+### New filters
+
+- Google
+  - Updated AI Mode tab filter, new version credit to u/RraaLL on [r/uBlockOrigin](https://www.reddit.com/r/uBlockOrigin/comments/1l4vpmj/comment/mwcvxlt)
+  - Short Videos section (two versions - require further optimization but functional for now)
+  - Videos section
+- Reddit - Added filters for Advertise on Reddit and Reddit Pro link in user drawer
+- Misc. - Dispatch, Dribbble, Ebay, IPT, Winmoes, xahlee.info Unicode search
+
+### General cleanup & optimization
+
+- Alphabetized the less organized section.
+- Google
+  - Youtube videos section - Temporarily disabled as it was causing unintended issues when using reverse image search.
+  - Grouped mobile-specific filters together.
+- Reddit - Optimized and organized filters for user drawer
+- Promoted Lenovo and TechRadar filters from less-organized section
+
 ## 2025-06-20
 
 New filters:

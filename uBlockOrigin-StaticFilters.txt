@@ -1,39 +1,4 @@
 ! ====================
-!      CHANGELOG:    
-! ====================
-
-! --- NEW FILTERS ---
-! Amazon
-! - Amazon Pharmacy promotion above item images
-! Google
-! - "Google Sponsored" promotional ad for Developers Console which appeared when I searched using 'site:'
-! - "Save your favorite brands to get more relevant results"
-! - "Popular products" section
-! - AI Mode toolbar tab
-! - AI Mode popup nag/ad
-! Mozilla
-! - Firefox News ad
-! The Noun Project
-! - In-line ad
-! News.com.au
-! - Sticky PIP video player
-! Reddit
-! - Top toolbar - 'Advertise on Reddit' button
-! - Mobile - "Related Answers" section after comments
-! Vecteezy
-! - Sponsored search results
-
-! --- GENERAL CLEANUP & OPTIMIZATION ---
-! - Temporarily disabled Google Chrome search filter
-! - Removed 'www' subdomain from This Week News filters
-! - Amazon:
-! -- Reformatted Amazon navigation menu filters to improve readability
-! -- Removed disabled poorly optimized filter for "Buy it again" on the 'Your Orders' page
-! -- Reformatted note regarding "Customers also bought" widget for clarity. Enabled hiding items within the widget, disabled hiding the entire widget.
-! - Moved Vecteezy to the organized Cosmetic Filters section
-
-
-! ====================
 !   COSMETIC FILTERS    
 ! ====================
 
@@ -199,6 +164,8 @@ cvs.com##nav[class="sc-cvs-global-footer-social-links"]
 
 ! ---- DeviantArt ----
 
+! Premium membership features
+deviantart.com##._2D30j._37cCW._16RrG._1jkTN.reset-link
 ! Top navigation bar 
 ! - New seller tools flashing button
 ||www.deviantart.com/_nsfgfb/$subdocument
@@ -209,9 +176,18 @@ deviantart.com##._2B9cc._2WuWj.VhKum:upward(div._1bF9v:has(a[href*="/core-member
 deviantart.com###site-header-user-menu div._1bF9v:not(:has(a[href^="https://www.deviantart.com/account/"]))::before
 ! -- Remove extra padding above remaining menu items (only when not logged in)
 deviantart.com###site-header-user-menu div._1bF9v:not(:has(a[href^="https://www.deviantart.com/account/"])):style(padding-top: 2px !important)
-
 ! Deviations - Premium icon
 ||st.deviantart.net/badges/fabricoffreedom_override.svg$image
+
+! ---- Columbus Dispatch ----
+
+! Mobile - bottom ad banner 
+dispatch.com##aside[aria-label="advertisement"]
+
+! ---- Dribbble ----
+
+! Pro upsell banner
+dribbble.com##div[class*="pro-feed-banner"]
 
 ! ---- DuckDuckGo ----
 
@@ -230,6 +206,11 @@ duckduckgo.com##[data-zci-link="products"]
 ! Twitter link
 ||assets/icons/thirdparty/twitter.svg$image,domain=duckduckgo.com
 duckduckgo.com##li.about-profiles__item:has(img[src*="/assets/icons/thirdparty/twitter.svg"])
+
+! ---- Ebay ----
+
+! Orders - ad
+order.ebay.com##.summary-region > .region-content > .vod-ads-placement
 
 ! ---- Etsy ----
 
@@ -348,67 +329,50 @@ github.com##.jRFAHs.Box-sc-g0xbh4-0 > .bjtFqb.Box-sc-g0xbh4-0 > .gvDFpV.Box-sc-g
 
 ! ---- Google ----
 
-! Google Search
+! - Google web search -
 
-! Search bar and search toolbar
+! Search bar and search tools
+! - AI
+! -- AI-generated summary above search results
+google.*##.hdzaWe
+! -- AI Mode toolbar tab, credit to u/RraaLL (https://www.reddit.com/r/uBlockOrigin/comments/1l4vpmj/comment/mwcvxlt)
+google.*##[role="navigation"] [role="list"]>[role="listitem"]:has([href^="/search"][href*="&udm=50"])
+! -- AI Mode popup nag/ad
+google.*###stUuGf
 ! - Search bar microphone icon
 google.*##[aria-label="Search by voice"]
-! - AI Mode toolbar tab
-google.*##.olrp5b
 ! - Results stats, e.g. 'About x results (0.NN seconds)'
 google.*##div#result-stats
 ! - "Google Sponsored" promotional ad for Google Developers Console which appeared when I searched using site:
-! -- NOTE: This is not yet thoroughly tested regarding scope. Check this if there is future breakage.
+! -- NOTE: This filter has not yet been thoroughly tested regarding scope. Check this if there is future breakage.
 google.*##.SRfaKe:has(h2 + ol cite)
-! - AI Mode popup nag/ad
-google.*###stUuGf
 
-! AI summary above search results
-google.*##.hdzaWe
-
-! Sections within search results
+! Featured sections within search results
 ! - Featured snippets
 google.*##.OJXvsb.XzTjhb.dG2XIf
 google.*##.g-blk.JnwWd.wF4fFd.vt6azd.Ww4FFb.wHYlTd
-! - Youtube videos section
-google.*##.ULSxyf:not(:only-child):has(div[data-surl*="https://www.youtube.com/watch?"])
-! - YouTube videos within search results
-google.*###ow18
-! - "People also search for"
-google.*##[id^="eob_"]
-google.*##[id*="bres"]
-! - "People also ask"
+! - "People also ..."
+! -- "... ask"
 google.*##div.ouy7Mc
 google.*##.Wt5Tfe
-! - Short videos
-google.*##div.ULSxyf > .MjjYud > .vt6azd.Ww4FFb
+! -- "... search for"
+google.*##[id^="eob_"]
+google.*##[id*="bres"]
 ! - Top Answers carousel
 google.*##.RyIFgf
-! - 'What people are saying' heading text
+! - "What people are saying" heading text
 google.*##.adDDi.Kcn6oc
 
-! Petty shit
-! - Any mentions of Google Chrome
-!google.*##div[class="MjjYud"]:has(span:has-text("Google Chrome"))
-!google.*##div[class="MjjYud"]:has(span:has-text("Chrome extension"))
-!google.*##div[class="MjjYud"]:has(span:has-text("Chrome-extension"))
+! Videos within search results
+! - General video results
+google.*##.vtSz8d
+! - YouTube videos
+google.*###ow18
+! - Youtube videos - Temporarily disabled as it was causing unintended issues when using reverse image search.
+! google.*##.ULSxyf:not(:only-child):has(div[data-surl*="https://www.youtube.com/watch?"])
 
-! Footer
-! - Help, Send Feedback, Privacy, and Terms links
-google.*##span#fsl:has(a[href^="https://support.google.com/websearch"])
-! - Zip, City, State, From your device, update location links (matches known AND unknown locations)
-google.*##div[class="fbar b2hzT"]:has(span[class*="known_loc"])
-
-! Google Image Search
-! Related searches suggestions
-google.*##.BA0zte
-! Image panel footer (Feedback, Get help, and Saved links)
-google.*##.UafVBb
-! Warning that images may be subject to copyright
-google.*##a[aria-label="Learn more about copyright"]:upward(div.Dpn58d)
-
-! Products
-! - Various product info (prices, review, delivery times, return windows, etc) which appears under select search results
+! Product and shopping related
+! - Various product details (prices, review, delivery times, return windows, etc) that appears under select search results
 google.*##.QU4hqb
 ! - Product pricing and delivery information under search results
 google.*##div[class="kb0PBd ieodic"][style="grid-area:mCCBcf"]
@@ -416,6 +380,36 @@ google.*##div[class="kb0PBd ieodic"][style="grid-area:mCCBcf"]
 google.*##.FkJiHe:upward(div.ULSxyf.yhQgZb)
 ! - "Popular products" section
 google.*##product-viewer-group:upward(div.A6K0A)
+
+! Petty shit
+! - Any mentions of Google Chrome
+! google.*##div[class="MjjYud"]:has(span:has-text("Google Chrome"))
+! google.*##div[class="MjjYud"]:has(span:has-text("Chrome extension"))
+! google.*##div[class="MjjYud"]:has(span:has-text("Chrome-extension"))
+
+! Mobile filters
+! - Videos section
+google.*##.vt6azd.Ww4FFb.vtSz8d
+! - Short Videos section
+! - TO-DO: Test if these can be simplified by selecting .vt6azd.Ww4FFb alone
+google.*##div.ULSxyf > .MjjYud > .vt6azd.Ww4FFb
+google.*###rso > div.MjjYud > .vt6azd.Ww4FFb
+google.*##.mnr-c.YJpHnb
+
+! Footer
+! - Help, Send Feedback, Privacy, and Terms links
+google.*##span#fsl:has(a[href^="https://support.google.com/websearch"])
+! - Zip, City, State, From your device, update location links (matches known AND unknown locations)
+google.*##div[class="fbar b2hzT"]:has(span[class*="known_loc"])
+
+! - Google Image Search -
+
+! Related searches suggestions
+google.*##.BA0zte
+! Image panel footer (Feedback, Get help, and Saved links)
+google.*##.UafVBb
+! Warning that images may be subject to copyright
+google.*##a[aria-label="Learn more about copyright"]:upward(div.Dpn58d)
 
 ! ---- IMDb ----
 
@@ -434,7 +428,7 @@ imdb.com##div[data-testid="imdb-pro-sidebar-widget"]:upward(1)
 
 ! FAQs - Powered by Alexa
 ! - TODO: Double check that this is not too broad. 
-!imdb.com##.hLryWF
+! imdb.com##.hLryWF
 
 ! Footer
 ! - Social media links
@@ -448,11 +442,21 @@ imdb.com##.imdb-footer div.imdb-footer__logo
 iptorrents.com##div.bug
 ! Pet gallery button
 iptorrents.com###petGalleryBtn
+! Notice
+iptorrents.com##.warp-notice
 
 ! ---- Kasa ----
 
 ! Floating ADA button
 kasasmart.com##.tp-ada-trigger-left.tp-ada-trigger-bgimg.tp-ada-trigger
+
+! ---- Lenovo ----
+
+! AI chatbot
+||forums.lenovo.com/images/lena_new_39.png$image
+forums.lenovo.com##.smart-avatar-trigger
+! AI chatbot, Black Friday version
+||pcsupport.lenovo.com/esv4/plugins/contactus/lena-bot/inline-lena-black-friday.png$image
 
 ! ---- LinkedIn ----
 
@@ -565,17 +569,24 @@ reddit.com##recent-posts
 !reddit.com##.mx-md.flex.mb-md.\!mx-0.legal-links
 reddit.com##.legal-links
 
-! User menu
-! - Top toolbar - Advertise on Reddit button
-reddit.com##advertise-button:upward(span.hidden.m\:block)
-! - Premium features and ad upsell content
+! Top toolbar and user drawer
+! - Top toolbar
+! -- Premium features and ad upsell content
 reddit.com##li:has(a[href="/contributor-program/profile"])
-reddit.com##li:has(a[href*="accounts.reddit.com/adsregister"])
-! - Extra divider before Settings
-reddit.com##hr:has(+ ul:has(a[href="/settings/"]))
-reddit.com##li:has(a[href="/premium"])
-! -- Reddit boosted content icon in top navigation bar
+reddit.com##li:has(a[href*="/adsregister"])
+! -- Advertise on Reddit button
+reddit.com##advertise-button:upward(span.hidden.m\:block)
+! -- Reddit boosted content button
 reddit.com###advertise-button > .justify-center.items-center.flex > .flex > svg
+! - User drawer
+! -- Premium link
+reddit.com##div#user-drawer-content faceplate-tracker:has(a[href*="/premium"])
+! -- Advertise on Reddit link and Try Reddit Pro link + divider
+reddit.com##div#user-drawer-content ul:has(a[href*="/reddit-pro?"])
+reddit.com##div#user-drawer-content ul:has(a[href*="/reddit-pro?"]) + hr
+! -- Extra divider under Settings link
+reddit.com##div#user-drawer-content ul:has(a[href="/settings/"]) + hr
+
 
 ! Settings page
 ! - Connect Google account
@@ -602,8 +613,15 @@ reddit.com##aside[aria-label*="Related Answers"]
 
 ! ---- Remix Icons ----
 
-! Gross appeal to use new app
+! New app upsell
 remixicon.com##.go-somno
+
+! ---- StackExchange ----
+
+! Software Engineering
+softwareengineering.stackexchange.com##.is-visible.js-question-follow-feature-popover.ws2.s-popover
+softwareengineering.stackexchange.com##.overflow-hidden.blr-sm.fc-black-600.pb6.p12.bc-black-075.bb.bl.bt
+softwareengineering.stackexchange.com##.fc-light.mb8.mt16.ml8.tt-uppercase.fs-fine
 
 ! ---- SVGFind/SVGRepo ----
 
@@ -616,6 +634,22 @@ svgfind.com,svgrepo.com##.style_request__oYgyy:upward(1)
 svgfind.com,svgrepo.com##div[class^="style_sponsor"]
 ! - Social media buttons
 svgfind.com,svgrepo.com##div[class^="style_socialLinks"]
+
+! ---- TechRadar ----
+
+! Media player
+techradar.com##.sticky-player-background
+techradar.com##.jw-reset.jw-video
+techradar.com##.jw-reset.jw-media
+techradar.com##.jw-reset.jw-wrapper
+techradar.com##.jwplayer__unmute
+techradar.com###botr_KgQ4BrDw_APjl6osP_div
+
+! ---- TinEye ----
+
+! Remove sponsored content like Adobe Stock and Shutterstock (main search results and right sidebar)
+tineye.com##.flex.items-start:has(span:has-text("SPONSORED"))
+tineye.com##aside:has(span:has-text("SPONSORED"))
 
 ! ---- Twitter ----
 
@@ -695,14 +729,24 @@ unsplash.com##.hVtO9.VqHXt.oO0Qr, .vDmFU.VqHXt.oO0Qr:style(height: auto !importa
 unsplash.com##.u_wu0.xtWna.u0cmn.Hrdtv.KWauk.nxjMA:style(height: auto !important; min-height: 0 !important)
 unsplash.com##.il09g:style(height: auto !important; min-height: 0 !important)
 
-
 ! ---- Vecteezy ----
 
 ! Popular searches by country
 vecteezy.com##.popular-country-searches
-
 ! Sponsored search results
 vecteezy.com##.partner-sponsored-results--similar.partner-sponsored-results--sstk.partner-sponsored-results
+vecteezy.com##.ez-sponsored-results
+vecteezy.com##li.ez-resource-thumb--sponsored
+! No Pinterest button when hovering over images on search results page or image details page
+vecteezy.com##.is-tipped.resource-action-button--pinterest.resource-action-button--small.resource-action-button--square.resource-action-button.ez-btn--light.ez-btn
+vecteezy.com##.resource-action-button--pinterest.resource-action-button--small.resource-action-button--square.resource-action-button.ez-btn--light.ez-btn
+
+! ---- Vinstar Themes ----
+
+! Disable custom cursor
+vinstartheme.com##.AdB_container
+vinstartheme.com##.main.ShOw.AdBlocker
+vinstartheme.com##*:style(cursor:auto !important)
 
 ! ---- WallpaperCave ----
 
@@ -728,19 +772,17 @@ stock.adobe.com##div[class^="js-hover-menu-v2"]
 aflfootyshop.com.au###recent_sales_content_img
 aflfootyshop.com.au###recent_sales_content_description
 
-! Design Wizard
-designwizard.com##.fixed.blog-footer
+! APKPure
+apkpure.com##.share-mob.share-btn > ul
+||static.apkpure.com/mobile/static/imgs/icon-bell-float.svg$image
 
-! Graphic Design Junction
-graphicdesignjunction.com##.ss-animated.ss-rounded-icons.ss-with-spacing.ss-regular-icons.ss-left-sidebar.ss-hover-animation-fade.ss-animate-entrance.ss-entrance-animation-fade
+! Ashley Furniture
+ashleyfurniture.com###sslp-newicon-bottom
+ashleyfurniture.com###sslp-global-sidebutton-close
 
-! Imgur
-imgur.com##.BottomRecirc
-imgur.com##.emerald-button
-imgur.com##.meme.upload.Button.MakeMeme
-
-! Logitech Support
-support.logi.com###callOut
+! BigFooty - annoying notices
+bigfooty.com##.topbanner.chaching
+bigfooty.com##.js-notices.notices--isMulti.notices--floating.notices
 
 ! Britannica
 britannica.com##.ad-banner--hide-mobile.ad-banner--header.ad-banner > .adswrapper.ad-container
@@ -748,14 +790,78 @@ britannica.com##.ad-banner--post-game.ad-banner--no-flex.ad-banner--footer.ad-ba
 britannica.com##.ad-banner--no-flex.ad-banner--header.ad-banner > .adswrapper.ad-container
 britannica.com###gtm-promo-link-blossom
 
-! NYTimes - Games sale banner
-nytimes.com##.light_yellow.games-sale-banner.top-sale-banner
+! CNET
+cnet.com##.uvpjs__controlbar
+cnet.com##.entered.dock.inviewElement
 
-! StitchFix
-stitchfix.com##.Pointer___pointer-module__pointer___yNzXH_kfi.Box___box-module__dark___BcHFU_kfi
+! Coolors - upsell content
+coolors.co##.floating-cad
+coolors.co###pro-float
+
+! Convertio - "Rate us" pop up dialog in corner
+convertio.co##.rate-us
+
+! Design Wizard
+designwizard.com##.fixed.blog-footer
 
 ! GeekForGeeks
 geeksforgeeks.org###darkMode-wrap-red-dot
+
+! Graphic Design Junction
+graphicdesignjunction.com##.ss-animated.ss-rounded-icons.ss-with-spacing.ss-regular-icons.ss-left-sidebar.ss-hover-animation-fade.ss-animate-entrance.ss-entrance-animation-fade
+
+! Hunker
+hunker.com##.jw-reset.jw-media
+hunker.com##.jw-reset.jw-wrapper
+hunker.com##.jwplayer__close
+
+! Imgur
+imgur.com##.BottomRecirc
+imgur.com##.emerald-button
+imgur.com##.meme.upload.Button.MakeMeme
+
+! JustWatch desktop website - Hide 'promoted' text and empty 'Bundled Offers' header
+justwatch.com##.promoted-buybox__label
+justwatch.com##.middle-buybox-container
+
+! LazyApply - notification
+lazyapply.com##.is-size-7.custom-notification-container
+
+! Logitech Support
+support.logi.com###callOut
+
+! NYTimes - Games sale banner
+nytimes.com##.light_yellow.games-sale-banner.top-sale-banner
+
+! OneCrazyHouse.com
+! - Save this Article box
+onecrazyhouse.com##.slick-on-page
+! - Social media widget
+onecrazyhouse.com###iconsPanel
+
+! Partition Wizard - Promo banner
+partitionwizard.com##.promotions-banner-wrap
+
+! PerfectCorp apps - gift box in bottom right corner
+yce.perfectcorp.com##.gift-box_giftBoxContainer__NiavV
+
+! Pixabay
+pixabay.com##div.container--t3k85
+
+! Pontiac Forum - pulsing red register button
+pontiacforum.com##.p-navgroup-link--register.p-navgroup-link--textual.p-navgroup-link
+
+! Repair Clinic
+repairclinic.com##.promoDrawerInner
+
+! SERanking - Sign up nag
+seranking.com##.sign-up__wrapper
+
+! Sewing Hive - Hide Pinterest logo popping up on every image
+sewinghive.com##.PIN_1729808926283_save.PIN_1729808926283_pin_it_button_floating.PIN_1729808926283_button_pin
+
+! SmartPCUtilities.com
+||www.smartpcutilities.com/images/promotions/servicesoptimizer/win-services-promo.png$image
 
 ! Sporcle
 sporcle.com###remove-ads > .orange-promo-link
@@ -765,129 +871,39 @@ sporcle.com###orange > .navWrapper > div
 sporcle.com##.adhesion.orange.horizontal.sporcle-promo
 sporcle.com###advancedFiltersToggle
 
-! StackExchange
-softwareengineering.stackexchange.com##.is-visible.js-question-follow-feature-popover.ws2.s-popover
-softwareengineering.stackexchange.com##.overflow-hidden.blr-sm.fc-black-600.pb6.p12.bc-black-075.bb.bl.bt
-softwareengineering.stackexchange.com##.fc-light.mb8.mt16.ml8.tt-uppercase.fs-fine
+! StitchFix
+stitchfix.com##.Pointer___pointer-module__pointer___yNzXH_kfi.Box___box-module__dark___BcHFU_kfi
 
-! LazyApply - notification
-lazyapply.com##.is-size-7.custom-notification-container
-
-! Hunker
-www.hunker.com##.jw-reset.jw-media
-www.hunker.com##.jw-reset.jw-wrapper
-www.hunker.com##.jwplayer__close
-
-! Ashley Furniture
-ashleyfurniture.com###sslp-newicon-bottom
-ashleyfurniture.com###sslp-global-sidebutton-close
-
-! Repair Clinic
-repairclinic.com##.promoDrawerInner
-
-! Pontiac Forum - pulsing red register button
-pontiacforum.com##.p-navgroup-link--register.p-navgroup-link--textual.p-navgroup-link
-
-! CNET
-cnet.com##.uvpjs__controlbar
-cnet.com##.entered.dock.inviewElement
-
-! TechRadar - media player
-techradar.com##.sticky-player-background
-techradar.com##.jw-reset.jw-video
-techradar.com##.jw-reset.jw-media
-techradar.com##.jw-reset.jw-wrapper
-techradar.com##.jwplayer__unmute
-techradar.com###botr_KgQ4BrDw_APjl6osP_div
-
-! ThisWeekNews
-thisweeknews.com##.gnt_cw_w > .gnt_cw > .gnt_pr > .gnt_em__el.gnt_em_vp__tavp.gnt_em
-thisweeknews.com##.gnt_cw_w > .gnt_cw > .gnt_xbr > .gnt_ar_xb
-
-! Coolors - upsell content
-coolors.co##.floating-cad
-coolors.co###pro-float
-
-! APKPure
-apkpure.com##.share-mob.share-btn > ul
-||static.apkpure.com/mobile/static/imgs/icon-bell-float.svg$image
+! Symbl.cc - Obtrusive black circle that just blocked view of actual content
+symbl.cc##.cookie__wrapper
 
 ! TheFreeDictionary
 ||img.tfd.com/sprite.png$image
 thefreedictionary.com##.icon-notif.i
 
-! Winaero
-winaero.com##.gad-gads-title
-winaero.com##.widget_custom_html.textwidget.widget
+! The Kitchn - unnecessary nagging tooltips
+thekitchn.com##.Tooltip--centerIndicator.Tooltip--right.Tooltip.jsx-4142367655.jsx-3085591717
 
-! VinstarTheme - disable custom cursor
-vinstartheme.com##.AdB_container
-vinstartheme.com##.main.ShOw.AdBlocker
-vinstartheme.com##*:style(cursor:auto !important)
-
-! SERanking - Sign up nag
-seranking.com##.sign-up__wrapper
-
-! BigFooty - annoying notices
-bigfooty.com##.topbanner.chaching
-bigfooty.com##.js-notices.notices--isMulti.notices--floating.notices
-
-! Partition Wizard - Promo banner
-partitionwizard.com##.promotions-banner-wrap
-
-! Sewing Hive - Hide Pinterest logo popping up on every image
-sewinghive.com##.PIN_1729808926283_save.PIN_1729808926283_pin_it_button_floating.PIN_1729808926283_button_pin
-
-! DeviantArt - Paid membership features
-deviantart.com##._2D30j._37cCW._16RrG._1jkTN.reset-link
-
-! Vecteezy - No Pinterest button when hovering over images on search results page or image details page
-vecteezy.com##.is-tipped.resource-action-button--pinterest.resource-action-button--small.resource-action-button--square.resource-action-button.ez-btn--light.ez-btn
-vecteezy.com##.resource-action-button--pinterest.resource-action-button--small.resource-action-button--square.resource-action-button.ez-btn--light.ez-btn
-! - Sponsored search results
-vecteezy.com##.ez-sponsored-results
-vecteezy.com##li.ez-resource-thumb--sponsored
-
-! Lenovo 
-! - AI chatbot
-||forums.lenovo.com/images/lena_new_39.png$image
-forums.lenovo.com##.smart-avatar-trigger
-! - AI chatbot, Black Friday version
-||pcsupport.lenovo.com/esv4/plugins/contactus/lena-bot/inline-lena-black-friday.png$image
-
-! Convertio - "Rate us" pop up dialog in corner
-convertio.co##.rate-us
-
-! JustWatch desktop website - Hide 'promoted' text and empty 'Bundled Offers' header
-justwatch.com##.promoted-buybox__label
-justwatch.com##.middle-buybox-container
+! ThisWeekNews
+thisweeknews.com##.gnt_cw_w > .gnt_cw > .gnt_pr > .gnt_em__el.gnt_em_vp__tavp.gnt_em
+thisweeknews.com##.gnt_cw_w > .gnt_cw > .gnt_xbr > .gnt_ar_xb
 
 ! Tom's Hardware forums - "notifications" that are really just ads
 forums.tomshardware.com##.js-notices.notices--isMulti.notices--block.notices
 
-! PerfectCorp apps - gift box in bottom right corner
-yce.perfectcorp.com##.gift-box_giftBoxContainer__NiavV
+! VinStarTheme - disable custom cursor
+vinstartheme.com##.AdB_container
+vinstartheme.com##.main.ShOw.AdBlocker
+vinstartheme.com##*:style(cursor:auto !important)
 
-! The Kitchn - unnecessary nagging tooltips
-thekitchn.com##.Tooltip--centerIndicator.Tooltip--right.Tooltip.jsx-4142367655.jsx-3085591717
+! Winaero
+winaero.com##.gad-gads-title
+winaero.com##.widget_custom_html.textwidget.widget
 
-! TinEye - Remove sponsored content like Adobe Stock and Shutterstock (main search results and right sidebar)
-tineye.com##.flex.items-start:has(span:has-text("SPONSORED"))
-tineye.com##aside:has(span:has-text("SPONSORED"))
+! Winmoes
+winmoes.com###landlord
 
-! Symbl.cc - Obtrusive black circle that just blocked view of actual content
-symbl.cc##.cookie__wrapper
-
-! OneCrazyHouse.com
-! - Save this Article box
-onecrazyhouse.com##.slick-on-page
-! - Social media widget
-onecrazyhouse.com###iconsPanel
-
-! SmartPCUtilities.com
-||www.smartpcutilities.com/images/promotions/servicesoptimizer/win-services-promo.png$image
-
-! Pixabay
-pixabay.com##div.container--t3k85
+! XahLee.info Unicode Search - disable hover popups
+xahlee.info##[id*="popup"]
 
 !End
