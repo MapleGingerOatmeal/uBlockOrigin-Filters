@@ -5,24 +5,24 @@
 ### New filters
 
 - Google
-  - Updated AI Mode tab filter, new version credit to u/RraaLL on [r/uBlockOrigin](https://www.reddit.com/r/uBlockOrigin/comments/1l4vpmj/comment/mwcvxlt)
+  - Updated AI Mode tab filter, new version credit to [u/RraaLL](https://www.reddit.com/r/uBlockOrigin/comments/1l4vpmj/comment/mwcvxlt) on [r/uBlockOrigin](https://www.reddit.com/r/uBlockOrigin)
   - Short Videos section (two versions - require further optimization but functional for now)
   - Videos section
 - Reddit - Added filters for Advertise on Reddit and Reddit Pro link in user drawer
-- Misc. - Dispatch, Dribbble, Ebay, IPT, Winmoes, xahlee.info Unicode search
+- Additional filters added for: Dispatch, Dribbble, Ebay, IPT, Winmoes, xahlee.info Unicode search
 
 ### General cleanup & optimization
 
-- Alphabetized the less organized section.
+- Alphabetized the less organized section
 - Google
   - Youtube videos section - Temporarily disabled as it was causing unintended issues when using reverse image search.
-  - Grouped mobile-specific filters together.
+  - Grouped mobile-specific filters together
 - Reddit - Optimized and organized filters for user drawer
-- Promoted Lenovo and TechRadar filters from less-organized section
+- Promoted Lenovo and TechRadar to Cosmetic Filters section
 
 ## 2025-06-20
 
-New filters:
+### New filters:
 
 - Amazon
   - Amazon Pharmacy promotion above item images
