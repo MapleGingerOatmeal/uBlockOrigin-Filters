@@ -179,11 +179,6 @@ deviantart.com###site-header-user-menu div._1bF9v:not(:has(a[href^="https://www.
 ! Deviations - Premium icon
 ||st.deviantart.net/badges/fabricoffreedom_override.svg$image
 
-! ---- Columbus Dispatch ----
-
-! Mobile - bottom ad banner 
-dispatch.com##aside[aria-label="advertisement"]
-
 ! ---- Dribbble ----
 
 ! Pro upsell banner
@@ -391,9 +386,7 @@ google.*##product-viewer-group:upward(div.A6K0A)
 ! - Videos section
 google.*##.vt6azd.Ww4FFb.vtSz8d
 ! - Short Videos section
-! - TO-DO: Test if these can be simplified by selecting .vt6azd.Ww4FFb alone
 google.*##div.ULSxyf > .MjjYud > .vt6azd.Ww4FFb
-google.*###rso > div.MjjYud > .vt6azd.Ww4FFb
 google.*##.mnr-c.YJpHnb
 
 ! Footer

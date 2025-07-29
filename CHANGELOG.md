@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 2025-07-27
+
+FIX: Rollback Google filter in previous update to correct regression causing all Google search results to be hidden.
+
 ## 2025-07-26
 
 ### New filters
@@ -22,7 +26,7 @@
 
 ## 2025-06-20
 
-### New filters:
+### New filters
 
 - Amazon
   - Amazon Pharmacy promotion above item images
