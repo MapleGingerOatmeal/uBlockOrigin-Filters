@@ -1,0 +1,9 @@
+repos:
+-   repo: local
+    hooks:
+    -   id: update-changelog
+        name: Update CHANGELOG from filter list
+        entry: python update_changelog.py
+        language: python
+        always_run: true
+        files: 'uBlockOrigin-StaticFilters.txt'
