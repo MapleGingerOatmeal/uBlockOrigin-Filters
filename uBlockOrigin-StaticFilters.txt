@@ -1,4 +1,29 @@
 ! ====================
+!      CHANGELOG:    
+! ====================
+
+! ---- NEW & UPDATED FILTERS ----
+! AI Studio - left sidebar disclaimer text
+! IMDb
+! - 'Powered by Alexa' disclaimer and icon in FAQ section
+! - IMDBPro upsell link in box office section
+! - Details - See more company credits at IMDbPro
+! Imgur
+! - Top navbar - Open Arcade button and fake Next button
+! - Image galleries - voting accolade icons and the full right sidebar (trending posts)
+! - Footer
+! LinkedIn - Games (top navbar link) and Top Content (right sidebar)
+! Microsoft Learn
+! - Hide icon in Ask Learn button and style button to match the adjacent button
+! Raindrop.io - AI suggestions button and left sidebar banner
+
+! ---- GENERAL CLEANUP & OPTIMIZATION ----
+! Google - fixed filter for Find related products section
+! Imgur - removed duplicate filter
+! Reddit - removed a poorly optimized filter
+! Twitter/X - fixed filter for primary navigation Grok link
+
+! ====================
 !   COSMETIC FILTERS    
 ! ====================
 
@@ -7,6 +32,11 @@
 ! "Brought to you by" section below articles
 614now.com##.single-post .custom-614-sponsored-by
 614now.com##.home-above-trending.hentry.has-post-thumbnail.format-standard.status-publish.type-post.post.gridlove-box.gridlove-post-d.gridlove-post.custom-614 > .entry-image > [href]
+
+! ---- AI Studio ----
+
+! Left sidebar - disclaimer text
+aistudio.google.com##ms-navbar div.bottom-actions ms-navbar-disclaimer
 
 ! ---- Amazon ----
 
@@ -152,7 +182,7 @@ bing.com##.ins_exp:has(.ins_exp_title:has-text("More inspiration from the web"))
 ! - Ad next to image result
 bing.com##a[href^="https://www.bing.com/aclick"]:upward(div.ta_top)
 
-! --- BoardGameGeek ---
+! ---- BoardGameGeek ----
 
 ! Footer disclaimers 
 boardgamegeek.com##footer div.footer__container + p.mb-0.p-3.bg-black.text-lg-right.fs-xs.text-white-75
@@ -381,7 +411,7 @@ google.*##.q1xhze.sjVJQd.uRG8ge.xYkm8c:has(a.KYg7td.INpicf[href^="https://www.fa
 google.*##.OJXvsb.XzTjhb.dG2XIf
 google.*##.g-blk.JnwWd.wF4fFd.vt6azd.Ww4FFb.wHYlTd
 ! -- Find related products and services
-google.*###HbKV2c:upward(MjjYud)
+google.*###HbKV2c
 ! -- People also ask
 google.*##div.ouy7Mc
 google.*##.Wt5Tfe
@@ -416,6 +446,12 @@ google.*##.iXPZfd.yMbVTb.h373nd.J2MhIb.XBlWIe.cS7M8
 ! ---- IMDb ----
 
 ! Movie/Series pages
+! - Box Office - IMDBPro upsell link
+imdb.com###ProUpsellLink
+! - Details - See more company credits at IMDbPro
+imdb.com##a[href^="https://pro.imdb.com"]:first-of-type:upward(li[data-testid*="title-details"])
+! - FAQ - Powered by Alexa
+imdb.com##section[cel_widget_id*="FAQ" i] svg[class*="ipc-icon--alexa"]:upward(1)
 ! - Metadata
 ! -- Rent/Buy on Amazon (full width)
 imdb.com##.iZTMuu.sc-13283201-0
@@ -423,8 +459,7 @@ imdb.com##.iZTMuu.sc-13283201-0
 imdb.com##.ipc-shoveler__grid.ipc-sub-grid--omit-both.ipc-sub-grid--nowrap.ipc-sub-grid--page-span-3.ipc-sub-grid
 ! - Likes and reactions to images and videos
 imdb.com##.ipc-reaction-summary--base.ipc-reaction-summary
-! IMDb Pro
-! - Right sidebar - Add a demo reel widget
+! Right sidebar - (IMDbPro) Add a demo reel widget
 imdb.com##div[data-testid="imdb-pro-sidebar-widget"]:upward(1)
 ! Footer
 ! - Social media links
@@ -434,10 +469,24 @@ imdb.com##.imdb-footer div.imdb-footer__logo
 
 ! ---- Imgur ----
 
-! (Mobile) Top navbar - Game controller icon
+! Top navbar 
+! - Open Arcade button
+imgur.com##a.NavbarArcadeButton.Button.arcade[href="/arcade"]
+! - (Mobile) Game controller icon
 imgur.com##a.NavbarArcadeButton.ProfileNavbar-item.uScaleTransition
+! - Make meme button
+imgur.com##.meme.upload.Button.MakeMeme
+! - Fake Next button
+imgur.com##.NavbarContainer-center .Navigation-buttons a[data-discover="true"]
+! Galleries
+! - Voting accolade icons
+imgur.com##.GalleryVote > div[class^="GalleryVote-accoladesButton"]
+! - Right sidebar (trending posts)
+imgur.com##div.Gallery-Sidebar
 ! (Mobile) All suggested content below actual image/gallery
 imgur.com##div.BottomRecirc
+! Footer
+imgur.com##.Footer-wrapper
 
 ! ---- IPTorrents ----
 
@@ -479,10 +528,12 @@ forums.lenovo.com##.smart-avatar-trigger
 ! Icons - Premium (gold) and Influencer (blue quote bubbles) next to users' names
 linkedin.com##li-icon[aria-label="Premium member"]
 linkedin.com##[class="ivm-image-view-model  mr1 "]
-! Navbar
+! Top navbar
 ! - "Retry premium" upsell button
 linkedin.com##.premium-upsell-link
 linkedin.com##[data-view-name="premium-nav-upsell-text"]
+! - Games
+linkedin.com##a[href^="https://www.linkedin.com/games"]:upward(li)
 ! - New feed updates notification (the red dot)
 linkedin.com##span[class*="notification-badge"]:style(background-color: transparent !important;)
 ! - "For Business" dropdown
@@ -499,8 +550,19 @@ linkedin.com##[class*="upsell-banner"]
 ! -- Today's puzzles
 linkedin.com##[aria-labelledby="news-module__title-today-puzzles"]
 linkedin.com###news-module__title-today-puzzles
+! Profiles
+! - Right sidebar - Top Content
+linkedin.com##section[class*="top-content-cta"]:upward(section.aside-section-container)
 ! Footer
 linkedin.com##[class*="global-footer-compact"]
+
+! ---- Microsoft Learn ----
+
+! Article header 
+! - Ask Learn button sparkle icon
+learn.microsoft.com###article-header-page-actions button[data-bi-name="ask-learn-assistant-entry"] .icon
+! - Ask Learn button - style it to match the adjacent buttons instead of bright pink
+learn.microsoft.com###article-header-page-actions button[data-bi-name="ask-learn-assistant-entry"]:style(border-color:var(--theme-control-border) !important;)
 
 ! ---- Mozilla ----
 
@@ -557,41 +619,39 @@ perplexity.ai##body:style( overflow: auto !important; )
 ! Search results - Canva ad
 pexels.com##a[class^="CanvaAd"]:upward(1)
 
+! ---- Raindrop.io ----
+
+! Left sidebar
+! - AI suggestions button
+raindrop.io##aside div[class^="header"] a[href="/suggestions"]
+! - Upgrade banner
+raindrop.io##aside a[class^="upgrade"]
+
 ! ---- Reddit ----
 
-! Meta
-! - Site-wide
-! -- Login requirements
+! Site-wide and meta elements
+! - Login requirements
 reddit.com##.morelink > .access-required.login-required
 reddit.com##.create.sidebox > .spacer
 reddit.com##.account-activity-box > p
-! - Settings page
-! -- Connect Google account
-reddit.com##label[data-testid="google"]
-! -- Connect Apple account
-reddit.com##label[data-testid="apple"]
-! -- Subscription
-reddit.com##h2.font-bold.text-18:nth-of-type(3):has-text(Subscription)
-! -- Get Premium
-reddit.com##a[data-testid="get-premium"]
 ! Top navbar
-! -- Ads upsell
+! - Ads upsell
 reddit.com##li:has(a[href*="/adsregister"])
-! -- Advertise on Reddit
+! - Advertise on Reddit
 reddit.com##advertise-button:upward(span.hidden.m\:block)
-! -- Premium features
+! - Premium features
 reddit.com##li:has(a[href="/contributor-program/profile"])
-! -- Reddit boosted content
+! - Reddit boosted content
 reddit.com###advertise-button > .justify-center.items-center.flex > .flex > svg
-! -- User drawer
-! --- Advertise on Reddit and Try Reddit Pro link + divider
+! - User drawer
+! -- Advertise on Reddit and Try Reddit Pro link + divider
 reddit.com##div#user-drawer-content ul:has(a[href*="/reddit-pro?"])
 reddit.com##div#user-drawer-content ul:has(a[href*="/reddit-pro?"]) + hr
-! --- Earn cash on Reddit
+! -- Earn cash on Reddit
 reddit.com###user-drawer-content faceplate-tracker[source="earn"]
-! --- Extra divider under Settings
+! -- Extra divider under Settings
 reddit.com##div#user-drawer-content ul:has(a[href="/settings/"]) + hr
-! --- Premium
+! -- Premium
 reddit.com##div#user-drawer-content faceplate-tracker:has(a[href*="/premium"])
 ! Left sidebar
 ! - Answers (icon and Beta label)
@@ -605,6 +665,13 @@ reddit.com##nav[aria-label="Reddit resources"]
 reddit.com##recent-posts
 ! - Legal links
 reddit.com##.legal-links
+! Settings
+! - Connect other accounts
+reddit.com##label[data-testid="google"]
+reddit.com##label[data-testid="apple"]
+! - Get Premium
+reddit.com##a[data-testid="get-premium"]
+reddit.com##h2:has(~ a[data-test-id="get-premium"])
 
 ! Posts and main feed
 ! - Award button
@@ -673,8 +740,9 @@ tineye.com##aside:has(span:has-text("SPONSORED"))
 ! ---- Twitter ----
 
 ! General or sitewide
-! - Left sidebar
-! -- Grok, Premium, Monetization, Verified Orgs, Ads, Jobs, and Create Your Space
+! - Left sidebar (Primary navigation)
+! -- Premium, Monetization, Verified Orgs, Ads, Jobs, and Create Your Space
+twitter.com,x.com##nav[aria-label="Primary"] a[aria-label="Grok" i]
 twitter.com,x.com##a[role="link"][href*="premium_sign_up"]
 twitter.com,x.com##a[role="link"][href*="monetization" i]
 twitter.com,x.com##a[role="link"][href*="verified-orgs-signup"]
@@ -705,8 +773,6 @@ twitter.com,x.com##button[aria-label="Grok actions"]
 ! -- NOTE: The filter below is an alt in case the first is ineffective
 twitter.com,x.com##a[data-testid="FloatingActionButtons_Tweet_Button"]
 ! twitter.com,x.com##a[aria-label="Compose a post"]
-! (Mobile) Bottom navigation bar - Grok button
-twitter.com,x.com##div[data-testid="BottomBar"] nav[aria-label="Primary"] a[href="/i/grok"]
 ! Settings page
 ! - "Monetization"
 ! - "Premium"
@@ -835,11 +901,6 @@ hunker.com##.jw-reset.jw-media
 hunker.com##.jw-reset.jw-wrapper
 hunker.com##.jwplayer__close
 
-! Imgur
-imgur.com##.BottomRecirc
-imgur.com##.emerald-button
-imgur.com##.meme.upload.Button.MakeMeme
-
 ! JustWatch desktop website - Hide 'promoted' text and empty 'Bundled Offers' header
 justwatch.com##.promoted-buybox__label
 justwatch.com##.middle-buybox-container
@@ -925,3 +986,7 @@ xahlee.info##[id*="popup"]
 
 ! https://themes.vscode.one
 themes.vscode.one###flamelab-chat-widget
+
+! https://www.reddit.com
+||emoji.redditmedia.com/ad1td4bx9ezz_t5_3nqvj/upvote$image
+www.reddit.com##.\32 xs.gap.items-center.flex > .ml-xs.inline-flex.nd\:hidden > community-status > [src="https://emoji.redditmedia.com/ad1td4bx9ezz_t5_3nqvj/upvote"]:upward(2)
