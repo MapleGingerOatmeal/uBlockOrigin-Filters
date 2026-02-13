@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "@adguard/aglint": "^2.1.4",
-    "init": "^0.1.2"
+    "@adguard/aglint": "^3.0.2"
   }
 }

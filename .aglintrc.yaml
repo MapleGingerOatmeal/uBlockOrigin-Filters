@@ -1,0 +1,4 @@
+# AGLint config file
+root: true
+syntax:
+  - UblockOrigin
