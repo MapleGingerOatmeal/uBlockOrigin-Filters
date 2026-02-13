@@ -1,27 +1,4 @@
-! ====================
-!      CHANGELOG:    
-! ====================
 
-! ---- NEW & UPDATED FILTERS ----
-! AI Studio - left sidebar disclaimer text
-! IMDb
-! - 'Powered by Alexa' disclaimer and icon in FAQ section
-! - IMDBPro upsell link in box office section
-! - Details - See more company credits at IMDbPro
-! Imgur
-! - Top navbar - Open Arcade button and fake Next button
-! - Image galleries - voting accolade icons and the full right sidebar (trending posts)
-! - Footer
-! LinkedIn - Games (top navbar link) and Top Content (right sidebar)
-! Microsoft Learn
-! - Hide icon in Ask Learn button and style button to match the adjacent button
-! Raindrop.io - AI suggestions button and left sidebar banner
-
-! ---- GENERAL CLEANUP & OPTIMIZATION ----
-! Google - fixed filter for Find related products section
-! Imgur - removed duplicate filter
-! Reddit - removed a poorly optimized filter
-! Twitter/X - fixed filter for primary navigation Grok link
 
 ! ====================
 !   COSMETIC FILTERS    
@@ -469,14 +446,12 @@ imdb.com##.imdb-footer div.imdb-footer__logo
 
 ! ---- Imgur ----
 
-! Top navbar 
-! - Open Arcade button
+! Top navbar buttoons
+! - Open Arcade
+! - Make Meme
+! - False Next button
 imgur.com##a.NavbarArcadeButton.Button.arcade[href="/arcade"]
-! - (Mobile) Game controller icon
-imgur.com##a.NavbarArcadeButton.ProfileNavbar-item.uScaleTransition
-! - Make meme button
 imgur.com##.meme.upload.Button.MakeMeme
-! - Fake Next button
 imgur.com##.NavbarContainer-center .Navigation-buttons a[data-discover="true"]
 ! Galleries
 ! - Voting accolade icons
@@ -983,10 +958,3 @@ winmoes.com###landlord
 xahlee.info##[id*="popup"]
 
 !End
-
-! https://themes.vscode.one
-themes.vscode.one###flamelab-chat-widget
-
-! https://www.reddit.com
-||emoji.redditmedia.com/ad1td4bx9ezz_t5_3nqvj/upvote$image
-www.reddit.com##.\32 xs.gap.items-center.flex > .ml-xs.inline-flex.nd\:hidden > community-status > [src="https://emoji.redditmedia.com/ad1td4bx9ezz_t5_3nqvj/upvote"]:upward(2)

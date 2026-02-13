@@ -1,5 +1,30 @@
 # CHANGELOG
 
+
+## 2026-02-12
+
+### New Filters
+
+- AI Studio - left sidebar disclaimer text
+- IMDb
+  - 'Powered by Alexa' disclaimer and icon in FAQ section
+  - IMDBPro upsell link in box office section
+  - Details - See more company credits at IMDbPro
+- Imgur
+  - Top navbar - Open Arcade button and fake Next button
+  - Image galleries - voting accolade icons and the full right sidebar (trending posts)
+  - Footer
+- LinkedIn - Games (top navbar link) and Top Content (right sidebar)
+- Microsoft Learn
+  - Hide icon in Ask Learn button and style button to match the adjacent button
+- Raindrop.io - AI suggestions button and left sidebar banner
+
+### General cleanup & optimization
+
+- Google - fixed filter for Find related products section
+- Imgur - removed duplicate filter
+- Reddit - removed a poorly optimized filter
+- Twitter/X - fixed filter for primary navigation Grok link
 ## 2025-08-27
 
 ### New Filters
@@ -87,7 +112,7 @@ FIX: Rollback Google filter in previous update to correct regression causing all
 - Vecteezy
   - Sponsored search results
 
-### GENERAL CLEANUP & OPTIMIZATION
+### General cleanup & optimization
 
 - Temporarily disabled Google Chrome search filter
 - Removed 'www' subdomain from This Week News filters

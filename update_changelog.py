@@ -21,48 +21,61 @@ def main():
 
     filter_content = filter_list_path.read_text(encoding='utf-8')
     match = re.search(
-        r"(! ====================\s*!     CHANGELOG:     \s*! ====================)(.*?)(! ====================)",
+        r"(\s*)("
+        r"!\s*====================\s*!\s+CHANGELOG:\s*! ====================.*?"
+        r")(?=\s*! ====================)",
         filter_content, re.DOTALL
     )
 
     if not match or not match.group(2).strip():
         sys.exit(0)
 
+    # Full changelog block to remove is group 0, block to parse for changes is group 2
     notes_block = match.group(2)
 
-    markdown_lines = []
-    lines = notes_block.strip().split('\n')
-    for line in lines:
+    section_parts = []
+    is_first_section = True
+    for line in notes_block.strip().split('\n'):
         content = re.sub(r'^!\s?', '', line).strip()
         if not content: continue
+        
+        is_header = False
         if "NEW & UPDATED FILTERS" in content:
-            markdown_lines.append("### New Filters")
+            is_header = True
+            header_text = "### New Filters"
         elif "GENERAL CLEANUP & OPTIMIZATION" in content:
-            markdown_lines.append("### General cleanup & optimization")
+            is_header = True
+            header_text = "### General cleanup & optimization"
+        
+        if is_header:
+            if not is_first_section:
+                section_parts.append("")
+            section_parts.append(header_text)
+            section_parts.append("")
+            is_first_section = False
         elif content.startswith('- '):
-            markdown_lines.append(f"  - {content[2:]}")
-        elif content.startswith("----") or content.startswith("===="):
+            section_parts.append(f"  - {content[2:]}")
+        elif "CHANGELOG:" in content or content.startswith("===="):
             continue
         else:
-            markdown_lines.append(f"- {content}")
-    markdown_output = "\n".join(markdown_lines)
-
-    if not markdown_output.strip():
-        sys.exit(0)
+            section_parts.append(f"- {content}")
+    
+    section_content = "\n".join(section_parts)
 
     today = date.today().strftime("%Y-%m-%d")
-    new_changelog_entry = f"## {today}\n\n{markdown_output}\n"
-
+    new_changelog_entry = f"## {today}\n\n{section_content}\n"
+    
     original_changelog_content = changelog_path.read_text(encoding='utf-8')
+
     updated_changelog_content = re.sub(
         r"(#\s*CHANGELOG\s*\n)", f"\\1\n{new_changelog_entry}",
         original_changelog_content, count=1
     )
     changelog_path.write_text(updated_changelog_content, encoding='utf-8')
-
-    cleared_filter_content = filter_content.replace(notes_block, '\n')
+    
+    cleared_filter_content = filter_content.replace(match.group(0), '')
     filter_list_path.write_text(cleared_filter_content, encoding='utf-8')
-
+    
     sys.exit(0)
 
 if __name__ == "__main__":
