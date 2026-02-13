@@ -1,6 +1,40 @@
 # CHANGELOG
 
 
+
+## 2026-02-13
+
+### New Filters
+
+- Amazon
+  - Search results page widgets (Inspiration for you and Need help)
+  - White gradient on item carousels
+- Britannica - newsletter banner on Octordle dashboard
+- Codepen - ad above popover
+- ClaudeLog - ad disguised as callout
+- Dribbble - Video message, hire widget, and bottom banner on profiles
+- Ebay  - Persistent injected ads (Thanks to u/AchernarB on r/uBlockOrigin)
+- GitHub - Sponsor button in repository header and sponsor this project section in respository right sidebar
+- Google
+  - Short videos link container when it is in the overflow menu rather than the toolbar
+  - Several filters from r/uBlockOrigin's wiki page (Consent, "before you continue", login prompts)
+- GreasyFork - empty ad container
+- MyBob's (Bob's Discount Furniture) - Chat widget and Style Room button
+- Seattle Art Museum - force animated favicon to remain static
+- Vecteezy
+  - Pro upsell elements (persistent ad, popover, and grid item)
+  - Related search terms grid item
+- Wallpaper Clan
+  - Decluttering: Buy Me Coffee button (+ adjacent modal), self-promo banner, and footer link to Chrome store
+  - Giant hover tooltips with category name
+
+### General cleanup & optimization
+
+- Amazon - major re-working of all filters to reduce conflicts with other filter lists, optimize performance, and improve resiliency (still in progress).
+- Github - removed Copilot filters as this can be handled with native user settings.
+- Google - reorganized filters related to videos and mobile
+- The Noun Project - rewrote filter to be more resilient to code changes
+
 ## 2026-02-12
 
 ### New Filters
