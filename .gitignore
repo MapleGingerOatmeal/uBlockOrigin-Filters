@@ -1,5 +1,5 @@
 __pycache__/
 node_modules/
+.claude/
 .pre-commit-cache/
 .vscode/
-uBlockOrigin-StaticFilters-old.txt
