@@ -11,6 +11,83 @@ from pathlib import Path
 FILTER_LIST_FILENAME = "uBlockOrigin-StaticFilters.txt"
 CHANGELOG_FILENAME = "CHANGELOG.md"
 
+BANNER_RULE = r"![ \t]*={3,}[ \t]*!?[ \t]*"
+CHANGELOG_SECTION_RE = re.compile(
+    r"^" + BANNER_RULE + r"\n"
+    r"![ \t]*CHANGELOG[ \t]*!?[ \t]*\n"
+    + BANNER_RULE + r"\n"
+    r"(?P<body>.*?)"
+    r"(?=^" + BANNER_RULE + r"$|\Z)",
+    re.DOTALL | re.MULTILINE,
+)
+SUBSECTION_RE = re.compile(r"^![ \t]*-{3,}[ \t]*(?P<title>.*?)[ \t]*-{3,}[ \t]*!?$")
+ITEM_RE = re.compile(r"^!(?P<rest>.*)$")
+NESTED_RE = re.compile(r"^(?P<dashes>-+)[ \t]+(?P<text>.*)$")
+
+HEADING_MAP = {
+    "NEW & UPDATED FILTERS": "New Filters",
+    "NEW FILTERS": "New Filters",
+    "GENERAL CLEANUP & OPTIMIZATION": "General cleanup & optimization",
+}
+
+
+def read_text(path):
+    raw = path.read_bytes().decode("utf-8")
+    newline = "\r\n" if "\r\n" in raw else "\n"
+    return raw.replace("\r\n", "\n"), newline
+
+
+def write_text(path, text, newline):
+    path.write_bytes(text.replace("\n", newline).encode("utf-8"))
+
+
+def heading_for(title):
+    title = re.sub(r"\s+", " ", title).strip()
+    return HEADING_MAP.get(title.upper(), title.capitalize())
+
+
+def parse_changelog_body(body):
+    sections = []
+    current = None
+    for line in body.split("\n"):
+        line = line.strip()
+        if not line:
+            continue
+
+        sub = SUBSECTION_RE.match(line)
+        if sub:
+            current = (heading_for(sub.group("title")), [])
+            sections.append(current)
+            continue
+
+        item = ITEM_RE.match(line)
+        if not item:
+            raise ValueError(f"Unexpected line in CHANGELOG section: {line!r}")
+        text = item.group("rest").strip()
+        if not text:
+            continue
+
+        if current is None:
+            current = ("Changes", [])
+            sections.append(current)
+
+        nested = NESTED_RE.match(text)
+        if nested:
+            depth = len(nested.group("dashes"))
+            current[1].append(f"{'  ' * depth}- {nested.group('text').strip()}")
+        else:
+            current[1].append(f"- {text}")
+
+    return [(heading, lines) for heading, lines in sections if lines]
+
+
+def build_entry(sections, today):
+    parts = [f"## {today}", ""]
+    for heading, lines in sections:
+        parts += [f"### {heading}", "", *lines, ""]
+    return "\n".join(parts)
+
+
 def main():
     filter_list_path = Path(FILTER_LIST_FILENAME)
     changelog_path = Path(CHANGELOG_FILENAME)
@@ -22,66 +99,42 @@ def main():
         sys.stderr.write(f"Error: Changelog file not found at '{changelog_path}'.\n")
         sys.exit(1)
 
-    filter_content = filter_list_path.read_text(encoding='utf-8')
-    match = re.search(
-        r"(\s*)("
-        r"!\s*====================\s*!\s+CHANGELOG:\s*! ====================.*?"
-        r")(?=\s*! ====================)",
-        filter_content, re.DOTALL
-    )
-
-    if not match or not match.group(2).strip():
+    filter_content, filter_newline = read_text(filter_list_path)
+    match = CHANGELOG_SECTION_RE.search(filter_content)
+    if not match:
         sys.exit(0)
 
-    notes_block = match.group(2)
-
-    section_parts = []
-    is_first_section = True
-    for line in notes_block.strip().split('\n'):
-        content = re.sub(r'^!\s?', '', line).strip()
-        if not content:
-            continue
-
-        is_header = False
-        if "NEW & UPDATED FILTERS" in content:
-            is_header = True
-            header_text = "### New Filters"
-        elif "GENERAL CLEANUP & OPTIMIZATION" in content:
-            is_header = True
-            header_text = "### General cleanup & optimization"
-
-        if is_header:
-            if not is_first_section:
-                section_parts.append("")
-            section_parts.append(header_text)
-            section_parts.append("")
-            is_first_section = False
-        elif content.startswith('- '):
-            section_parts.append(f"  - {content[2:]}")
-        elif "CHANGELOG:" in content or content.startswith("===="):
-            continue
-        else:
-            section_parts.append(f"- {content}")
-
-    section_content = "\n".join(section_parts)
+    try:
+        sections = parse_changelog_body(match.group("body"))
+    except ValueError as e:
+        sys.stderr.write(f"Error: {e}\n")
+        sys.exit(1)
+    if not sections:
+        sys.exit(0)
 
     today = date.today().strftime("%Y-%m-%d")
-    new_changelog_entry = f"## {today}\n\n{section_content}\n\n"
+    entry = build_entry(sections, today)
 
-    original_changelog_content = changelog_path.read_text(encoding='utf-8')
+    changelog_content, _ = read_text(changelog_path)
+    header = re.match(r"\s*#[ \t]*CHANGELOG[ \t]*\n\s*", changelog_content)
+    if not header:
+        sys.stderr.write("Error: '# CHANGELOG' heading not found at top of CHANGELOG.md.\n")
+        sys.exit(1)
+    rest = changelog_content[header.end():]
+    updated_changelog = f"# CHANGELOG\n\n{entry}\n{rest}"
+    if not updated_changelog.endswith("\n"):
+        updated_changelog += "\n"
 
-    updated_changelog_content = re.sub(
-        r"(#\s*CHANGELOG\s*\n)", f"\\1\n{new_changelog_entry}",
-        original_changelog_content, count=1
-    )
-    changelog_path.write_text(updated_changelog_content, encoding='utf-8')
+    cleared_filter = (
+        filter_content[:match.start()] + filter_content[match.end():]
+    ).lstrip("\n")
 
-    cleared_filter_content = filter_content.replace(match.group(0), '')
-    cleared_filter_content = cleared_filter_content.lstrip('\n')
-    filter_list_path.write_text(cleared_filter_content, encoding='utf-8')
+    write_text(changelog_path, updated_changelog, "\r\n")
+    write_text(filter_list_path, cleared_filter, filter_newline)
 
     print(f"Changelog updated with entry for {today}.")
     sys.exit(2)
+
 
 if __name__ == "__main__":
     main()

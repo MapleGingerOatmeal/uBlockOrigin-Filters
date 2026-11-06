@@ -1,6 +1,28 @@
 # CHANGELOG
 
+## 2026-11-06
 
+### New Filters
+
+- Amazon - Ask Rufus tooltip
+- Claude - disclaimer text
+- GitHub - 'Sponsoring' tab in top toolbar
+- Google
+  - Wallet - check out faster card in right sidebar
+  - Prevent off-screen repainting of AI Overview elements that causes extreme CPU usage (see: https://bugzilla.mozilla.org/show_bug.cgi?id=2033282)
+- Mobilism - Top navigation - Social media icons
+- Reddit
+  - Background highlights for awarded comments
+  - Hide flair pill if flair is empty (affected specific subreddits)
+  - Notification bell in subreddit header
+- Various others: Adobe Color, Big Footy, Branding Style Guides, CVS, Font Fabric, Negative Space, Pixabay, Target, Visme
+
+### General cleanup & optimization
+
+- Amazon - Updated language to better reflect naming styles used by Amazon
+- Google
+  - Reorganized Google web and image search filters for readability
+  - Disabled a scriptlet related to the "Before you continue" prompt as it was causing breakage (login not being recognized)
 
 ## 2026-02-13
 

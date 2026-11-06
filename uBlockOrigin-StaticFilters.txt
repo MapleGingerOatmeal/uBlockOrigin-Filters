@@ -1,6 +1,6 @@
-! ====================
-!   COSMETIC FILTERS    
-! ====================
+!================================================!
+!               COSMETIC FILTERS                 !
+!================================================!
 
 ! ---- 614now ----
 
@@ -17,11 +17,15 @@ aistudio.google.com##.search-entry-point
 
 ! ---- Amazon ----
 
-! Item pages
-! - Item description section
+! Item detail page
+! - (Mobile) Amazon Pharmacy promotion above image carousel
+amazon.*###mobile-dp-ilm_feature_div_01
+! - Right column > Buy box - Prime upsell
+amazon.*###primeDPUpsellStaticContainerNPA
+! - Item summary
 ! -- Carousel gradient
 amazon.*##ul.dimension-values-carousel:style(mask-image: none !important)
-! -- Amazon brands promotional banner under description
+! -- Amazon brands promotional banner under About this item
 amazon.*###heroQuickPromoContainer
 ! -- Ask Rufus inline feature under image carousel
 amazon.*###nile-inline_feature_div h5:has-text(Ask Rufus):upward(div#dpx-nice-widget-container)
@@ -29,8 +33,6 @@ amazon.*###nile-inline_feature_div h5:has-text(Ask Rufus):upward(div#dpx-nice-wi
 amazon.*###va-related-videos-widget_feature_div
 ! - "Explore this related brand"
 amazon.*###sims-discoveryAndInspiration_feature_div_01
-! - (Mobile) Amazon Pharmacy promotion above image carousel
-amazon.*###mobile-dp-ilm_feature_div_01
 
 ! Order Placed page
 ! - "Livestreams related to this product"
@@ -51,10 +53,14 @@ amazon.*##[id*="menu" i]:focus:style(border-color: transparent !important;)
 amazon.*##.watch-button-placeholder
 
 ! Search results
-! - Inspiration for you section
+! - Inspiration for you
 amazon.*##ol[class*="foundit-immersive-feed-grid"]:upward(.fefe-dram-root)
 ! - Need help feedback widget
 amazon.*##div[data-cel-widget*="search_result"] > div[class*="widgetId=feedback"]
+
+! General
+! - Ask Rufus tooltip
+amazon.*###rufus-ask-rufus-tooltip
 
 ! Old filters that I'm not sure are still working
 !amazon.*##.s-sponsored-label-text:upward([data-asin])
@@ -106,6 +112,13 @@ bing.com##a[href^="https://www.bing.com/aclick"]:upward(div.ta_top)
 ! Footer disclaimers 
 boardgamegeek.com##footer div.footer__container + p.mb-0.p-3.bg-black.text-lg-right.fs-xs.text-white-75
 
+! ---- Branding Style Guides ----
+
+! Left sidebar sponsor
+brandingstyleguides.com##.colLeftGuidesArchives:has(.sidebarSponsorsWrapper)
+! Footer sponsor
+brandingstyleguides.com##.imagesFooterWrapper:has(.oldListSponsors)
+
 ! ---- Britannica ----
 
 ! Newsletter banner
@@ -117,6 +130,11 @@ britannica.com##mw-newsletter-banner
 chatgpt.com###thread-bottom-container > div[class*="text-token-text-secondary"]:not(#thread-bottom) > div
 ! Left sidebar - account type indicator (e.g. 'Plus') below user's name
 chatgpt.com###stage-slideover-sidebar nav > div[class*="sticky bottom-0"] > div[aria-label="Open profile menu"] > div.min-w-0 > div[class*="group-data-sheet-item"]
+
+! ---- Claude ----
+
+! Disclaimer text
+claude.ai##[data-disclaimer="true"]:style(visibility: hidden !important;)
 
 ! ---- ClaudeLog ----
 
@@ -132,6 +150,7 @@ colordesigner.io##.aa-container--responsive.aa-container
 
 ! Footer - Social media buttons
 cvs.com##nav[class="sc-cvs-global-footer-social-links"]
+@@||cdn.appdynamics.com/adrum/adrum-latest.js$script,domain=www.cvs.com
 
 ! ---- DeviantArt ----
 
@@ -247,32 +266,37 @@ flaticon.com##[data-type="pinterest"]
 flaticon.com##button[class*="pinterest" i]
 flaticon.com##.pinterest--button
 
-! ---- Freepik ----
+! ---- Font Fabric ----
+
+! Chat widget
+fontfabric.com##[id^="widget-chat-container"]
+
+! ---- Freepik (now Magnific) ----
 
 ! Navbar
 ! - Pricing link
-freepik.com##li:has(a[href*="pricing" i])
+freepik.com,magnific.com##li:has(a[href*="pricing" i])
 ! Persistent ads
 ! - Stock photos
-freepik.com##[data-testid*="sponsor" i]
+freepik.com,magnific.com##[data-testid*="sponsor" i]
 ! - Premium images
-freepik.com##li:has(a[href*="premium-vector"])
-freepik.com##li:has(a[href*="premium-psd"])
-freepik.com##ul:has(li:has(a[href*="premium-vector"])):style(display: flex !important; flex-wrap: wrap !important; align-items: start !important;)
+freepik.com,magnific.com##li:has(a[href*="premium-vector"])
+freepik.com,magnific.com##li:has(a[href*="premium-psd"])
+freepik.com,magnific.com##ul:has(li:has(a[href*="premium-vector"])):style(display: flex !important; flex-wrap: wrap !important; align-items: start !important;)
 ! - Premium editing tools
-freepik.com##button:has(div[class*="$border-yellowPremium"]):upward(2)
+freepik.com,magnific.com##button:has(div[class*="$border-yellowPremium"]):upward(2)
 ! AI tools that appear when you hover over image
-freepik.com##button[data-cy="generate-video-preview-button"]
-freepik.com##button[data-cy="ai-variations-preview-button"]
+freepik.com,magnific.com##button[data-cy="generate-video-preview-button"]
+freepik.com,magnific.com##button[data-cy="ai-variations-preview-button"]
 ! Generate AI video button (there's surely a better way to filter for this but I was feeling lazy)
 ! - TODO: clean this up
-freepik.com##button.lg\:\$inline-flex.\$hidden.\$gap-5.dark\:hover\:\$bg-black\/80.dark\:\$bg-grayEbony.hover\:\$bg-grayGaysir.\$bg-grayMystic.\$sprinkles-text-base.\$px-\[25px\].\$py-\[10px\].dark\:hover\:\$bg-grayOxford\/20.dark\:\$text-grayGaysir.dark\:\$bg-transparent.dark\:\$border-grayOxford.hover\:\$bg-grayHeather\/10.\$text-grayOxford.\$bg-transparent.\$border-grayGaysir.\$border-solid.\$border.\$whitespace-nowrap.\$rounded-\[6px\].\$font-semibold.\$no-underline.\$duration-\[300ms\].\$transition-colors.\$items-center.\$inline-flex:nth-of-type(3)
+freepik.com,magnific.com##button.lg\:\$inline-flex.\$hidden.\$gap-5.dark\:hover\:\$bg-black\/80.dark\:\$bg-grayEbony.hover\:\$bg-grayGaysir.\$bg-grayMystic.\$sprinkles-text-base.\$px-\[25px\].\$py-\[10px\].dark\:hover\:\$bg-grayOxford\/20.dark\:\$text-grayGaysir.dark\:\$bg-transparent.dark\:\$border-grayOxford.hover\:\$bg-grayHeather\/10.\$text-grayOxford.\$bg-transparent.\$border-grayGaysir.\$border-solid.\$border.\$whitespace-nowrap.\$rounded-\[6px\].\$font-semibold.\$no-underline.\$duration-\[300ms\].\$transition-colors.\$items-center.\$inline-flex:nth-of-type(3)
 ! Footer
 ! - Excessive footers
-freepik.com##[class="_1wc8gem0 $w-full $mx-auto $px-[20px] $max-w-[1400px] $py-40 $flex $items-center md:$items-end $flex-col md:$flex-row-reverse $justify-center md:$justify-between $text-center md:$text-left"]
-freepik.com##[class="_i9t5fb _1wc8gem0 $w-full $mx-auto $px-[20px] $max-w-[1400px] $flex $justify-center md:$justify-between $flex-col md:$flex-row $py-15 md:$py-10 $items-center $text-center md:$text-left"]
+freepik.com,magnific.com##[class="_1wc8gem0 $w-full $mx-auto $px-[20px] $max-w-[1400px] $py-40 $flex $items-center md:$items-end $flex-col md:$flex-row-reverse $justify-center md:$justify-between $text-center md:$text-left"]
+freepik.com,magnific.com##[class="_i9t5fb _1wc8gem0 $w-full $mx-auto $px-[20px] $max-w-[1400px] $flex $justify-center md:$justify-between $flex-col md:$flex-row $py-15 md:$py-10 $items-center $text-center md:$text-left"]
 ! - Social media buttons
-freepik.com##footer div[class="$text-center md:$text-left"]
+freepik.com,magnific.com##footer div[class="$text-center md:$text-left"]
 
 ! ---- FreeVectors.net ----
 
@@ -302,6 +326,8 @@ github.com##.llZEgI.Box-sc-g0xbh4-0
 ! -- Sponsorship appeal box below search results 
 !github.com##.jRFAHs.Box-sc-g0xbh4-0 > .bjtFqb.Box-sc-g0xbh4-0 > .gvDFpV.Box-sc-g0xbh4-0
 github.com##.Box-sc-g0xbh4-0
+! - Top Toolbar - sponsoring tab
+github.com##a[data-tab-item="sponsoring"]:upward(li)
 ! - Repositories
 ! -- Header buttons
 github.com###repository-details-container li:has(button[id*="dialog-show-funding-links-modal"])
@@ -312,38 +338,34 @@ github.com##div.Layout-sidebar.rgh-sticky-sidebar-container h2:has-text(/^Sponso
 
 ! Recommended by r/uBlockOrigin (https://www.reddit.com/r/uBlockOrigin/wiki/solutions/)
 ! - Consent, "before you continue"
+! - The second one was causing a loop from the current login not being recognized. Disabled pending inveestigation.
 google.*##^script:has-text(consentCookiePayload)
-google.*##+js(acis, document.cookie, YES+)
+!google.*##+js(acis, document.cookie, YES+)
 google.*##+js(aeld, DOMContentLoaded, CONSENT)
 ! -- NOTE: Disable the following filter if you experience breakage
 ||consent.google.com^
-! - Login prompts
-||accounts.google.com/gsi/*$xhr,script,3p
+ - Login prompts
+|accounts.google.com/gsi/*$xhr,script,3p
 
-! Home page
-! - Search bar - AI mode button 
+! Web search UI elements
+! - Homepage search bar - AI mode button 
 google.*##.Y5MKCd.plR5qb
-! Image search
-! - Selected image panel footer (Feedback, Get help, and Saved links)
-google.*##.UafVBb
-! - Copyright disclaimer
-google.*##a[aria-label="Learn more about copyright"]:upward(div.Dpn58d)
-! Search results (non-content elements)
-! - Search bar and tools
-! -- AI
-! --- AI-generated summary (new version added 2025-08-27)
+! - AI
+! -- Fix Google's (likely intentionally) reckless off-screen repainting of AI Overview elements that causes extreme CPU usage (see: https://bugzilla.mozilla.org/show_bug.cgi?id=2033282)
+||www.gstatic.com/searchbox-team/eclipse_wave_blurred_rects_f2dcf436ae9c2b05017fd88933a1b6ad.png$image
+! -- AI-generated summary (new version added 2025-08-27)
 google.*##.hdzaWe
 google.*###eKIzJc
-! --- AI Mode popup nag/ad
+! -- AI Mode popup nag/ad
 google.*###stUuGf
-! --- AI Mode toolbar tab, credit to u/RraaLL (https://www.reddit.com/r/uBlockOrigin/comments/1l4vpmj/comment/mwcvxlt)
+! -- AI Mode toolbar tab, credit to u/RraaLL (https://www.reddit.com/r/uBlockOrigin/comments/1l4vpmj/comment/mwcvxlt)
 google.*##[role="navigation"] [role="list"]>[role="listitem"]:has([href^="/search"][href*="&udm=50"])
-! -- Search bar
-! --- Microphone icon
+! - Search bar
+! -- Microphone icon
 google.*##[aria-label="Search by voice"]
-! --- Suggestions dropdown > Report inappropriate predictions disclaimer
+! -- Suggestions dropdown > Report inappropriate predictions disclaimer
 google.*##.mWcf0e.WzNHm
-! -- Search toolbar - tabs - Short videos
+! - Search toolbar - tabs - Short videos
 google.*##a[href*="udm=39"]:upward(div[role="listitem"])
 google.*##a[href*="udm=39"]:upward(div[class="bsmXxe"])
 ! - Meta
@@ -352,43 +374,51 @@ google.*##a[href*="udm=39"]:upward(div[class="bsmXxe"])
 google.*##span#fsl:has(a[href^="https://support.google.com/websearch"])
 ! --- Zip, City, State, From your device, update location links (matches known AND unknown locations)
 google.*##div[class="fbar b2hzT"]:has(span[class*="known_loc"])
-! -- "Google Sponsored" promo for Google Developers Console which appeared when using 'site:' parameter
-! -- NOTE: This filter has not yet been thoroughly tested regarding scope. Check this if there is future breakage.
-google.*##.SRfaKe:has(h2 + ol cite)
 ! -- Results stats, e.g. 'About x results (0.NN seconds)'
 google.*##div#result-stats
-! -- Right sidebar - Feedback link
+! - Right sidebar - Feedback link
 google.*##.epKdHc
-! -- "Save your favorite brands to get more relevant results"
+! - "Save your favorite brands to get more relevant results"
 google.*##.FkJiHe:upward(div.ULSxyf.yhQgZb)
+! - "Google Sponsored" promo for Google Developers Console which appeared when using 'site:' parameter
+! -- NOTE: This filter has not yet been thoroughly tested regarding scope. Check this if there is future breakage.
+!google.*##.SRfaKe:has(h2 + ol cite)
 
-! Search results (content-related elements)
-! - Image search - related search suggestions
+! Image search results
+! - Selected image panel footer (Feedback, Get help, and Saved links)
+google.*##.UafVBb
+! - Copyright disclaimer
+google.*##a[aria-label="Learn more about copyright"]:upward(div.Dpn58d)
+! - Product carousel + border
+google.*##.ULSxyf:has(.naKzab)
+! - Related search suggestions
 google.*##.BA0zte
-! - Contextual or featured sections
-! -- Discussions and Forums - all list items from specified domains
+
+! Web search results
+! - Discussions and Forums section - list items from specified domains
 google.*##.q1xhze.sjVJQd.uRG8ge.xYkm8c:has(a.KYg7td.INpicf[href^="https://www.facebook.com"])
 google.*##.q1xhze.sjVJQd.uRG8ge.xYkm8c:has(a.KYg7td.INpicf[href^="https://www.quora.com"])
-! -- Featured snippets
+! - Contextual or featured sections
+! -- Featured snippets (x2)
+! -- Find related products and services
+! -- People also ask (x2)
+! -- People also search for (x2)
+! -- Popular products
+! -- Top answers carousel
+! -- What people are saying (heading text)
+! -- (Mobile) Image search results within standard searches
 google.*##.OJXvsb.XzTjhb.dG2XIf
 google.*##.g-blk.JnwWd.wF4fFd.vt6azd.Ww4FFb.wHYlTd
-! -- Find related products and services
 google.*###HbKV2c
-! -- (Mobile) Image search results within standard searches
-google.*##.iXPZfd.yMbVTb.h373nd.J2MhIb.XBlWIe.cS7M8
-! -- People also ask
 google.*##div.ouy7Mc
 google.*##.Wt5Tfe
-! -- People also search for
 google.*##[id^="eob_"]
 google.*##[id*="bres"]
-! -- Popular products
 google.*##product-viewer-group:upward(div.A6K0A)
-! -- Top Answers carousel
 google.*##.RyIFgf
-! -- "What people are saying" (heading text)
 google.*##.adDDi.Kcn6oc
-! - Inline (elements specific to individual search results)
+google.*##.iXPZfd.yMbVTb.h373nd.J2MhIb.XBlWIe.cS7M8
+! - Inline result elements (specific to individual search results)
 ! -- Product details (prices, review, delivery times, return windows, etc.)
 google.*##.QU4hqb
 ! -- Product pricing and delivery information
@@ -402,6 +432,12 @@ google.*##a.LBcIee[href^="https://www.youtube.com/watch?"]
 ! -- Short videos
 google.*##.mnr-c.YJpHnb
 google.*##div.ULSxyf > .MjjYud > .A6K0A > .vt6azd.Ww4FFb
+
+! ---- Google Wallet ----
+
+! Right sidebar - Check out faster
+wallet.google.*##c-wiz > .wsvQme.He4fbd
+
 
 ! ---- IMDb ----
 
@@ -447,6 +483,24 @@ imgur.com##div.Gallery-Sidebar
 imgur.com##div.BottomRecirc
 ! Footer
 imgur.com##.Footer-wrapper
+
+
+! ---- Inbox Reads ----
+
+! Advertise here link
+inboxreads.co##.promo-feature-link
+! Banner ad
+inboxreads.co##.promo-large-container:upward(.card-outlined)
+! Right sidebar
+! - Adspace
+inboxreads.co##div.promo:upward(a.promo-link)
+! - Newsletter signup card
+!inboxreads.co##.newsletter-signup-card
+! - Upgrade to Pro
+inboxreads.co##a[href="/pro?source=banner"]:upward(div.banner-box.card-shadow-hover)
+! Looking to buy a newsletter card
+inboxreads.co##a[href="/newsletters-for-sale"]:upward(.notice)
+
 
 ! ---- IPTorrents ----
 
@@ -523,6 +577,11 @@ linkedin.com##[class*="global-footer-compact"]
 learn.microsoft.com###article-header-page-actions button[data-bi-name="ask-learn-assistant-entry"] .icon
 ! - Ask Learn button - style it to match the adjacent buttons instead of bright pink
 learn.microsoft.com###article-header-page-actions button[data-bi-name="ask-learn-assistant-entry"]:style(border-color:var(--theme-control-border) !important;)
+
+! ---- Mobilism ----
+
+! Top navigation - Social media icons 
+forum.mobilism.org##.social-top
 
 ! ---- Mozilla ----
 
@@ -612,17 +671,18 @@ reddit.com##li:has(a[href="/contributor-program/profile"])
 reddit.com###advertise-button > .justify-center.items-center.flex > .flex > svg
 ! - User drawer 
 ! -- Try Reddit Pro link + divider
-reddit.com##div#user-drawer-content ul:has(a[href*="/reddit-pro?"])
-reddit.com##div#user-drawer-content ul:has(a[href*="/reddit-pro?"]) + hr
+reddit.com###user-drawer-content ul:has(a[href*="/reddit-pro?"])
+reddit.com###user-drawer-content ul:has(a[href*="/reddit-pro?"]) + hr
 ! -- Earn cash on Reddit
 reddit.com###user-drawer-content faceplate-tracker[source="earn"]
 ! -- Extra divider under Settings
-reddit.com##div#user-drawer-content ul:has(a[href="/settings/"]) + hr
+reddit.com###user-drawer-content ul:has(a[href="/settings/"]) + hr
 ! -- Premium
-reddit.com##div#user-drawer-content faceplate-tracker:has(a[href*="/premium"])
-! Left sidebar - Games, Answers (icon and Beta lable), Copyright, Resources menu
-reddit.com##div#games_section
-reddit.com##a[href="/answers/"]
+reddit.com###user-drawer-content faceplate-tracker:has(a[href*="/premium"])
+! Left sidebar - Games + divider, Answers, Copyright, Resources menu
+reddit.com##[aria-controls="games_section"]
+reddit.com##nav[aria-label="Primary"] > left-nav-top-section + hr
+reddit.com##nav[aria-label="Primary"] a[href="/answers/"]
 reddit.com##div[class="visible py-md grow flex flex-col justify-end"]:has(a[href*="redditinc"])
 reddit.com##nav[aria-label="Reddit resources"]
 ! Right sidebar - recent posts, legal links
@@ -636,13 +696,23 @@ reddit.com##label[data-testid="apple"]
 reddit.com##a[data-testid="get-premium"]
 reddit.com##h2:has(~ a[data-test-id="get-premium"])
 
+! Subreddits
+! - Right sidebar
+reddit.com##shreddit-notification-frequency-control
+! - Post to r/SomeSubreddit above feed (Note: upward includes the border also)
+reddit.com##a[href$="/submit?composer_entry=posting_top_of_feed"]:upward(1)
+
 ! Posts and main feed
+! - Empty right sidebar
+reddit.com##.home-feed-right-rail
 ! - Award button
 reddit.com##button[data-testid="award"]
 ! - Blur effect on the sides of images when full screen
 reddit.com##.post-background-image-filter
+! - Flair when empty
+reddit.com##.flair-content[aria-label="Flair: ⠀"]:upward(div[slot="post-flair"])
 ! - Hover menus for both subreddits and users (updated December 2024)
-reddit.com##div#faceplate-tooltip
+reddit.com###faceplate-tooltip
 ! - Comments section
 ! -- Award buttons and icons
 reddit.com##award-button
@@ -654,8 +724,11 @@ reddit.com##chat-channel-recommendations-wrapper
 reddit.com##.pb-sm.justify-between.items-center.flex
 ! -- Gilded comments yellow highlight (make the color transparent)
 reddit.com##shreddit-comment[award-count]:not([award-count="0"]):remove-attr(with-awarded-treatment)
+reddit.com##shreddit-comment[award-count]:not([award-count="0"]):style(background-color: transparent !important;)
+reddit.com##shreddit-comment[has-paid-award][is-highlighted]:remove-attr(is-highlighted)
 reddit.com##.bg-yellow-200:style(background-color: rgba(255,255,255,0) !important)
-!reddit.com##.h-full:style(border-color: rgba(255,255,255,0) !important)
+reddit.com##.bg-orangered-500:style(background-color: rgba(255,255,255,0) !important)
+reddit.com##.h-full:style(border-color: rgba(255,255,255,0) !important)
 ! -- (Mobile) Related Answers section below comments
 reddit.com##aside[aria-label*="Related Answers"]
 
@@ -832,6 +905,14 @@ wallpapers-clan.com##.qodef-follow-info-holder
 ! Footer - Chrome store link
 wallpapers-clan.com##span[class*="fa-chrome"]:upward(div[id*="boldlab_core_icon_list_item"])
 
+! ---- Wayfair ----
+
+! Item pages
+! - Payment plan options
+wayfair.com##[data-test-id="FinancingPriceTransformationMessage"]
+! - Rewards and perks
+wayfair.com##[data-test-id="FinancingCallout"]
+
 ! ---- YouTube ----
 
 ! "$Thanks$" monetization button
@@ -844,6 +925,8 @@ youtube.com###paid-comment-chip
 ! Adobe Stock
 stock.adobe.com##.spectrum-CoachMarkPopover
 stock.adobe.com##div[class^="js-hover-menu-v2"]
+! Adobe Color
+@@||p.typekit.net/p.gif?s=1&k=lin0jjb&ht=tk&h=color.adobe.com&f=22148.22484&a=702900&js=1.21.0&app=typekit&e=js&_=1770514855057$image,domain=color.adobe.com
 
 ! AFL Footy Shop
 aflfootyshop.com.au###recent_sales_content_img
@@ -857,9 +940,13 @@ apkpure.com##.share-mob.share-btn > ul
 ashleyfurniture.com###sslp-newicon-bottom
 ashleyfurniture.com###sslp-global-sidebutton-close
 
-! BigFooty - annoying notices
+! BigFooty
 bigfooty.com##.topbanner.chaching
 bigfooty.com##.js-notices.notices--isMulti.notices--floating.notices
+bigfooty.com###bf_FuseForumHeader
+bigfooty.com###bf_ForumMidList1
+bigfooty.com##.js-threadList.structItemContainer-group > p.bfRemoveBannerAd
+bigfooty.com##.structItemContainer-group--sticky.structItemContainer-group > .bfRemoveBannerAd
 
 ! Britannica
 britannica.com##.ad-banner--hide-mobile.ad-banner--header.ad-banner > .adswrapper.ad-container
@@ -880,6 +967,9 @@ coolors.co###pro-float
 
 ! Convertio - "Rate us" pop up dialog in corner
 convertio.co##.rate-us
+
+! DesignMD.me - live counter widget
+designmd.me##.right-5.bottom-5.fixed
 
 ! Design Wizard
 designwizard.com##.fixed.blog-footer
@@ -908,6 +998,12 @@ justwatch.com##.middle-buybox-container
 ! LazyApply - notification
 lazyapply.com##.is-size-7.custom-notification-container
 
+! Lenso
+lenso.ai##.extension-redirect
+
+! Negative Space - Stock image ad section
+negativespace.co##.shutterstock-wrap
+
 ! Logitech Support
 support.logi.com###callOut
 
@@ -928,6 +1024,7 @@ yce.perfectcorp.com##.gift-box_giftBoxContainer__NiavV
 
 ! Pixabay
 pixabay.com##div.container--t3k85
+pixabay.com##.mainSectionGroup--YQ2ii > .sponsoredSection--SI9U5 > .adSponsoredMediaContainer--PZe5A
 
 ! Pontiac Forum - pulsing red register button
 pontiacforum.com##.p-navgroup-link--register.p-navgroup-link--textual.p-navgroup-link
@@ -961,6 +1058,9 @@ stitchfix.com##.Pointer___pointer-module__pointer___yNzXH_kfi.Box___box-module__
 ! Symbl.cc - Obtrusive black circle that just blocked view of actual content
 symbl.cc##.cookie__wrapper
 
+! Target - Sticky filter bar
+target.com##.styles_stickyContentWrapper__eBzPH
+
 ! TheFreeDictionary
 ||img.tfd.com/sprite.png$image
 thefreedictionary.com##.icon-notif.i
@@ -975,6 +1075,10 @@ thisweeknews.com##.gnt_cw_w > .gnt_cw > .gnt_xbr > .gnt_ar_xb
 ! Tom's Hardware forums - "notifications" that are really just ads
 forums.tomshardware.com##.js-notices.notices--isMulti.notices--block.notices
 
+! Visme
+visme.co##.fixed.single-sidebar
+visme.co##.v-st__inner
+
 ! Winaero
 winaero.com##.gad-gads-title
 winaero.com##.widget_custom_html.textwidget.widget
@@ -982,51 +1086,8 @@ winaero.com##.widget_custom_html.textwidget.widget
 ! Winmoes
 winmoes.com###landlord
 
+! Worksource - Chat widget
+worksource.my.site.com##.chat-wrapper
+
 ! XahLee.info Unicode Search - disable hover popups
 xahlee.info##[id*="popup"]
-
-!End
-
-! Mobilism - Top navigation - Social media icons 
-forum.mobilism.org##.social-top
-
-! icons after subreddit names in main feed
-reddit.com##community-status-tooltip
-reddit.com##.home-feed-right-rail.mb-0.box-border.py-md.flex-col.flex
-reddit.com###hamburger-button-tooltip > .nd\:visible.relative
-reddit.com##.flex-auto.right-sidebar-contents reddit-chat-anchor
-! Low comments banner
-reddit.com###low-comments-banner
-
-! https://visme.co
-visme.co##.fixed.single-sidebar
-visme.co##.v-st__inner
-
-! https://lenso.ai
-lenso.ai##.extension-redirect
-
-! https://www.perplexity.ai
-perplexity.ai##.rounded-full.size-2
-
-! https://www.google.com
-google.com##.gePoSc
-
-! https://www.cvs.com
-@@||cdn.appdynamics.com/adrum/adrum-latest.js$script,domain=www.cvs.com
-
-! https://www.aitmpl.com
-aitmpl.com###partnershipPrimaryCTA
-aitmpl.com###featuredSection
-
-! https://www.amazon.com
-www.amazon.com###primeDPUpsellStaticContainerNPA
-
-! https://color.adobe.com
-@@||p.typekit.net/p.gif?s=1&k=lin0jjb&ht=tk&h=color.adobe.com&f=22148.22484&a=702900&js=1.21.0&app=typekit&e=js&_=1770514855057$image,domain=color.adobe.com
-
-! https://www.target.com
-www.target.com##.styles_stickyContentWrapper__eBzPH
-
-! https://www.google.com
-www.google.com##div.ULSxyf > .MjjYud > .A6K0A
-www.google.com##.vt6azd.PmEWq
